@@ -1,3 +1,4 @@
+import 'expo-dev-client'
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { LogBox } from 'react-native'
@@ -7,8 +8,6 @@ import 'reflect-metadata'
 import Navigation from '~navigation/index.navigator'
 
 import useCachedResources from './src/hooks/use-cached-resources'
-
-
 
 export default function App() {
   const isLoading = useCachedResources()
