@@ -23,10 +23,7 @@ export const HomeScreen: VFC<HomeScreenProps> = ({ title = 'HomeScreen' }) => {
         title={'Navigate Auth'}
         onPress={() => navigation.navigate('AuthNavigator', { screen: 'Login' })}
       />
-      <Button
-        title={'Go Storybook'}
-        onPress={() => navigation.navigate('Storybook')}
-      />
+      <Button title={'Go Storybook'} onPress={() => navigation.navigate('Storybook')} />
     </View>
   )
 }
