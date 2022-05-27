@@ -21,9 +21,6 @@ jobs:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Create .env file
-        run: cp .env.example .env
-
       - name: 📦 Install dependencies
         run: npm ci
 
