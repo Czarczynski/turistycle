@@ -1,6 +1,21 @@
 {
   "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true
+  "compilerOptions": {"strict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": "./",
+    "jsx": "react",
+    "paths": {
+      "~assets/*": ["assets/*"],
+      "~features/*": ["src/features/*"],
+      "~configs/*": ["src/configs/*"],
+      "~styles/*": ["src/styles/*"],
+      "~screens/*": ["src/screens/*"],
+      "~models/*": ["src/models/*"],
+      "~hooks/*": ["src/hooks/*"],
+      "~utils/*": ["src/utils/*"],
+      "~navigation/*": ["src/navigation/*"]
+    }
   }
 }

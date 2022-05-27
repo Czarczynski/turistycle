@@ -1,0 +1,26 @@
+---
+to: src/screens/<%= h.changeCase.paramCase(name) %>/<%= h.changeCase.paramCase(name) %>.screen.tsx
+unless_exists: true
+---
+
+import React, { VFC } from 'react'
+import { View, Text } from 'react-native'
+import { useTranslation } from 'react-i18next'
+
+import styles from './<%= h.changeCase.paramCase(name) %>.styles'
+
+interface <%= h.capitalize(h.changeCase.camelCase(name)) %>ScreenProps {
+  title?: string;
+}
+
+export const <%= h.capitalize(h.changeCase.camelCase(name)) %>Screen: VFC<<%= h.capitalize(h.changeCase.camelCase(name)) %>ScreenProps> = ({
+  title = "<%= h.capitalize(h.changeCase.camelCase(name)) %>Screen"
+}) => {
+  const { t } = useTranslation('<%= h.changeCase.paramCase(name) %>');
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
+};
