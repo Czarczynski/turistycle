@@ -7,7 +7,7 @@ import React, { VFC } from 'react'
 import { View, Text } from 'react-native'
 import { useTranslation } from 'react-i18next'
 
-import useStyles from './<%= h.changeCase.paramCase(name) %>.styles'
+import styles from './<%= h.changeCase.paramCase(name) %>.styles'
 
 interface <%= h.capitalize(h.changeCase.camelCase(name)) %>Props {
   title?: string;
@@ -15,7 +15,6 @@ interface <%= h.capitalize(h.changeCase.camelCase(name)) %>Props {
 
 export const <%= h.capitalize(h.changeCase.camelCase(name)) %>: VFC<<%= h.capitalize(h.changeCase.camelCase(name)) %>Props> = ({ title = "<%= h.capitalize(h.changeCase.camelCase(name)) %>" }) => {
   const { t } = useTranslation('<%= h.changeCase.paramCase(name) %>');
-  const styles = useStyles();
 
   return (
     <View style={styles.container}>
