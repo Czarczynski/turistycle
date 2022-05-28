@@ -1,9 +1,9 @@
 import 'expo-dev-client'
-import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { LogBox } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import 'reflect-metadata'
+import '~utils/i18n'
 
 import Navigation from '~navigation/index.navigator'
 

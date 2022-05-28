@@ -9,21 +9,36 @@ const fontFamilies = {
 }
 
 export const TOPOGRAPHY = StyleSheet.create({
+  /** headers */
   header: {
     fontFamily: fontFamilies.montserratBold,
     fontSize: 16,
     fontWeight: 'bold',
     color: theme.text,
   },
+  /** labels */
   label: {
     fontFamily: fontFamilies.montserratSemiBold,
     fontSize: 16,
     fontWeight: '600',
     color: theme.text,
   },
+  /** paragraphL */
+  paragraphL: {
+    fontFamily: fontFamilies.montserratRegular,
+    fontSize: 18,
+    fontWeight: 'normal',
+    color: theme.text,
+  },
   paragraph: {
     fontFamily: fontFamilies.montserratRegular,
     fontSize: 16,
+    fontWeight: 'normal',
+    color: theme.text,
+  },
+  paragraphS: {
+    fontFamily: fontFamilies.montserratRegular,
+    fontSize: 14,
     fontWeight: 'normal',
     color: theme.text,
   },

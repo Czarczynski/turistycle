@@ -1,3 +1,5 @@
 {
-  "a": "aaa"
+  "conversation-preview": {
+    "you": "You: "
+  }
 }
