@@ -43,9 +43,7 @@ export default function Navigation() {
       <StatusBar style={'dark'} />
       <Stack.Navigator initialRouteName={'Root'}>
         <Stack.Group>
-          {__DEV__ && (
-            <Stack.Screen name="Storybook" component={Storybook} options={{ headerShown: false }} />
-          )}
+          <Stack.Screen name="Storybook" component={Storybook} options={{ headerShown: false }} />
           <Stack.Screen name="Root" component={RootNavigator} options={{ headerShown: false }} />
           <Stack.Screen
             name="ChatNavigator"

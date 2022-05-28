@@ -1,1 +1,1 @@
-export { Message } from './message.component'
+export { MessageLeft, MessageRight } from './message.component'
