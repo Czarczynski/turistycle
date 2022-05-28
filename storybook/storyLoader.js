@@ -4,6 +4,7 @@
 // https://github.com/elderfo/react-native-storybook-loader.git
 
 function loadStories() {
+  require('../src/features/ui/button/button.stories')
   require('../src/features/ui/icon/icon.stories')
   require('../src/screens/chat/chat.stories')
   require('../src/screens/community/community.stories')
@@ -22,6 +23,7 @@ function loadStories() {
 }
 
 const stories = [
+  '../src/features/ui/button/button.stories',
   '../src/features/ui/icon/icon.stories',
   '../src/screens/chat/chat.stories',
   '../src/screens/community/community.stories',

@@ -4,9 +4,9 @@ import { COLORS } from '~styles/colors'
 
 export const THEMES = {
   light: {
-    primary: COLORS.deepGreen,
-    secondary: COLORS.grayishGreen,
-    secondaryLighter: COLORS.lightGrayishGreen,
+    primary: COLORS.greenCold,
+    secondary: COLORS.greenLight,
+    tint: COLORS.purpleDark,
     text: COLORS.offBlack,
     textSecondary: COLORS.darkGray,
     background: COLORS.offWhite,
