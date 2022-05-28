@@ -5,6 +5,7 @@
 
 function loadStories() {
   require('../src/features/ui/button/button.stories')
+  require('../src/features/ui/conversation-list/conversation-list.stories')
   require('../src/features/ui/conversation-preview/conversation-preview.stories')
   require('../src/features/ui/icon/icon.stories')
   require('../src/features/ui/message-list/message-list.stories')
@@ -27,6 +28,7 @@ function loadStories() {
 
 const stories = [
   '../src/features/ui/button/button.stories',
+  '../src/features/ui/conversation-list/conversation-list.stories',
   '../src/features/ui/conversation-preview/conversation-preview.stories',
   '../src/features/ui/icon/icon.stories',
   '../src/features/ui/message-list/message-list.stories',
