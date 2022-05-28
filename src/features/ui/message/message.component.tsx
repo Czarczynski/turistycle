@@ -1,6 +1,5 @@
 import { DateTime } from 'luxon'
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Text, View } from 'react-native'
 
 import { Message as MessageModel } from '~models/message.model'
@@ -13,13 +12,12 @@ interface MessageProps {
 }
 
 export const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
-  const { t } = useTranslation('message')
   const { time, text } = message
 
   return (
     <View style={styles.containerLeft}>
       {showDate && <MessageTime time={time} />}
-      <View style={[styles.message,styles.messageLeft]}>
+      <View style={[styles.message, styles.messageLeft]}>
         <Text>{text}</Text>
       </View>
     </View>
@@ -27,19 +25,17 @@ export const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
 }
 
 export const MessageRight: VFC<MessageProps> = ({ message, showDate }) => {
-  const { t } = useTranslation('message')
   const { time, text } = message
 
   return (
     <View style={styles.containerRight}>
       {showDate && <MessageTime time={time} />}
-      <View style={[styles.message,styles.messageRight]}>
-        <Text>{text}</Text>
+      <View style={[styles.message, styles.messageRight]}>
+        <Text style={styles.text}>{text}</Text>
       </View>
     </View>
   )
 }
-
 
 interface MessageTimeProps {
   time: DateTime

@@ -3,7 +3,7 @@ import { DateTime } from 'luxon'
 import React from 'react'
 import { View } from 'react-native'
 
-import { MessageLeft,MessageRight } from './message.component'
+import { MessageLeft, MessageRight } from './message.component'
 
 storiesOf('Message', module)
   .addDecorator((getStory) => (

@@ -42,4 +42,5 @@ export default StyleSheet.create({
     ...TOPOGRAPHY.paragraphXXS,
     color: theme.borderDark,
   },
+  text: {},
 })
