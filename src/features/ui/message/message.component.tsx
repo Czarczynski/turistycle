@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, View } from 'react-native'
@@ -9,26 +10,47 @@ import styles from './message.styles'
 interface MessageProps {
   message: MessageModel
   showDate?: boolean
-  userUid: string
 }
 
-export const Message: VFC<MessageProps> = ({ message, showDate, userUid }) => {
+export const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
   const { t } = useTranslation('message')
-  const { senderUid, time, text } = message
-  const isRightMessage = Boolean(senderUid === userUid)
+  const { time, text } = message
 
   return (
-    <View style={isRightMessage ? styles.containerRight : styles.containerLeft}>
-      {showDate && (
-        <View style={styles.timeContainer}>
-          <View style={styles.timeLine} />
-          <Text style={styles.timeValue}>{time.toFormat('LLL dd, H:mm')}</Text>
-          <View style={styles.timeLine} />
-        </View>
-      )}
-      <View style={[styles.message, isRightMessage ? styles.messageRight : styles.messageLeft]}>
+    <View style={styles.containerLeft}>
+      {showDate && <MessageTime time={time} />}
+      <View style={[styles.message,styles.messageLeft]}>
         <Text>{text}</Text>
       </View>
+    </View>
+  )
+}
+
+export const MessageRight: VFC<MessageProps> = ({ message, showDate }) => {
+  const { t } = useTranslation('message')
+  const { time, text } = message
+
+  return (
+    <View style={styles.containerRight}>
+      {showDate && <MessageTime time={time} />}
+      <View style={[styles.message,styles.messageRight]}>
+        <Text>{text}</Text>
+      </View>
+    </View>
+  )
+}
+
+
+interface MessageTimeProps {
+  time: DateTime
+}
+
+const MessageTime: VFC<MessageTimeProps> = ({ time }) => {
+  return (
+    <View style={styles.timeContainer}>
+      <View style={styles.timeLine} />
+      <Text style={styles.timeValue}>{time.toFormat('LLL dd, H:mm')}</Text>
+      <View style={styles.timeLine} />
     </View>
   )
 }
