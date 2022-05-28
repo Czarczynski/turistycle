@@ -9,7 +9,7 @@ import { RootStackParamList } from './index.navigator'
 
 export type ChatStackParamList = {
   Chat: undefined
-  Conversation: undefined
+  Conversation: { corresponderUid: string }
 }
 
 export type ChatStackScreenProps<Screen extends keyof ChatStackParamList> = CompositeScreenProps<
