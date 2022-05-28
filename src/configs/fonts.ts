@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 export default {
   'montserrat-regular': require('~assets/fonts/Montserrat/Montserrat-Regular.ttf'),
   'montserrat-black': require('~assets/fonts/Montserrat/Montserrat-Black.ttf'),
