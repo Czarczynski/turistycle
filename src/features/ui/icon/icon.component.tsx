@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
 import { StyleProp, ViewStyle } from 'react-native'
 import Iconmoon from 'react-native-icomoon'
 
@@ -19,10 +18,9 @@ interface IconProps {
 }
 
 export const Icon: VFC<IconProps> = ({ size, color, strokeWidth, name }) => {
-  const { t } = useTranslation('icon')
   return Object.keys(icons).includes(name) ? (
     // @ts-ignore
-    icons[name](size)
+    icons[name](size, strokeWidth, color)
   ) : (
     <Iconmoon
       iconSet={json}
