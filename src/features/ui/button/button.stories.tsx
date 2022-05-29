@@ -9,6 +9,7 @@ import {
   ButtonPrimaryReversed,
   ButtonSecondary,
   ButtonSecondaryReversed,
+  ButtonSocialIcon,
 } from '~features/ui/button'
 import { Icon } from '~features/ui/icon'
 
@@ -63,3 +64,5 @@ storiesOf('Button', module)
       {({ iconColor }) => <Icon color={iconColor} name={'create'} />}
     </ButtonFloating>
   ))
+  .add('social-icon', () => <ButtonSocialIcon onPress={action('clicked-text')} icon={'facebook'} />)
+
