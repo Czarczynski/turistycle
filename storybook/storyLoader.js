@@ -9,6 +9,7 @@ function loadStories() {
   require('../src/features/ui/conversation-list/conversation-list.stories')
   require('../src/features/ui/conversation-preview/conversation-preview.stories')
   require('../src/features/ui/icon/icon.stories')
+  require('../src/features/ui/images-slider/images-slider.stories')
   require('../src/features/ui/message-list/message-list.stories')
   require('../src/features/ui/message/message.stories')
   require('../src/features/ui/rating-stars/rating-stars.stories')
@@ -35,6 +36,7 @@ const stories = [
   '../src/features/ui/conversation-list/conversation-list.stories',
   '../src/features/ui/conversation-preview/conversation-preview.stories',
   '../src/features/ui/icon/icon.stories',
+  '../src/features/ui/images-slider/images-slider.stories',
   '../src/features/ui/message-list/message-list.stories',
   '../src/features/ui/message/message.stories',
   '../src/features/ui/rating-stars/rating-stars.stories',
