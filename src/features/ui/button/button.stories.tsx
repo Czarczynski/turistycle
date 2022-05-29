@@ -4,6 +4,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 
 import {
+  ButtonFloating,
   ButtonPrimary,
   ButtonPrimaryReversed,
   ButtonSecondary,
@@ -56,4 +57,9 @@ storiesOf('Button', module)
         </>
       )}
     </ButtonSecondaryReversed>
+  ))
+  .add('floating', () => (
+    <ButtonFloating onPress={action('clicked-text')}>
+      {({ iconColor }) => <Icon color={iconColor} name={'create'} />}
+    </ButtonFloating>
   ))
