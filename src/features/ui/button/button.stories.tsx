@@ -65,4 +65,3 @@ storiesOf('Button', module)
     </ButtonFloating>
   ))
   .add('social-icon', () => <ButtonSocialIcon onPress={action('clicked-text')} icon={'facebook'} />)
-
