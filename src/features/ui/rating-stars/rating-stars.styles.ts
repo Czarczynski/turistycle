@@ -5,8 +5,11 @@ import { COLORS } from '~styles/colors'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: rgba(COLORS.black, 0.2),
+    backgroundColor: rgba(COLORS.black, 0.5),
     flexDirection: 'row',
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
   },
   star: {
     flexDirection: 'row',
