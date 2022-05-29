@@ -10,15 +10,43 @@ import { ConversationList } from './conversation-list.component'
 const exampleData: Conversation[] = [
   {
     lastMessage: {
-      text: 'Hello',
-      senderUid: '124',
-      time: DateTime.fromJSDate(new Date(2022, 3, 20, 13, 20)),
+      text: 'Sup?',
+      senderUid: '125',
+      time: DateTime.fromJSDate(new Date(2021, 10, 20, 13, 20)),
     },
     messages: [
       {
-        text: 'Hello',
+        text: 'Sup',
+        senderUid: '125',
+        time: DateTime.fromJSDate(new Date(2021, 10, 20, 13, 20)),
+      },
+    ],
+    id: 'conv-3',
+    users: [
+      {
+        uid: '123',
+        displayName: 'Czarek',
+        imageUri: 'xxx',
+      },
+      {
+        uid: '124',
+        displayName: 'Michael',
+        imageUri:
+          'https://www.vogue.pl/uploads/repository/mac_macstackmascara/mac-fy22-macstack-01-0151-v3-rgb150-app.jpg',
+      },
+    ],
+  },
+  {
+    lastMessage: {
+      text: 'Hi',
+      senderUid: '124',
+      time: DateTime.fromJSDate(new Date(2021, 3, 20, 13, 20)),
+    },
+    messages: [
+      {
+        text: 'Hi',
         senderUid: '124',
-        time: DateTime.fromJSDate(new Date(2022, 3, 20, 13, 20)),
+        time: DateTime.fromJSDate(new Date(2021, 3, 20, 13, 20)),
       },
     ],
     id: 'conv-1',
