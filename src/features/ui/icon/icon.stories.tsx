@@ -1,8 +1,10 @@
 import { storiesOf } from '@storybook/react-native'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 
-import { icons } from '~features/ui/icon/icon.types'
+import icons from '~assets/icons'
+
+import { icons as icomoons } from '~features/ui/icon/icon.types'
 
 import { Icon } from './icon.component'
 
@@ -19,14 +21,16 @@ storiesOf('Icon', module)
     </View>
   ))
   .add('common', () => (
-    <View style={styles.wrapper}>
-      {Object.keys(icons).map((iconName, key) => (
-        <View key={key} style={styles.iconWrapper}>
-          <Icon name={iconName as keyof typeof icons} size={iconName === 'play' ? 32 : undefined} />
-          <Text>{iconName}</Text>
-        </View>
-      ))}
-    </View>
+    <ScrollView contentContainerStyle={styles.wrapper}>
+      {Object.keys(icomoons)
+        .concat(Object.keys(icons))
+        .map((iconName, key) => (
+          <View key={key} style={styles.iconWrapper}>
+            <Icon name={iconName as keyof typeof icomoons | keyof typeof icons} size={35} />
+            <Text>{iconName}</Text>
+          </View>
+        ))}
+    </ScrollView>
   ))
 
 const styles = StyleSheet.create({
@@ -35,7 +39,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   iconWrapper: {
-    margin: 10,
+    width: '25%',
+    marginBottom: 20,
     alignItems: 'center',
   },
 })
