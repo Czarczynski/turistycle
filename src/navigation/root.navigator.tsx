@@ -1,6 +1,6 @@
 import { BottomTabScreenProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { CompositeScreenProps } from '@react-navigation/native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { CommunityScreen } from '~screens/community'
@@ -8,6 +8,8 @@ import { HomeScreen } from '~screens/home'
 import { MapScreen } from '~screens/map'
 import { MoreScreen } from '~screens/more'
 import { SearchScreen } from '~screens/search'
+
+import { HeaderTab } from '~features/ui/navigation-header'
 
 import { theme } from '~styles/theme'
 
@@ -23,7 +25,7 @@ export type RootTabParamList = {
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
   BottomTabScreenProps<RootTabParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
+  StackScreenProps<RootStackParamList>
 >
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
@@ -32,10 +34,11 @@ export default function RootNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="HomeTab"
-      screenOptions={({ route }) => ({
+      screenOptions={() => ({
         tabBarActiveTintColor: theme.primary,
         tabBarShowLabel: true,
         tabBarStyle: { paddingHorizontal: 8 },
+        header: (props) => <HeaderTab {...props} />,
       })}
     >
       <BottomTab.Screen name="HomeTab" component={HomeScreen} />

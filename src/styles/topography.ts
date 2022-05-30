@@ -17,6 +17,12 @@ export const TOPOGRAPHY = StyleSheet.create({
     color: theme.text,
   },
   /** labels */
+  labelL: {
+    fontFamily: fontFamilies.montserratSemiBold,
+    fontSize: 20,
+    fontWeight: '600',
+    color: theme.text,
+  },
   label: {
     fontFamily: fontFamilies.montserratSemiBold,
     fontSize: 16,

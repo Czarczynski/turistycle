@@ -34,7 +34,7 @@ export const Modal: VFC<ModalProps> = ({ title, visible, onClose, children, rend
           style={[
             styles.container,
             {
-              flex: flex
+              flex: flex,
             },
           ]}
         >
