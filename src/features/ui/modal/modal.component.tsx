@@ -1,6 +1,7 @@
-import React, { VFC, useRef, useState } from 'react'
-import { Animated, Easing, Pressable, Modal as RNModal, Text, View } from 'react-native'
+import React, { VFC } from 'react'
+import { Animated, Pressable, Modal as RNModal, Text, View } from 'react-native'
 
+import { useModalHeight } from '~features/modal/hooks/use-modal-height'
 import { Icon } from '~features/ui/icon'
 
 import styles from './modal.styles'
@@ -15,35 +16,8 @@ interface ModalProps {
 
 export const Modal: VFC<ModalProps> = ({ title, visible, onClose, children, renderRight }) => {
   const hasRightContent = Boolean(renderRight)
+  const [flex, gestureResponders, onDismiss] = useModalHeight(onClose)
 
-  const [heightAnimValue, setHeightAnimValue] = useState(0)
-
-  const heightAnim = useRef(new Animated.Value(0)).current
-  const onDismiss = () => {
-    onClose()
-    setHeightAnimValue(0)
-    heightAnim.setValue(0)
-  }
-
-  const changedHeight = () => {
-    if (heightAnimValue) {
-      Animated.timing(heightAnim, {
-        toValue: 0,
-        duration: 200,
-        easing: Easing.linear,
-        useNativeDriver: true,
-      }).start()
-      setHeightAnimValue(0)
-    } else {
-      Animated.timing(heightAnim, {
-        toValue: 1,
-        duration: 200,
-        easing: Easing.linear,
-        useNativeDriver: true,
-      }).start()
-      setHeightAnimValue(1)
-    }
-  }
   return (
     <RNModal
       animationType="slide"
@@ -59,29 +33,21 @@ export const Modal: VFC<ModalProps> = ({ title, visible, onClose, children, rend
           style={[
             styles.container,
             {
-              height: '80%',
-              transform: [
-                {
-                  translateY: heightAnim.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [300, 0], // 0 : 150, 0.5 : 75, 1 : 0
-                  }),
-                },
-              ],
+              flex: flex,
+              height: 400,
             },
           ]}
         >
-          <View style={styles.modalView}>
+          <View style={styles.modalView} {...gestureResponders}>
             <View style={styles.header}>
-              <Pressable onPress={onDismiss} style={styles.closeBtn}>
-                <Icon name={'x'} color={styles.closeIcon.color} size={16} />
-              </Pressable>
+              <View style={styles.closeBtn}>
+                <Pressable onPress={onDismiss}>
+                  <Icon name={'x'} color={styles.closeIcon.color} size={16} />
+                </Pressable>
+              </View>
               <Text style={styles.title}>{title}</Text>
               <View style={styles.rightRender}>{hasRightContent && renderRight}</View>
             </View>
-            <Pressable onPress={changedHeight}>
-              <Text>AAA: {heightAnimValue}</Text>
-            </Pressable>
             {children}
           </View>
         </Animated.View>

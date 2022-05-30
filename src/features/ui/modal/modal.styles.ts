@@ -32,6 +32,7 @@ export default StyleSheet.create({
   closeBtn: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   closeIcon: {
     color: theme.text,

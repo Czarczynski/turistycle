@@ -1,4 +1,3 @@
-import { text } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react-native'
 import React, { useState } from 'react'
 import { Pressable, Text, View } from 'react-native'
@@ -25,7 +24,7 @@ const ExampleOne = () => {
           </Pressable>
         }
       >
-        <View style={{ alignItems: 'center', justifyContent: 'center', height:300 }}>
+        <View style={{ alignItems: 'center', justifyContent: 'center', height: 300 }}>
           <Text>Some Content in modal</Text>
         </View>
       </Modal>
