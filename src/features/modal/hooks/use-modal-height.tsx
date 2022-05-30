@@ -47,5 +47,5 @@ export const useModalHeight = (onClose: () => void): useModalHeightType => {
     [heightAnimValue, moveUsed],
   )
 
-  return [heightAnimValue ? 4 : 1, gestureResponders.panHandlers, onDismiss]
+  return [heightAnimValue ? 50 : 1, gestureResponders.panHandlers, onDismiss]
 }

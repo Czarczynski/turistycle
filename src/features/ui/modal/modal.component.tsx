@@ -1,5 +1,5 @@
 import React, { VFC } from 'react'
-import { Animated, Pressable, Modal as RNModal, Text, View } from 'react-native'
+import { Animated, Pressable, Modal as RNModal, SafeAreaView, Text, View } from 'react-native'
 
 import { useModalHeight } from '~features/modal/hooks/use-modal-height'
 import { Icon } from '~features/ui/icon'
@@ -28,13 +28,13 @@ export const Modal: VFC<ModalProps> = ({ title, visible, onClose, children, rend
       onRequestClose={onDismiss}
     >
       <>
+        <SafeAreaView />
         <Pressable onPress={onDismiss} style={styles.dismiss} />
         <Animated.View
           style={[
             styles.container,
             {
-              flex: flex,
-              height: 400,
+              flex: flex
             },
           ]}
         >
