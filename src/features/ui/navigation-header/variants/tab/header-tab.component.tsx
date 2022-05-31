@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { StackHeaderProps } from '@react-navigation/stack'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, View } from 'react-native'
@@ -10,9 +11,7 @@ import { NavigationHeader } from '~features/ui/navigation-header/navigation-head
 
 import styles from './header-tab.styles'
 
-interface HeaderTabProps {}
-
-export const HeaderTab: VFC<HeaderTabProps> = ({}) => {
+export const HeaderTab: VFC<StackHeaderProps> = ({}) => {
   const { t } = useTranslation('header')
   const navigation = useNavigation()
   const route = useRoute()

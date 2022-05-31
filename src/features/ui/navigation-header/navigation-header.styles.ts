@@ -14,11 +14,11 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingBottom: 8,
     justifyContent: 'space-between',
   },
   innerContainerFloating: {
-    position: 'absolute',
-    paddingHorizontal: 16,
+    backgroundColor: theme.background,
+    marginHorizontal: 16,
+    borderRadius: 15,
   },
 })

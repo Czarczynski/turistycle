@@ -5,7 +5,7 @@ import { TOPOGRAPHY } from '~styles/topography'
 
 export default StyleSheet.create({
   title: {
-    ...TOPOGRAPHY.label,
+    ...TOPOGRAPHY.labelL,
     color: theme.text,
   },
 

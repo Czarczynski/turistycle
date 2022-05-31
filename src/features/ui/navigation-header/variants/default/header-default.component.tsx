@@ -1,4 +1,5 @@
-import { NativeStackHeaderProps } from '@react-navigation/native-stack'
+import { useRoute } from '@react-navigation/native'
+import { StackHeaderProps } from '@react-navigation/stack'
 import React, { VFC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
@@ -8,12 +9,17 @@ import { NavigationHeader } from '~features/ui/navigation-header/navigation-head
 
 import styles from './header-default.styles'
 
-export const HeaderDefault: VFC<NativeStackHeaderProps> = ({ navigation, route, options }) => {
+export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
   const { t } = useTranslation('header')
   const canGoBack = Boolean(navigation.canGoBack())
+  const {
+    route,
+    progress,
+    descriptor: { options },
+  } = scene
 
   return (
-    <NavigationHeader>
+    <NavigationHeader progress={progress}>
       <>
         {canGoBack && (
           <Pressable onPress={navigation.goBack}>

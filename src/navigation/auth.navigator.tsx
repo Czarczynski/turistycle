@@ -1,5 +1,4 @@
-import { CompositeScreenProps } from '@react-navigation/native'
-import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createStackNavigator } from '@react-navigation/stack'
 import * as React from 'react'
 
 import { LoginScreen } from '~screens/login'
@@ -12,12 +11,12 @@ export type AuthStackParamList = {
   Register: undefined
 }
 
-export type AuthStackScreenProps<Screen extends keyof AuthStackParamList> = CompositeScreenProps<
-  NativeStackScreenProps<AuthStackParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
->
+// export type AuthStackScreenProps<Screen extends keyof AuthStackParamList> = CompositeScreenProps<
+//   NativeStackScreenProps<AuthStackParamList, Screen>,
+//   NativeStackScreenProps<RootStackParamList>
+// >
 
-const Stack = createNativeStackNavigator<AuthStackParamList>()
+const Stack = createStackNavigator<AuthStackParamList>()
 export default function Navigation() {
   return (
     <Stack.Navigator initialRouteName="Login">

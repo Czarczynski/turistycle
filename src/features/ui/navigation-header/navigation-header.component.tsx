@@ -11,54 +11,40 @@ interface NavigationHeaderProps {
   children?: React.ReactElement
   transparent?: boolean
   floating?: boolean
+  progress?: any
 }
 
 export const NavigationHeader: FC<NavigationHeaderProps> = ({
   children,
   transparent,
   floating,
+  progress,
 }) => {
-  const navigation = useNavigation()
-  const route = useRoute()
+  const animated = progress ? Animated.add(progress.current, progress.next || 0) : null
 
-  /** ONE START */
-  const animated = useRef(new Animated.Value(0)).current
-  useFocusEffect(() => {
-    console.log(route.name, 'hello ')
+  const opacity = animated
+    ? animated.interpolate({
+        inputRange: [0, 1, 2],
+        outputRange: [0, 1, 0],
+      })
+    : 1
 
-    Animated.sequence([
-      Animated.timing(animated, {
-        toValue: 1,
-        duration: 400,
-        useNativeDriver: true,
-        easing: Easing.linear,
-      }),
-    ]).start()
-
-    return () => {
-      Animated.timing(animated, {
-        toValue: 0,
-        duration: 200,
-        useNativeDriver: true,
-        easing: Easing.linear,
-      }).start()
-    }
-  })
-
-  const opacity = animated.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0, 1],
-  })
-  /** ONE END */
   return (
     <Animated.View style={{ opacity }}>
       <SafeAreaView
         edges={['top']}
         style={[styles.container, transparent && styles.containerTransparent]}
       >
-        <View style={[styles.innerContainer, floating && styles.innerContainerFloating]}>
-          {children}
-        </View>
+        {!floating && (
+          <View style={[styles.innerContainer, floating && styles.innerContainerFloating]}>
+            {children}
+          </View>
+        )}
+        {floating && (
+          <View style={styles.innerContainerFloating}>
+            <View style={styles.innerContainer}>{children}</View>
+          </View>
+        )}
       </SafeAreaView>
     </Animated.View>
   )

@@ -1,6 +1,11 @@
-import { CompositeScreenProps } from '@react-navigation/native'
-import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navigation/native-stack'
+import { CompositeNavigationProp } from '@react-navigation/native'
+import {
+  StackNavigationProp,
+  StackScreenProps,
+  createStackNavigator,
+} from '@react-navigation/stack'
 import * as React from 'react'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { ChatScreen } from '~screens/chat'
 import { ConversationScreen } from '~screens/conversation'
@@ -12,12 +17,12 @@ export type ChatStackParamList = {
   Conversation: { corresponderUid: string }
 }
 
-export type ChatStackScreenProps<Screen extends keyof ChatStackParamList> = CompositeScreenProps<
-  NativeStackScreenProps<ChatStackParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
->
+// export type ChatStackScreenProps<Screen extends keyof ChatStackParamList> = CompositeNavigationProp<
+//   StackNavigationProp<StackScreenProps<ChatStackParamList, Screen>>,
+//   StackScreenProps<RootStackParamList>
+// >
 
-const Stack = createNativeStackNavigator<ChatStackParamList>()
+const Stack = createStackNavigator<ChatStackParamList>()
 export default function Navigation() {
   return (
     <Stack.Navigator initialRouteName="Chat">
