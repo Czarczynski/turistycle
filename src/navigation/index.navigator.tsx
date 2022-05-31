@@ -1,7 +1,7 @@
 import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native'
-import { StackScreenProps, createStackNavigator } from '@react-navigation/stack'
-import { TransitionSpec } from '@react-navigation/stack/lib/typescript/src/types'
+import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navigation/native-stack'
 import { StatusBar } from 'expo-status-bar'
+import { animation } from 'polished'
 import * as React from 'react'
 
 import AuthNavigator, { AuthStackParamList } from '~navigation/auth.navigator'
@@ -33,23 +33,12 @@ export type RootStackParamList = {
   Storybook: undefined
 }
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = StackScreenProps<
+export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
   Screen
 >
 
-const Stack = createStackNavigator<RootStackParamList>()
-const config: TransitionSpec = {
-  animation: 'timing',
-  config: {
-    delay: 0,
-    duration: 200,
-  },
-}
-export const transitionSpec: { open: TransitionSpec; close: TransitionSpec } = {
-  close: config,
-  open: config,
-}
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export default function Navigation() {
   return (
@@ -58,9 +47,8 @@ export default function Navigation() {
       <Stack.Navigator
         initialRouteName={'Root'}
         screenOptions={() => ({
-          headerMode: 'float',
-          animationEnabled: true,
-          transitionSpec: transitionSpec,
+          customAnimationOnGesture: true,
+          headerShadowVisible: false,
           header: (props) => <HeaderDefault {...props} />,
         })}
       >
