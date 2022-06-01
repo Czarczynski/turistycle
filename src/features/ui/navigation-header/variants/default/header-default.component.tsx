@@ -1,6 +1,5 @@
-import { useRoute } from '@react-navigation/native'
 import { StackHeaderProps } from '@react-navigation/stack'
-import React, { VFC, useEffect } from 'react'
+import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
 
@@ -22,12 +21,12 @@ export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
     <NavigationHeader progress={progress}>
       <>
         {canGoBack && (
-          <Pressable onPress={navigation.goBack}>
+          <Pressable onPress={() => navigation.goBack()}>
             <Icon name={'chevron-down'} color={styles.icon.color} />
           </Pressable>
         )}
         {!canGoBack && <View style={styles.placeholder} />}
-        <Text style={styles.title}>{options.title ? options.title : route.name}</Text>
+        <Text style={styles.title}>{t(options.title ?? route.name)}</Text>
         <View style={styles.placeholder} />
       </>
     </NavigationHeader>

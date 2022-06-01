@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics'
 import { ImpactFeedbackStyle } from 'expo-haptics'
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { GestureResponderHandlers, LayoutAnimation, PanResponder } from 'react-native'
 
 type useModalHeightType = [number, GestureResponderHandlers, () => void]
@@ -9,11 +9,11 @@ export const useModalHeight = (onClose: () => void): useModalHeightType => {
   const [heightAnimValue, setHeightAnimValue] = useState(false)
   const [moveUsed, setMoveUsed] = useState(false)
 
-  const onDismiss = async () => {
+  const onDismiss = useCallback(async () => {
     onClose()
     setHeightAnimValue(false)
     await Haptics.impactAsync(ImpactFeedbackStyle.Light)
-  }
+  }, [onClose])
 
   const gestureResponders = useMemo(
     () =>
@@ -44,7 +44,7 @@ export const useModalHeight = (onClose: () => void): useModalHeightType => {
           }
         },
       }),
-    [heightAnimValue, moveUsed],
+    [heightAnimValue, moveUsed, onDismiss],
   )
 
   return [heightAnimValue ? 50 : 1, gestureResponders.panHandlers, onDismiss]

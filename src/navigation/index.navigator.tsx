@@ -1,7 +1,12 @@
 import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native'
-import { StackScreenProps, TransitionPresets, createStackNavigator } from '@react-navigation/stack'
+import {
+  StackNavigationProp,
+  TransitionPresets,
+  createStackNavigator,
+} from '@react-navigation/stack'
 import { StatusBar } from 'expo-status-bar'
 import * as React from 'react'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import AuthNavigator, { AuthStackParamList } from '~navigation/auth.navigator'
 import ChatNavigator, { ChatStackParamList } from '~navigation/chat.navigator'
@@ -32,10 +37,12 @@ export type RootStackParamList = {
   Storybook: undefined
 }
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = StackScreenProps<
+export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
   RootStackParamList,
   Screen
 >
+
+export type RootStackNavigationProps = StackNavigationProp<RootStackParamList>
 
 const Stack = createStackNavigator<RootStackParamList>()
 
@@ -45,12 +52,11 @@ export default function Navigation() {
       <StatusBar style={'dark'} />
       <Stack.Navigator
         initialRouteName={'Root'}
-        headerMode={'screen'}
-        screenOptions={() => ({
-          customAnimationOnGesture: true,
-          headerShadowVisible: false,
+        headerMode={'float'}
+        screenOptions={{
+          headerTransparent: true,
           header: (props) => <HeaderDefault {...props} />,
-        })}
+        }}
       >
         <Stack.Screen name="Storybook" component={Storybook} />
         <Stack.Screen name="Root" component={RootNavigator} options={{ headerShown: false }} />
@@ -70,17 +76,14 @@ export default function Navigation() {
         <Stack.Screen
           name="Trace"
           component={TraceScreen}
-          options={{ headerTransparent: true, header: (props) => <HeaderCard {...props} /> }}
+          options={{ header: (props) => <HeaderCard {...props} /> }}
         />
-        <Stack.Screen name="WebView" component={WebViewScreen} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="WebView"
+          component={WebViewScreen}
+          options={{ headerShown: false, ...TransitionPresets.ModalTransition }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
-}
-
-/* eslint-disable @typescript-eslint/no-namespace */
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
 }

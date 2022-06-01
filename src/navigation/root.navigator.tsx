@@ -1,7 +1,5 @@
-import { BottomTabScreenProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { CompositeNavigationProp } from '@react-navigation/native'
-// import { CompositeScreenProps} from '@react-navigation/native'
-import { StackScreenProps, createStackNavigator } from '@react-navigation/stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { CommunityScreen } from '~screens/community'
@@ -10,11 +8,7 @@ import { MapScreen } from '~screens/map'
 import { MoreScreen } from '~screens/more'
 import { SearchScreen } from '~screens/search'
 
-import { HeaderTab } from '~features/ui/navigation-header'
-
-import { theme } from '~styles/theme'
-
-import { RootStackParamList } from './index.navigator'
+import { HeaderSearch, HeaderTab } from '~features/ui/navigation-header'
 
 export type RootTabParamList = {
   HomeTab: HomeTabParamList
@@ -40,12 +34,19 @@ type MoreTabParamList = {
   More: undefined
 }
 
-// export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeNavigationProp<
-//   BottomTabScreenProps<RootTabParamList, Screen>,
-//   StackScreenProps<RootStackParamList>
-// >
-
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
+
+export default function RootNavigator() {
+  return (
+    <BottomTab.Navigator initialRouteName="HomeTab">
+      <BottomTab.Screen name="HomeTab" component={Home} />
+      <BottomTab.Screen name="SearchTab" component={Search} />
+      <BottomTab.Screen name="MapTab" component={Map} />
+      <BottomTab.Screen name="CommunityTab" component={Community} />
+      <BottomTab.Screen name="MoreTab" component={More} />
+    </BottomTab.Navigator>
+  )
+}
 
 const HomeStack = createStackNavigator<HomeTabParamList>()
 const SearchStack = createStackNavigator<SearchTabParamList>()
@@ -59,7 +60,7 @@ const Home = () => (
   </HomeStack.Navigator>
 )
 const Search = () => (
-  <SearchStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} /> }}>
+  <SearchStack.Navigator screenOptions={{ header: (props) => <HeaderSearch {...props} /> }}>
     <SearchStack.Screen name={'Search'} component={SearchScreen} />
   </SearchStack.Navigator>
 )
@@ -78,15 +79,3 @@ const More = () => (
     <MoreStack.Screen name={'More'} component={MoreScreen} />
   </MoreStack.Navigator>
 )
-
-export default function RootNavigator() {
-  return (
-    <BottomTab.Navigator initialRouteName="HomeTab" screenOptions={() => ({})}>
-      <BottomTab.Screen name="HomeTab" component={Home} />
-      <BottomTab.Screen name="SearchTab" component={Search} />
-      <BottomTab.Screen name="MapTab" component={Map} />
-      <BottomTab.Screen name="CommunityTab" component={Community} />
-      <BottomTab.Screen name="MoreTab" component={More} />
-    </BottomTab.Navigator>
-  )
-}
