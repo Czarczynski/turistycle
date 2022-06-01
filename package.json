@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.10",
+    "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/masked-view": "*",
     "@react-navigation/bottom-tabs": "^5.11.15",
