@@ -1,6 +1,8 @@
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text, View } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
+
+import useNavigation from '~hooks/useNavigation'
 
 import styles from './trace.styles'
 
@@ -10,10 +12,13 @@ interface TraceScreenProps {
 
 export const TraceScreen: VFC<TraceScreenProps> = ({ title = 'TraceScreen' }) => {
   const { t } = useTranslation('trace')
-
+  const navigation = useNavigation()
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Text style={styles.title}>{title}</Text>
+      <Pressable onPress={() => navigation.navigate('MapRide')}>
+        <Text>Go to MapRide</Text>
+      </Pressable>
     </View>
   )
 }

@@ -13,8 +13,6 @@ import {
 } from '~features/ui/button'
 import { Icon } from '~features/ui/icon'
 
-import { Button } from './button.component'
-
 storiesOf('Button', module)
   .addDecorator((getStory) => (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>{getStory()}</View>
