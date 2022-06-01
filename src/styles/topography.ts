@@ -30,6 +30,12 @@ export const TOPOGRAPHY = StyleSheet.create({
     color: theme.text,
   },
   /** paragraphL */
+  paragraphXL: {
+    fontFamily: fontFamilies.montserratRegular,
+    fontSize: 22,
+    fontWeight: 'normal',
+    color: theme.text,
+  },
   paragraphL: {
     fontFamily: fontFamilies.montserratRegular,
     fontSize: 18,
