@@ -21,8 +21,8 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: theme.text,
-  }, iconWrapper: {
-    paddingRight:10
-  }
-
+  },
+  iconWrapper: {
+    paddingRight: 10,
+  },
 })

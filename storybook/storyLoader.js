@@ -6,6 +6,7 @@
 function loadStories() {
   require('../src/features/ui/badge/badge.stories')
   require('../src/features/ui/button/button.stories')
+  require('../src/features/ui/card-list/card-list.stories')
   require('../src/features/ui/card/card.stories')
   require('../src/features/ui/conversation-list/conversation-list.stories')
   require('../src/features/ui/conversation-preview/conversation-preview.stories')
@@ -37,6 +38,7 @@ function loadStories() {
 const stories = [
   '../src/features/ui/badge/badge.stories',
   '../src/features/ui/button/button.stories',
+  '../src/features/ui/card-list/card-list.stories',
   '../src/features/ui/card/card.stories',
   '../src/features/ui/conversation-list/conversation-list.stories',
   '../src/features/ui/conversation-preview/conversation-preview.stories',
