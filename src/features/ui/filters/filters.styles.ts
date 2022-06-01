@@ -4,19 +4,17 @@ import { TOPOGRAPHY } from '~styles/topography'
 
 export default StyleSheet.create({
   container: {
-    width: '100%',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  contentContainer: {
+  distanceContainer: {
     paddingHorizontal: 16,
-    paddingBottom:16,
     alignItems: 'center',
   },
-  title: {
+  label: {
     ...TOPOGRAPHY.labelL,
-    paddingBottom: 16,
     paddingLeft: 16,
-  },
-  separator: {
-    width: 16,
+    paddingBottom: 16,
   },
 })

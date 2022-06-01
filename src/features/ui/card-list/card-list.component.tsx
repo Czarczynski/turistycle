@@ -28,8 +28,8 @@ export const CardList: VFC<CardListProps> = ({ label, data, onItemPress }) => {
         ItemSeparatorComponent={Separator}
         renderItem={({ item }) => (
           <Card
-            onPress={() => onItemPress?.(item)}
             key={item.id}
+            onPress={() => onItemPress?.(item)}
             opacity
             title={item.title}
             backgroundColor={item.backgroundColor}

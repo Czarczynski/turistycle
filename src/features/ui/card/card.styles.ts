@@ -9,13 +9,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    shadowColor: theme.shadowColor,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    shadowRadius: 3,
-    shadowOpacity: 1,
   },
   title: {
     fontSize: 20,

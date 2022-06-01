@@ -21,16 +21,24 @@ interface CardProps {
   onPress?: () => void
 }
 
-export const Card: VFC<CardProps> = ({ title, icon, backgroundColor, opacity, onPress, color }) => {
+export const Card: VFC<CardProps> = ({
+  title,
+  icon,
+  backgroundColor = COLORS.white,
+  opacity,
+  onPress,
+  color,
+}) => {
   const hasIcon = Boolean(icon)
-  const textColor = color ?? Boolean(backgroundColor) ? theme.background : theme.text
+  const textColor =
+    color ?? Boolean(backgroundColor !== COLORS.white) ? theme.background : theme.text
   return (
     <Pressable
       onPress={onPress}
       style={[
         styles.container,
         {
-          backgroundColor: rgba(backgroundColor ?? COLORS.white, opacity ? 0.5 : 1),
+          backgroundColor: rgba(backgroundColor, opacity ? 0.5 : 1),
         },
       ]}
     >

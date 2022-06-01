@@ -10,6 +10,7 @@ function loadStories() {
   require('../src/features/ui/card/card.stories')
   require('../src/features/ui/conversation-list/conversation-list.stories')
   require('../src/features/ui/conversation-preview/conversation-preview.stories')
+  require('../src/features/ui/filters/filters.stories')
   require('../src/features/ui/icon/icon.stories')
   require('../src/features/ui/images-slider/images-slider.stories')
   require('../src/features/ui/message-list/message-list.stories')
@@ -42,6 +43,7 @@ const stories = [
   '../src/features/ui/card/card.stories',
   '../src/features/ui/conversation-list/conversation-list.stories',
   '../src/features/ui/conversation-preview/conversation-preview.stories',
+  '../src/features/ui/filters/filters.stories',
   '../src/features/ui/icon/icon.stories',
   '../src/features/ui/images-slider/images-slider.stories',
   '../src/features/ui/message-list/message-list.stories',

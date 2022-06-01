@@ -1,3 +1,5 @@
+import {Filter} from "~models/filter.model";
+
 export const initialFiltersState = {
   categories: [],
   tags: [],
@@ -7,97 +9,97 @@ export const initialFiltersState = {
 
 interface filtersProps {
   filter: string
-  values: {
-    color: string
-    icon?: string
-    id: number
-    label: string
-    value: string
-  }[]
+  data: Filter[]
   label: string
 }
 
-export const allFilters: filtersProps[] = [
+const cardLike: filtersProps[] = [
   {
     filter: 'categories',
     label: 'Categories',
-    values: [
+    data: [
       {
         id: 1,
-        label: 'Off Road',
+
+        title: 'Off Road',
         value: 'offRoad',
         icon: 'off-road',
-        color: `#ad6644`,
+        backgroundColor: `#ad6644`,
       },
       {
         id: 2,
-        label: 'Nature',
+        title: 'Nature',
         value: 'nature',
         icon: 'nature',
-        color: `#4a9320`,
+        backgroundColor: `#4a9320`,
       },
       {
         id: 3,
-        label: 'Forest',
+        title: 'Forest',
         value: 'forest',
         icon: 'desert',
-        color: `#209363`,
+        backgroundColor: `#209363`,
       },
       {
         id: 4,
-        label: 'City',
+        title: 'City',
         value: 'city',
         icon: 'city',
-        color: `#bbb`,
+        backgroundColor: `#bbb`,
       },
     ],
   },
   {
     filter: 'tags',
     label: 'Tags',
-    values: [
+    data: [
       {
         id: 1,
-        label: 'River',
+        title: 'River',
         value: 'river',
-        color: `#f5f5f5`,
+        backgroundColor: `white`,
       },
       {
         id: 2,
-        label: 'Chill',
+        title: 'Chill',
         value: 'chill',
-        color: `#f5f5f5`,
+        backgroundColor: `white`,
       },
       {
         id: 3,
-        label: 'Rest',
+        title: 'Rest',
         value: 'rest',
-        color: `#f5f5f5`,
+        backgroundColor: `white`,
       },
     ],
   },
   {
     filter: 'citiesAround',
     label: 'Nearby',
-    values: [
+    data: [
       {
         id: 1,
-        label: 'Poznań',
+        title: 'Poznań',
         value: 'poznan',
-        color: `#f5f5f5`,
+        backgroundColor: `white`,
       },
       {
         id: 2,
-        label: 'Gdańsk',
+        title: 'Gdańsk',
         value: 'gdansk',
-        color: `#f5f5f5`,
+        backgroundColor: `white`,
       },
       {
         id: 3,
-        label: 'Warsaw',
+        title: 'Warsaw',
         value: 'warsaw',
-        color: `#f5f5f5`,
+        backgroundColor: `white`,
       },
     ],
   },
 ]
+
+export const allFilters = {
+  distance: {min:1, max: 250},
+  cardLike
+}

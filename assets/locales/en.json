@@ -1,5 +1,8 @@
 {
   "conversation-preview": {
     "you": "You: "
+  },
+  "filters": {
+    "trip-distance": "Trip distance"
   }
 }
