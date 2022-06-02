@@ -1,4 +1,5 @@
-import { rgba } from 'polished'
+import * as Haptics from 'expo-haptics'
+import { ImpactFeedbackStyle } from 'expo-haptics'
 import React, { VFC } from 'react'
 import { Pressable, Text, View } from 'react-native'
 
@@ -17,21 +18,36 @@ interface CardProps {
   icon?: keyof typeof icomoons | keyof typeof icons
   color?: string
   backgroundColor?: string
-  opacity?: boolean
+  checked?: boolean
   onPress?: () => void
 }
 
-export const Card: VFC<CardProps> = ({ title, icon, backgroundColor, opacity, onPress, color }) => {
+export const Card: VFC<CardProps> = ({
+  title,
+  icon,
+  backgroundColor = COLORS.white,
+  checked,
+  onPress,
+  color,
+}) => {
   const hasIcon = Boolean(icon)
-  const textColor = color ?? Boolean(backgroundColor) ? theme.background : theme.text
+  const textColor = color ? color : backgroundColor !== COLORS.white ? theme.background : theme.text
+
+  const onHapticPress = async () => {
+    if (onPress !== undefined) {
+      await Haptics.impactAsync(ImpactFeedbackStyle.Light)
+      onPress()
+    }
+  }
   return (
     <Pressable
-      onPress={onPress}
+      onPress={onHapticPress}
       style={[
         styles.container,
         {
-          backgroundColor: rgba(backgroundColor ?? COLORS.white, opacity ? 0.5 : 1),
+          backgroundColor,
         },
+        checked && styles.checkedContainer,
       ]}
     >
       {hasIcon && (

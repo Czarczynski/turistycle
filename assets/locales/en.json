@@ -1,5 +1,14 @@
 {
   "conversation-preview": {
     "you": "You: "
+  },
+  "filters": {
+    "trip-distance": "Trip distance",
+    "applied-filters": "Applied filters"
+  },
+  "card-list": {
+    "categories": "Categories",
+    "tags": "Tags",
+    "citiesAround": "Nearby"
   }
 }

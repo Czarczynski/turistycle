@@ -15,7 +15,7 @@ export class Filter {
   value: string
 
   @Expose()
-  icon: keyof typeof icomoons | keyof typeof icons
+  icon?: keyof typeof icomoons | keyof typeof icons
 
   @Expose()
   backgroundColor: string

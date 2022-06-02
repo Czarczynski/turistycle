@@ -38,8 +38,8 @@ export const Modal: VFC<ModalProps> = ({ title, visible, onClose, children, rend
             },
           ]}
         >
-          <View style={styles.modalView} {...gestureResponders}>
-            <View style={styles.header}>
+          <View style={styles.modalView}>
+            <View style={styles.header} {...gestureResponders} hitSlop={{ top: 50, bottom: 50 }}>
               <View style={styles.closeBtn}>
                 <Pressable onPress={onDismiss}>
                   <Icon name={'x'} color={styles.closeIcon.color} size={16} />
@@ -49,6 +49,7 @@ export const Modal: VFC<ModalProps> = ({ title, visible, onClose, children, rend
               <View style={styles.rightRender}>{hasRightContent && renderRight}</View>
             </View>
             {children}
+            <SafeAreaView />
           </View>
         </Animated.View>
       </>

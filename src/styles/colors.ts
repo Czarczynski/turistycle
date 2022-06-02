@@ -6,5 +6,5 @@ export const COLORS = {
   offWhite: '#F4F4F4',
   purpleDark: '#352261',
   black: '#000',
-  white: '#FFF',
+  white: 'white',
 }

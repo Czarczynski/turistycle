@@ -2,7 +2,7 @@ import MultiSlider, { LabelProps } from '@ptomasroos/react-native-multi-slider'
 import React, { VFC } from 'react'
 import { Text, View } from 'react-native'
 
-import { initialFiltersState } from '~configs/filters'
+import { initialFiltersState } from '~features/filters/states/filters.state'
 
 import styles from './slider.styles'
 

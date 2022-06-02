@@ -7,12 +7,11 @@ export default StyleSheet.create({
     width: '100%',
   },
   contentContainer: {
-    paddingHorizontal: 16,
+    padding: 16,
     alignItems: 'center',
   },
   title: {
     ...TOPOGRAPHY.labelL,
-    paddingBottom: 16,
     paddingLeft: 16,
   },
   separator: {
