@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
 import { storiesOf } from '@storybook/react-native'
-import {Pressable, Text, View} from 'react-native'
+import React, { useState } from 'react'
+import { Pressable, Text, View } from 'react-native'
+
+import { initialFiltersState } from '~features/filters/states/filters.state'
 
 import { Filters } from './filters.component'
-import {initialFiltersState} from "~configs/filters";
 
 const ExampleOne = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -25,8 +26,8 @@ const ExampleOne = () => {
     </View>
   )
 }
-storiesOf("Filters", module)
-  .addDecorator((getStory) => <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>{getStory()}</View>)
-  .add("common", () => (
-    <ExampleOne />
-  ));
+storiesOf('Filters', module)
+  .addDecorator((getStory) => (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>{getStory()}</View>
+  ))
+  .add('common', () => <ExampleOne />)

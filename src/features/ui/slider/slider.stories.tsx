@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react-native'
 import React, { useState } from 'react'
 import { View } from 'react-native'
 
-import { initialFiltersState } from '~configs/filters'
+import { initialFiltersState } from '~features/filters/states/filters.state'
 
 import { Slider } from './slider.component'
 
