@@ -2,8 +2,8 @@ import { text } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react-native'
 import React from 'react'
 
-import { CommunityScreen } from './community.screen'
+import { SavedScreen } from './saved.screen'
 
 storiesOf('CommunityScreen', module).add('common', () => (
-  <CommunityScreen title={text('Title', 'Hello Community')} />
+  <SavedScreen title={text('Title', 'Hello Saved')} />
 ))

@@ -2,19 +2,22 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
-import { CommunityScreen } from '~screens/community'
 import { HomeScreen } from '~screens/home'
 import { MapScreen } from '~screens/map'
 import { MoreScreen } from '~screens/more'
+import { SavedScreen } from '~screens/saved'
 import { SearchScreen } from '~screens/search'
 
 import { HeaderSearch, HeaderTab } from '~features/ui/navigation-header'
+import { TabBarIcon } from '~features/ui/tab-bar-icon'
+
+import { theme } from '~styles/theme'
 
 export type RootTabParamList = {
   HomeTab: HomeTabParamList
   SearchTab: SearchTabParamList
   MapTab: MapTabParamList
-  CommunityTab: CommunityTabParamList
+  SavedTab: SavedTabParamList
   MoreTab: MoreTabParamList
 }
 
@@ -27,8 +30,8 @@ type SearchTabParamList = {
 type MapTabParamList = {
   Map: undefined
 }
-type CommunityTabParamList = {
-  Community: undefined
+type SavedTabParamList = {
+  Saved: undefined
 }
 type MoreTabParamList = {
   More: undefined
@@ -38,12 +41,50 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 export default function RootNavigator() {
   return (
-    <BottomTab.Navigator initialRouteName="HomeTab">
-      <BottomTab.Screen name="HomeTab" component={Home} />
-      <BottomTab.Screen name="SearchTab" component={Search} />
-      <BottomTab.Screen name="MapTab" component={Map} />
-      <BottomTab.Screen name="CommunityTab" component={Community} />
-      <BottomTab.Screen name="MoreTab" component={More} />
+    <BottomTab.Navigator
+      initialRouteName="HomeTab"
+      tabBarOptions={{
+        activeTintColor: theme.primary,
+        showLabel: false,
+
+        style: { paddingHorizontal: 8 },
+      }}
+    >
+      <BottomTab.Screen
+        name="HomeTab"
+        component={Home}
+        options={({ route }) => ({
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} title={route.name} />,
+        })}
+      />
+      <BottomTab.Screen
+        name="SearchTab"
+        component={Search}
+        options={({ route }) => ({
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} title={route.name} />,
+        })}
+      />
+      <BottomTab.Screen
+        name="MapTab"
+        component={Map}
+        options={({ route }) => ({
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} title={route.name} />,
+        })}
+      />
+      <BottomTab.Screen
+        name="SavedTab"
+        component={Saved}
+        options={({ route }) => ({
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} title={route.name} />,
+        })}
+      />
+      <BottomTab.Screen
+        name="MoreTab"
+        component={More}
+        options={({ route }) => ({
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} title={route.name} />,
+        })}
+      />
     </BottomTab.Navigator>
   )
 }
@@ -51,7 +92,7 @@ export default function RootNavigator() {
 const HomeStack = createStackNavigator<HomeTabParamList>()
 const SearchStack = createStackNavigator<SearchTabParamList>()
 const MapStack = createStackNavigator<MapTabParamList>()
-const CommunityStack = createStackNavigator<CommunityTabParamList>()
+const SavedStack = createStackNavigator<SavedTabParamList>()
 const MoreStack = createStackNavigator<MoreTabParamList>()
 
 const Home = () => (
@@ -69,10 +110,10 @@ const Map = () => (
     <MapStack.Screen name={'Map'} component={MapScreen} />
   </MapStack.Navigator>
 )
-const Community = () => (
-  <CommunityStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} /> }}>
-    <CommunityStack.Screen name={'Community'} component={CommunityScreen} />
-  </CommunityStack.Navigator>
+const Saved = () => (
+  <SavedStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} /> }}>
+    <SavedStack.Screen name={'Saved'} component={SavedScreen} />
+  </SavedStack.Navigator>
 )
 const More = () => (
   <MoreStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} /> }}>
