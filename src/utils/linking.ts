@@ -10,7 +10,7 @@ const linking: LinkingOptions = {
           HomeTab: 'home',
           SearchTab: 'search',
           MapTab: 'map',
-          CommunityTab: 'community',
+          dataTab: 'saved',
           MoreTab: 'more',
         },
       },

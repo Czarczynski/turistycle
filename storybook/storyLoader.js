@@ -21,7 +21,6 @@ function loadStories() {
   require('../src/features/ui/slider/slider.stories')
   require('../src/features/ui/toggle/toggle.stories')
   require('../src/screens/chat/chat.stories')
-  require('../src/screens/community/community.stories')
   require('../src/screens/conversation/conversation.stories')
   require('../src/screens/home/home.stories')
   require('../src/screens/login/login.stories')
@@ -31,6 +30,7 @@ function loadStories() {
   require('../src/screens/more/more.stories')
   require('../src/screens/profile/profile.stories')
   require('../src/screens/register/register.stories')
+  require('../src/screens/saved/saved.stories')
   require('../src/screens/search/search.stories')
   require('../src/screens/trace/trace.stories')
   require('../src/screens/web-view/web-view.stories')
@@ -54,7 +54,6 @@ const stories = [
   '../src/features/ui/slider/slider.stories',
   '../src/features/ui/toggle/toggle.stories',
   '../src/screens/chat/chat.stories',
-  '../src/screens/community/community.stories',
   '../src/screens/conversation/conversation.stories',
   '../src/screens/home/home.stories',
   '../src/screens/login/login.stories',
@@ -64,6 +63,7 @@ const stories = [
   '../src/screens/more/more.stories',
   '../src/screens/profile/profile.stories',
   '../src/screens/register/register.stories',
+  '../src/screens/saved/saved.stories',
   '../src/screens/search/search.stories',
   '../src/screens/trace/trace.stories',
   '../src/screens/web-view/web-view.stories',

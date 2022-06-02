@@ -10,5 +10,12 @@
     "categories": "Categories",
     "tags": "Tags",
     "citiesAround": "Nearby"
+  },
+  "tab-bar-icon": {
+    "HomeTab": "Home",
+    "SearchTab": "Search",
+    "MapTab": "Map",
+    "SavedTab": "Saved",
+    "MoreTab": "More"
   }
 }
