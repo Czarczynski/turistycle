@@ -3,12 +3,19 @@ import SplashScreen from 'expo-splash-screen'
 import { useEffect, useState } from 'react'
 import { setCustomText } from 'react-native-global-props'
 
+import { setupRootStore } from '~store/root-setup.store'
+import { RootStore } from '~store/root.store'
+
 import { TOPOGRAPHY } from '~styles/topography'
 
 import fonts from '../configs/fonts'
 
-export default function useCachedResources() {
+export default function useCachedResources(): [
+  isLoading: boolean,
+  rootStore: RootStore | undefined,
+] {
   const [isLoading, setIsLoading] = useState(false)
+  const [rootStore, setRootStore] = useState<RootStore | undefined>()
 
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
@@ -21,6 +28,8 @@ export default function useCachedResources() {
         setCustomText({
           style: { ...TOPOGRAPHY.paragraph },
         })
+        const store = await setupRootStore()
+        setRootStore(store)
         setIsLoading(false)
 
         await SplashScreen?.hideAsync()
@@ -30,8 +39,8 @@ export default function useCachedResources() {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    loadResourcesAndDataAsync()
+    loadResourcesAndDataAsync().then()
   }, [])
 
-  return isLoading
+  return [isLoading, rootStore]
 }

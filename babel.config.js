@@ -1,8 +1,15 @@
-module.exports = function(api) {
-  api.cache(true);
+module.exports = function (api) {
+  api.cache(true)
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      [
+        '@babel/plugin-proposal-decorators',
+        {
+          legacy: true,
+        },
+      ],
+      ['@babel/plugin-proposal-class-properties', { loose: false }],
       [
         'module-resolver',
         {
@@ -11,6 +18,7 @@ module.exports = function(api) {
             '~features': ['./src/features'],
             '~configs': ['./src/configs'],
             '~styles': ['./src/styles'],
+            '~store': ['./src/store'],
             '~screens': ['./src/screens'],
             '~models': ['./src/models'],
             '~hooks': ['./src/hooks'],
@@ -22,4 +30,4 @@ module.exports = function(api) {
       ],
     ],
   }
-};
+}

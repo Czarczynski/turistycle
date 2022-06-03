@@ -16,6 +16,7 @@ export const SearchScreen: VFC<SearchScreenProps> = ({ title = 'SearchScreen' })
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
+
       <Button title={'Navigate Trace'} onPress={() => navigation.navigate('Trace')} />
     </View>
   )
