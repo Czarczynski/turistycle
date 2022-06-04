@@ -10,10 +10,9 @@ import { TOPOGRAPHY } from '~styles/topography'
 
 import fonts from '../configs/fonts'
 
-export default function useCachedResources(): [
-  isLoading: boolean,
-  rootStore: RootStore | undefined,
-] {
+type CachedResourcesType = [isLoading: boolean, rootStore: RootStore | undefined]
+
+export default function useCachedResources(): CachedResourcesType {
   const [isLoading, setIsLoading] = useState(false)
   const [rootStore, setRootStore] = useState<RootStore | undefined>()
 

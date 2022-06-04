@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
@@ -10,7 +11,7 @@ interface TraceScreenProps {
   title?: string
 }
 
-export const TraceScreen: VFC<TraceScreenProps> = ({ title = 'TraceScreen' }) => {
+export const TraceScreen: VFC<TraceScreenProps> = observer(({ title = 'TraceScreen' }) => {
   const { t } = useTranslation('trace')
   const navigation = useNavigation()
   return (
@@ -21,4 +22,4 @@ export const TraceScreen: VFC<TraceScreenProps> = ({ title = 'TraceScreen' }) =>
       </Pressable>
     </View>
   )
-}
+})

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
 
 import { GlobalStore } from '~store/global/global.store'
@@ -8,11 +9,9 @@ export const RootStoreModel = types
     global: types.optional(GlobalStore, {}),
   })
   .views((self) => ({
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     getChildStore(storeKey: keyof typeof self.properties) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore  @typescript-eslint/no-unsafe-return
+      // @ts-ignore
       return self[storeKey]
     },
   }))

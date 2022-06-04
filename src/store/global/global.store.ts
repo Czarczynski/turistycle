@@ -1,21 +1,13 @@
-import { flow } from 'mobx'
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
 
 import { withEnvironment } from '~store/extensions/with-environment'
 
 export const GlobalStore = types
-  .model('global', {
-    myName: types.maybeNull(types.string),
-  })
+  .model('global', {})
   .props({})
   .views(() => ({}))
   .extend(withEnvironment)
-  .actions((self) => ({
-    setMyName: function (name: string) {
-      console.log({ name })
-      self.myName = name
-    },
-  }))
+  .actions(() => ({}))
 
 type GlobalType = Instance<typeof GlobalStore>
 

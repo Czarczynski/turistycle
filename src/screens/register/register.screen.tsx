@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, View } from 'react-native'
@@ -8,7 +9,7 @@ interface RegisterScreenProps {
   title?: string
 }
 
-export const RegisterScreen: VFC<RegisterScreenProps> = ({ title = 'RegisterScreen' }) => {
+export const RegisterScreen: VFC<RegisterScreenProps> = observer(({ title = 'RegisterScreen' }) => {
   const { t } = useTranslation('register')
 
   return (
@@ -16,4 +17,4 @@ export const RegisterScreen: VFC<RegisterScreenProps> = ({ title = 'RegisterScre
       <Text style={styles.title}>{title}</Text>
     </View>
   )
-}
+})

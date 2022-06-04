@@ -11,7 +11,7 @@ export class Environment {
     this.api = new Api()
   }
 
-  async setup() {
-    await this.api.setup()
+  setup() {
+    this.api.setup()
   }
 }

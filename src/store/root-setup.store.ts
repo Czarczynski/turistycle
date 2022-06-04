@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment */
 import { onSnapshot } from 'mobx-state-tree'
 
 import { Environment } from '~store/environment'
@@ -18,9 +19,9 @@ const ROOT_STATE_STORAGE_KEY = 'root'
  * of the models that get created later. This is how we loosly couple things
  * like events between models.
  */
-export async function createEnvironment() {
+export function createEnvironment() {
   const env = new Environment()
-  await env.setup()
+  env.setup()
   return env
 }
 
@@ -31,19 +32,14 @@ export async function setupRootStore() {
   let rootStore: RootStore
   let data: any
 
-  // prepare the environment that will be associated with the RootStore.
-  const env = await createEnvironment()
+  const env = createEnvironment()
   try {
-    // load data from storage
     data = (await storage.getData(ROOT_STATE_STORAGE_KEY)) || {}
     rootStore = RootStoreModel.create(data, env)
   } catch (e) {
-    // if there's any problems loading, then let's at least fallback to an empty state
-    // instead of crashing.
     rootStore = RootStoreModel.create({}, env)
   }
 
-  // track changes & save to storage
   onSnapshot(rootStore, (snapshot) => storage.storeData(ROOT_STATE_STORAGE_KEY, snapshot))
 
   return rootStore

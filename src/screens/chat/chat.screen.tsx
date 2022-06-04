@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
+import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'
@@ -9,7 +10,7 @@ interface ChatScreenProps {
   title?: string
 }
 
-export const ChatScreen: VFC<ChatScreenProps> = ({ title = 'ChatScreen' }) => {
+export const ChatScreen: VFC<ChatScreenProps> = observer(({ title = 'ChatScreen' }) => {
   const { t } = useTranslation('chat')
 
   const navigation = useNavigation()
@@ -22,4 +23,4 @@ export const ChatScreen: VFC<ChatScreenProps> = ({ title = 'ChatScreen' }) => {
       />
     </View>
   )
-}
+})

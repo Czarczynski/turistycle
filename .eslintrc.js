@@ -28,6 +28,7 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
+    "@typescript-eslint/ban-ts-comment": "off",
     indent: ['error', 2, { SwitchCase: 1, ignoredNodes: ['PropertyDefinition'] }],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
