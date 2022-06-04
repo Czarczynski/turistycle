@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, View } from 'react-native'
@@ -8,7 +9,7 @@ interface MapRideScreenProps {
   title?: string
 }
 
-export const MapRideScreen: VFC<MapRideScreenProps> = ({ title = 'MapRideScreen' }) => {
+export const MapRideScreen: VFC<MapRideScreenProps> = observer(({ title = 'MapRideScreen' }) => {
   const { t } = useTranslation('map-ride')
 
   return (
@@ -16,4 +17,4 @@ export const MapRideScreen: VFC<MapRideScreenProps> = ({ title = 'MapRideScreen'
       <Text style={styles.title}>{title}</Text>
     </View>
   )
-}
+})

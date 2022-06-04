@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Text, View } from 'react-native'
@@ -8,7 +9,7 @@ interface SavedScreenProps {
   title?: string
 }
 
-export const SavedScreen: VFC<SavedScreenProps> = ({ title = 'SavedScreen' }) => {
+export const SavedScreen: VFC<SavedScreenProps> = observer(({ title = 'SavedScreen' }) => {
   const { t } = useTranslation('saved')
 
   return (
@@ -16,4 +17,4 @@ export const SavedScreen: VFC<SavedScreenProps> = ({ title = 'SavedScreen' }) =>
       <Text style={styles.title}>{t(title)}</Text>
     </View>
   )
-}
+})

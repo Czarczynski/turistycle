@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import 'reflect-metadata'
 
 import Navigation from '~navigation/index.navigator'
+import { RootStoreProvider } from '~store/root-context.store'
 
 import '~utils/i18n'
 
@@ -14,15 +15,17 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
   UIManager.setLayoutAnimationEnabledExperimental(true)
 }
 export default function App() {
-  const isLoading = useCachedResources()
+  const [isLoading, rootStore] = useCachedResources()
 
-  if (isLoading) {
+  if (isLoading || !rootStore) {
     return null
   } else {
     return (
-      // <SafeAreaProvider>
-        <Navigation />
-      // </SafeAreaProvider>
+      <RootStoreProvider value={rootStore}>
+        <SafeAreaProvider>
+          <Navigation />
+        </SafeAreaProvider>
+      </RootStoreProvider>
     )
   }
 }

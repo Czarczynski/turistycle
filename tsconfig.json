@@ -1,6 +1,8 @@
 {
   "extends": "expo/tsconfig.base",
-  "compilerOptions": {"strict": true,
+  "compilerOptions": {
+    "strict": true,
+    "useDefineForClassFields": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
@@ -8,6 +10,7 @@
     "jsx": "react",
     "paths": {
       "~assets/*": ["assets/*"],
+      "~store/*": ["src/store/*"],
       "~features/*": ["src/features/*"],
       "~configs/*": ["src/configs/*"],
       "~styles/*": ["src/styles/*"],

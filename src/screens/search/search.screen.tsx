@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
+import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'
@@ -9,14 +10,15 @@ interface SearchScreenProps {
   title?: string
 }
 
-export const SearchScreen: VFC<SearchScreenProps> = ({ title = 'SearchScreen' }) => {
+export const SearchScreen: VFC<SearchScreenProps> = observer(({ title = 'SearchScreen' }) => {
   const { t } = useTranslation('search')
   const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
+
       <Button title={'Navigate Trace'} onPress={() => navigation.navigate('Trace')} />
     </View>
   )
-}
+})
