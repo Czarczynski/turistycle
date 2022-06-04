@@ -30,10 +30,4 @@ export default function App() {
   }
 }
 
-if (
-  !new (class {
-    x: any
-  })().hasOwnProperty('x')
-)
-  throw new Error('Transpiler is not configured correctly')
 LogBox.ignoreLogs(['Non-serializable values were found in the navigation state'])

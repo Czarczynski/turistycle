@@ -70,8 +70,8 @@
     "intl": "^1.2.5",
     "lodash": "^4.17.21",
     "luxon": "^2.3.2",
-    "mobx": "^6.0.4",
-    "mobx-react-lite": "^3.1.6",
+    "mobx": "6.0.4",
+    "mobx-react-lite": "3.1.6",
     "mobx-state-tree": "4.0.2",
     "polished": "^4.2.2",
     "react": "17.0.1",
@@ -99,6 +99,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-decorators": "^7.18.2",
+    "@babel/plugin-proposal-optional-catch-binding": "^7.16.7",
     "@storybook/addon-actions": "^5.3.21",
     "@storybook/addon-knobs": "^5.3.21",
     "@storybook/addon-links": "^5.3.21",

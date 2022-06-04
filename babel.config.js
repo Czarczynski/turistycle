@@ -9,7 +9,6 @@ module.exports = function (api) {
           legacy: true,
         },
       ],
-      ['@babel/plugin-proposal-class-properties', { loose: false }],
       [
         'module-resolver',
         {
@@ -28,6 +27,7 @@ module.exports = function (api) {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
       ],
+      ["@babel/plugin-proposal-optional-catch-binding"],
     ],
   }
 }
