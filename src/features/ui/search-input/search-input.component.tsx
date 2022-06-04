@@ -20,7 +20,7 @@ export const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
     const hasValue = Boolean(value)
     return (
       <View style={styles.container}>
-        <Icon name={'search'} />
+        <Icon name={'search'} size={20} />
         <TextInput
           ref={ref}
           style={styles.input}
@@ -33,7 +33,7 @@ export const SearchInput = React.forwardRef<TextInput, SearchInputProps>(
         />
         {hasValue && (
           <Pressable onPress={() => onChangeText('')}>
-            <Icon name={'x'} color={styles.input.color} />
+            <Icon name={'x'} color={styles.input.color} size={20} />
           </Pressable>
         )}
       </View>

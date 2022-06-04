@@ -17,5 +17,8 @@
     "MapTab": "Map",
     "SavedTab": "Saved",
     "MoreTab": "More"
+  },
+  "search-input": {
+    "placeholder": "Search"
   }
 }

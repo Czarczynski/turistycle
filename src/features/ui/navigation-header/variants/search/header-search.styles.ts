@@ -9,4 +9,7 @@ export default StyleSheet.create({
     height: '80%',
     borderBottomWidth: 1,
   },
+  iconWrapper: {
+    paddingLeft: 16,
+  },
 })
