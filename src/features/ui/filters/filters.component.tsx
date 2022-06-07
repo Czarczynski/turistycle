@@ -1,4 +1,4 @@
-import React, { VFC } from 'react'
+import React, { VFC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable, ScrollView, Text, View } from 'react-native'
 
@@ -12,27 +12,29 @@ import styles from './filters.styles'
 
 interface FiltersProps {
   visible: boolean
-  onClose: () => void
+  onClose: (_filters: CurrentFiltersType) => void
   filters: CurrentFiltersType
-  onChange: (filters: CurrentFiltersType) => void
 }
 
-export const Filters: VFC<FiltersProps> = ({ visible, onClose, filters, onChange }) => {
+export const Filters: VFC<FiltersProps> = ({ onClose, filters, visible }) => {
   const { t } = useTranslation('filters')
 
+  const [_filters, _setFilters] = useState<CurrentFiltersType>(
+    JSON.parse(JSON.stringify(filters)) as CurrentFiltersType,
+  )
   return (
     <Modal
       title={'Filter'}
       visible={visible}
-      onClose={onClose}
-      renderRight={<RenderRight onChange={onChange} />}
+      onClose={() => onClose(_filters)}
+      renderRight={<RenderRight onChange={_setFilters} />}
     >
       <ScrollView>
         <Text style={styles.label}>{t`trip-distance`}</Text>
         <View style={styles.distanceContainer}>
           <Slider
-            distance={filters.distance}
-            onChange={(distance) => onChange({ ...filters, distance })}
+            distance={_filters.distance}
+            onChange={(distance) => _setFilters({ ..._filters, distance })}
           />
         </View>
         {allFilters.cardLike.map(({ filter, data }) => (
@@ -41,12 +43,12 @@ export const Filters: VFC<FiltersProps> = ({ visible, onClose, filters, onChange
             label={filter}
             key={filter}
             onItemCheck={(newCheckedList) => {
-              onChange({
-                ...filters,
+              _setFilters({
+                ..._filters,
                 [filter]: newCheckedList,
               })
             }}
-            checkedList={filters[filter]}
+            checkedList={_filters[filter]}
           />
         ))}
       </ScrollView>

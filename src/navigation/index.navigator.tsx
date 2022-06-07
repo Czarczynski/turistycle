@@ -33,7 +33,7 @@ export type RootStackParamList = {
   Profile: undefined
   MapSubmit: undefined
   MapRide: undefined
-  Trace: undefined
+  Trace: { a: number }
   WebView: undefined
   Storybook: undefined
 }
