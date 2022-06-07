@@ -1,6 +1,4 @@
-import { User } from 'firebase/auth'
 import { observer } from 'mobx-react-lite'
-import { Instance } from 'mobx-state-tree'
 import React, { VFC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'

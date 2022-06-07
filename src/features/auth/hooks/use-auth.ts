@@ -1,22 +1,19 @@
 import { ResponseType, makeRedirectUri, useAuthRequest, useAutoDiscovery } from 'expo-auth-session'
 import * as WebBrowser from 'expo-web-browser'
-import { initializeApp } from 'firebase/app'
 import { GoogleAuthProvider, getAuth, signInWithCredential } from 'firebase/auth'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
-import { useStores } from '~hooks/use-store'
-
-import { User } from '~models/user.model'
+import { Global } from '~store/global/global.store'
 
 WebBrowser.maybeCompleteAuthSession()
 
 type useAuthType = [() => void]
 
-export const useGoogleLogIn = (global: any): useAuthType => {
+export const useGoogleLogIn = (global: Global): useAuthType => {
   const useProxy = Platform.select({ web: false, default: true })
   const discovery = useAutoDiscovery('https://accounts.google.com')
-  const [request, response, promptAsync] = useAuthRequest(
+  const [, response, promptAsync] = useAuthRequest(
     {
       clientId: '675432498642-vee5n2nr4tl3buf7p1fak758uhbdan1u.apps.googleusercontent.com',
       redirectUri: makeRedirectUri({
@@ -37,7 +34,8 @@ export const useGoogleLogIn = (global: any): useAuthType => {
         await global.logIn(user, await user.getIdToken())
       }
 
-      const { accessToken, idToken } = response?.authentication!
+      const { accessToken = '', idToken = '' } = response.authentication!
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       provideCredentials(accessToken, idToken).then()
     }
   }, [response])

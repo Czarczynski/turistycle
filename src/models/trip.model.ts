@@ -11,13 +11,13 @@ export class Trip {
   name: string
 
   @Expose()
-  citiesAround: any[]
+  citiesAround: string[]
 
   @Expose()
   categories: string[]
 
   @Expose()
-  tags: any[]
+  tags: string[]
 
   @Expose()
   @Type(() => Marker)
@@ -30,7 +30,7 @@ export class Trip {
   length: number
 
   @Expose()
-  opinions: any[]
+  opinions: Opinion[]
 
   @Expose()
   creatorId: string
@@ -43,7 +43,10 @@ export class ID {
   @Expose()
   $oid: string
 }
-
+export class Opinion {
+  user: string
+  opinion: number
+}
 export class CreatedAt {
   @Expose()
   $date: Date

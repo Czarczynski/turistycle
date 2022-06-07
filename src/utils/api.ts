@@ -1,5 +1,4 @@
 import { create } from 'apisauce'
-import axios from 'axios'
 
 import { Marker } from '~models/marker.model'
 import { Trip } from '~models/trip.model'

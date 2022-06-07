@@ -58,6 +58,7 @@ export default function useCachedResources(): CachedResourcesType {
     }
     if (resourcesCached && hasFirebaseUser) {
       setIsLoading(false)
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       SplashScreen?.hideAsync()
     }
   }, [resourcesCached, hasFirebaseUser])

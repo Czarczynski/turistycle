@@ -1,19 +1,12 @@
-import {
-  NavigationContainer,
-  NavigationContainerRef,
-  NavigatorScreenParams,
-} from '@react-navigation/native'
+import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native'
 import {
   StackNavigationProp,
   TransitionPresets,
   createStackNavigator,
 } from '@react-navigation/stack'
 import { StatusBar } from 'expo-status-bar'
-import { getAuth } from 'firebase/auth'
 import { observer } from 'mobx-react-lite'
 import * as React from 'react'
-import { useEffect, useRef } from 'react'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import AuthNavigator, { AuthStackParamList } from '~navigation/auth.navigator'
 import ChatNavigator, { ChatStackParamList } from '~navigation/chat.navigator'
@@ -44,11 +37,6 @@ export type RootStackParamList = {
   WebView: undefined
   Storybook: undefined
 }
-
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
-  RootStackParamList,
-  Screen
->
 
 export type RootStackNavigationProps = StackNavigationProp<RootStackParamList>
 

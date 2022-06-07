@@ -1,6 +1,4 @@
-import {useMutation, useQuery} from 'react-query'
-
-import { PREFIX_URI } from '~configs/env'
+import { useQuery } from 'react-query'
 
 import { FetchMarkers } from '~utils/api'
 
@@ -10,5 +8,5 @@ type Data = Marker[]
 type Error = never
 
 export const useMarkers = () => {
-  return useQuery<Data,Error>('getMarkers',FetchMarkers)
+  return useQuery<Data, Error>('getMarkers', FetchMarkers)
 }

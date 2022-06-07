@@ -4,7 +4,6 @@ import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'
 
-import { useStores } from '~hooks/use-store'
 import useNavigation from '~hooks/useNavigation'
 
 import styles from './more.styles'

@@ -9,7 +9,7 @@ export default StyleSheet.create({
     borderRadius: 22,
     flexDirection: 'row',
     alignItems: 'center',
-    flex:1
+    flex: 1,
   },
   input: {
     ...TOPOGRAPHY.paragraphXL,

@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import {FetchUsers} from '~utils/api'
+import { FetchUsers } from '~utils/api'
 
 import { User } from '~models/user.model'
 

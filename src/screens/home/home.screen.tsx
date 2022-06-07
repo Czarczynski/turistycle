@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { observer } from 'mobx-react-lite'
-import React, { VFC, useEffect } from 'react'
+import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'
 

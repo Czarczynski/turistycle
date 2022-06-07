@@ -18,7 +18,7 @@ export const GlobalStore = types
     },
   }))
   .extend(withEnvironment)
-  .actions((self) => ({
+  .actions(() => ({
     logIn: async (user: User, idToken: string) => {
       await AuthorizeWithBackend(user, idToken)
     },

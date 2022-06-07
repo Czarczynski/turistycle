@@ -1,10 +1,7 @@
-import { useMutation, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 
-import { PREFIX_URI } from '~configs/env'
+import { FetchSingleTrip } from '~utils/api'
 
-import { FetchMarkers, FetchSingleTrip, FetchTrips } from '~utils/api'
-
-import { Marker } from '~models/marker.model'
 import { Trip } from '~models/trip.model'
 import { User } from '~models/user.model'
 
