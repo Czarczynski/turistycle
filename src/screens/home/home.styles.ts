@@ -5,8 +5,6 @@ import { THEMES as theme } from '~styles/theme'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: 20,

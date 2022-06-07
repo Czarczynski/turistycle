@@ -29,7 +29,7 @@ export const ConversationPreview: VFC<ConversationPreviewProps> = ({ userUid, co
         })
       }
     >
-      <Image source={{ uri: corresponder.imageUri }} style={styles.photo} />
+      <Image source={{ uri: corresponder.photoURL! }} style={styles.photo} />
       <View style={styles.innerContainer}>
         <Text style={styles.name}>{corresponder.displayName}</Text>
         <Text style={styles.text}>

@@ -5,8 +5,8 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack'
 import { StatusBar } from 'expo-status-bar'
+import { observer } from 'mobx-react-lite'
 import * as React from 'react'
-import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import AuthNavigator, { AuthStackParamList } from '~navigation/auth.navigator'
 import ChatNavigator, { ChatStackParamList } from '~navigation/chat.navigator'
@@ -20,6 +20,7 @@ import { WebViewScreen } from '~screens/web-view'
 
 import { HeaderCard, HeaderDefault } from '~features/ui/navigation-header'
 
+import { useStores } from '~hooks/use-store'
 import linking from '~utils/linking'
 import { DarkTheme } from '~utils/navigation-theme'
 
@@ -37,21 +38,17 @@ export type RootStackParamList = {
   Storybook: undefined
 }
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
-  RootStackParamList,
-  Screen
->
-
 export type RootStackNavigationProps = StackNavigationProp<RootStackParamList>
 
 const Stack = createStackNavigator<RootStackParamList>()
 
-export default function Navigation() {
+export default observer(() => {
+  const { global } = useStores()
   return (
     <NavigationContainer linking={linking} theme={DarkTheme}>
       <StatusBar style={'dark'} />
       <Stack.Navigator
-        initialRouteName={'Root'}
+        initialRouteName={global.user ? 'Root' : 'AuthNavigator'}
         headerMode={'float'}
         screenOptions={{
           headerTransparent: true,
@@ -86,4 +83,4 @@ export default function Navigation() {
       </Stack.Navigator>
     </NavigationContainer>
   )
-}
+})

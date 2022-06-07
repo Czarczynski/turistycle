@@ -21,7 +21,6 @@ const ROOT_STATE_STORAGE_KEY = 'root'
  */
 export function createEnvironment() {
   const env = new Environment()
-  env.setup()
   return env
 }
 

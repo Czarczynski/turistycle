@@ -17,7 +17,7 @@ export const HeaderSearch: VFC<StackHeaderProps> = ({ scene }) => {
   return (
     <NavigationHeader progress={progress}>
       <>
-        <SearchInput onChangeText={setValue} onSubmitEditing={setValue} value={value}  />
+        <SearchInput onChangeText={setValue} onSubmitEditing={setValue} value={value} />
         <Pressable style={styles.iconWrapper}>
           <Icon name={'sliders'} size={20} />
         </Pressable>

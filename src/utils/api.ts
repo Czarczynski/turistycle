@@ -1,45 +1,76 @@
-import { ApisauceInstance, create } from 'apisauce'
+import { create } from 'apisauce'
 
-import { ApiConfig, DEFAULT_API_CONFIG } from './api.config'
+import { Marker } from '~models/marker.model'
+import { Trip } from '~models/trip.model'
+import { User } from '~models/user.model'
 
-/**
- * Manages all requests to the API.
- */
-export class Api {
-  /**
-   * The underlying apisauce instance which performs the requests.
-   */
-  apisauce: ApisauceInstance
+import { DEFAULT_API_CONFIG } from './api.config'
 
-  /**
-   * Configurable options.
-   */
-  config: ApiConfig
+const api = create({
+  ...DEFAULT_API_CONFIG,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+})
 
-  /**
-   * Creates the api.
-   *
-   * @param config The configuration to use.
-   */
-  constructor(config: ApiConfig = DEFAULT_API_CONFIG) {
-    this.config = config
-  }
-
-  /**
-   * Sets up the API.  This will be called during the bootup
-   * sequence and will happen before the first React component
-   * is mounted.
-   *
-   * Be as quick as possible in here.
-   */
-  setup() {
-    this.apisauce = create({
-      baseURL: this.config.url,
-      timeout: this.config.timeout,
+export const AuthorizeWithBackend = async (user: User, idToken: string) => {
+  await api.post(
+    '/auth',
+    {
+      photoURL: user.displayName,
+      displayName: user.displayName,
+    },
+    {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${idToken.toString()}`,
       },
-    })
-  }
+    },
+  )
+}
+
+export const FetchUsers = async (idToken: string): Promise<User[]> => {
+  return (
+    await api.get(
+      '/users',
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${idToken.toString()}`,
+        },
+      },
+    )
+  ).data as User[]
+}
+
+export const FetchMarkers = async (): Promise<Marker[]> => {
+  return (await api.get('/markers')).data as Marker[]
+}
+
+export const FetchTrips = async (idToken: string): Promise<Trip[]> => {
+  return (
+    await api.get(
+      '/trips',
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${idToken.toString()}`,
+        },
+      },
+    )
+  ).data as Trip[]
+}
+
+export const FetchSingleTrip = async (idToken: string, idTrip: string): Promise<Trip> => {
+  return (
+    await api.get(
+      `/trips/${idTrip}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${idToken.toString()}`,
+        },
+      },
+    )
+  ).data as Trip
 }

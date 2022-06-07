@@ -1,13 +1,17 @@
+import AppLoading from 'expo-app-loading'
 import 'expo-dev-client'
+import { initializeApp } from 'firebase/app'
 import React from 'react'
 import { LogBox, Platform, UIManager } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { QueryClientProvider } from 'react-query'
 import 'reflect-metadata'
 
 import Navigation from '~navigation/index.navigator'
 import { RootStoreProvider } from '~store/root-context.store'
 
 import '~utils/i18n'
+import { queryClient } from '~utils/react-query'
 
 import useCachedResources from './src/hooks/use-cached-resources'
 
@@ -18,14 +22,16 @@ export default function App() {
   const [isLoading, rootStore] = useCachedResources()
 
   if (isLoading || !rootStore) {
-    return null
+    return <AppLoading />
   } else {
     return (
-      <RootStoreProvider value={rootStore}>
-        <SafeAreaProvider>
-          <Navigation />
-        </SafeAreaProvider>
-      </RootStoreProvider>
+      <QueryClientProvider client={queryClient}>
+        <RootStoreProvider value={rootStore}>
+          <SafeAreaProvider>
+            <Navigation />
+          </SafeAreaProvider>
+        </RootStoreProvider>
+      </QueryClientProvider>
     )
   }
 }

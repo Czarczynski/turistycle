@@ -13,6 +13,7 @@ interface HomeScreenProps {
 export const HomeScreen: VFC<HomeScreenProps> = observer(({ title = 'HomeScreen' }) => {
   const { t } = useTranslation('home')
   const navigation = useNavigation()
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>

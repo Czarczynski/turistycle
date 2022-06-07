@@ -16,6 +16,5 @@ export class Conversation {
   messages: Message[]
 
   @Expose()
-  @Type(() => User)
   users: [User, User]
 }
