@@ -19,9 +19,11 @@ const ExampleOne = () => {
       </Pressable>
       <Filters
         visible={modalVisible}
-        onClose={() => setModalVisible(false)}
+        onClose={(_filters) => {
+          setFilters(_filters)
+          setModalVisible(false)
+        }}
         filters={filters}
-        onChange={setFilters}
       />
     </View>
   )

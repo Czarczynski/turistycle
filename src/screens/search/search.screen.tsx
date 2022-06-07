@@ -1,8 +1,13 @@
-import { useNavigation } from '@react-navigation/native'
 import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Button, Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
+
+import { CurrentFiltersType } from '~features/filters/types/current-filters.type'
+import { useSearch } from '~features/search/hooks/use-search'
+import { useTrips } from '~features/trips/hooks/use-trips'
+import { Filters } from '~features/ui/filters'
+
+import { useStores } from '~hooks/use-store'
 
 import styles from './search.styles'
 
@@ -11,14 +16,34 @@ interface SearchScreenProps {
 }
 
 export const SearchScreen: VFC<SearchScreenProps> = observer(({ title = 'SearchScreen' }) => {
-  const { t } = useTranslation('search')
-  const navigation = useNavigation()
+  const { global, searchFilters } = useStores()
+  const { mutate, isLoading, data } = useTrips(
+    global.user,
+    searchFilters.searchQuery,
+    searchFilters.filters,
+  )
+  useSearch(searchFilters.searchQuery, mutate)
 
+  const onApplyFilters = (_filters: CurrentFiltersType) => {
+    {
+      searchFilters.setFilters(_filters)
+      mutate(undefined)
+      searchFilters.setIsFilterModalVisible(false)
+    }
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-
-      <Button title={'Navigate Trace'} onPress={() => navigation.navigate('Trace')} />
+      <FlatList
+        refreshing={isLoading}
+        data={data}
+        keyExtractor={(item) => `${item._id.$oid}`}
+        renderItem={({ item }) => <Text key={item._id.$oid}>{item.name}</Text>}
+      />
+      <Filters
+        onClose={onApplyFilters}
+        filters={searchFilters.filters}
+        visible={searchFilters.isFilterModalVisible}
+      />
     </View>
   )
 })

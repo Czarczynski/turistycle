@@ -21,7 +21,7 @@ const mapIcons: { [title: string]: keyof typeof icomoons | keyof typeof icons } 
   SearchTab: 'find',
   MapTab: 'map-pin',
   SavedTab: 'bell',
-  MoreTab: 'sliders',
+  MoreTab: 'hamburger',
 }
 
 export const TabBarIcon: VFC<TabBarIconProps> = ({ title, focused }) => {
@@ -29,7 +29,7 @@ export const TabBarIcon: VFC<TabBarIconProps> = ({ title, focused }) => {
   return (
     <View style={[styles.container, Boolean(!focused) && styles.containerInactive]}>
       <Animated.View style={styles.iconWrapper}>
-        <Icon name={mapIcons[title]} color={styles.icon.color} size={focused ? 30 : 22} />
+        <Icon name={mapIcons[title]} color={styles.icon.color} size={focused ? 30 : 22} strokeWidth={3} />
       </Animated.View>
       {!focused && <Text style={styles.title}>{t(title)}</Text>}
     </View>

@@ -1,4 +1,7 @@
 import { create } from 'apisauce'
+import { CancelToken } from 'axios'
+
+import { CurrentFiltersType } from '~features/filters/types/current-filters.type'
 
 import { Marker } from '~models/marker.model'
 import { Trip } from '~models/trip.model'
@@ -47,12 +50,23 @@ export const FetchMarkers = async (): Promise<Marker[]> => {
   return (await api.get('/markers')).data as Marker[]
 }
 
-export const FetchTrips = async (idToken: string): Promise<Trip[]> => {
+export const FetchTrips = async (
+  idToken: string,
+  query: string,
+  { categories, tags, citiesAround }: CurrentFiltersType,
+  cancelAxiosToken?: CancelToken,
+): Promise<Trip[]> => {
   return (
     await api.get(
       '/trips',
-      {},
       {
+        query,
+        categories: categories.join(','),
+        tags: tags.join(','),
+        cities_around: citiesAround.join(','),
+      },
+      {
+        cancelToken: cancelAxiosToken,
         headers: {
           Authorization: `Bearer ${idToken.toString()}`,
         },
