@@ -8,9 +8,6 @@ import { Environment } from '../environment'
  */
 export const withEnvironment = (self: IStateTreeNode) => ({
   views: {
-    /**
-     * The environment.
-     */
     get environment() {
       return getEnv<Environment>(self)
     },

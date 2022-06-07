@@ -1,5 +1,3 @@
-export class User {
-  displayName: string
-  imageUri: string
-  uid: string
-}
+import { User as UserAuth } from 'firebase/auth'
+
+export interface User extends UserAuth {}
