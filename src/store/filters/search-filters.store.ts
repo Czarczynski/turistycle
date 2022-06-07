@@ -32,11 +32,7 @@ export const SearchFiltersStore = types
       self.filters = filters
     },
   }))
-  .actions(() => ({
-    submitQueryEditing:()=>{
-
-    }
-  }))
+  .actions(() => ({}))
 
 type SearchFiltersType = Instance<typeof SearchFiltersStore>
 

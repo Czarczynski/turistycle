@@ -19,7 +19,9 @@ interface FiltersProps {
 export const Filters: VFC<FiltersProps> = ({ onClose, filters, visible }) => {
   const { t } = useTranslation('filters')
 
-  const [_filters, _setFilters] = useState(JSON.parse(JSON.stringify(filters)))
+  const [_filters, _setFilters] = useState<CurrentFiltersType>(
+    JSON.parse(JSON.stringify(filters)) as CurrentFiltersType,
+  )
   return (
     <Modal
       title={'Filter'}

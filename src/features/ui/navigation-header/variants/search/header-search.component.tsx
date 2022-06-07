@@ -15,7 +15,7 @@ import styles from './header-search.styles'
 
 export const HeaderSearch: VFC<StackHeaderProps> = observer(({ scene, navigation }) => {
   const {
-    searchFilters: { setIsFilterModalVisible, searchQuery, setSearchQuery, submitQueryEditing },
+    searchFilters: { setIsFilterModalVisible, searchQuery, setSearchQuery },
   } = useStores()
   const { progress } = scene
 
@@ -24,7 +24,7 @@ export const HeaderSearch: VFC<StackHeaderProps> = observer(({ scene, navigation
       <>
         <SearchInput
           onChangeText={setSearchQuery}
-          onSubmitEditing={submitQueryEditing}
+          onSubmitEditing={setSearchQuery}
           value={searchQuery}
         />
         <Pressable

@@ -16,7 +16,7 @@ export const useSearch = (
   useEffect(() => {
     cancelTokenSource.cancel()
     cancelTokenSource = cancelToken.source()
-    const delayDebounceFn = setTimeout(async () => {
+    const delayDebounceFn = setTimeout(() => {
       if (input.length >= 3) {
         mutate(cancelTokenSource.token)
       }

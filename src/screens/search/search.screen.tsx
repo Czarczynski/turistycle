@@ -9,6 +9,8 @@ import { Filters } from '~features/ui/filters'
 
 import { useStores } from '~hooks/use-store'
 
+import { User } from '~models/user.model'
+
 import styles from './search.styles'
 
 interface SearchScreenProps {
@@ -18,7 +20,7 @@ interface SearchScreenProps {
 export const SearchScreen: VFC<SearchScreenProps> = observer(({ title = 'SearchScreen' }) => {
   const { global, searchFilters } = useStores()
   const { mutate, isLoading, data } = useTrips(
-    global.user,
+    global.user as User,
     searchFilters.searchQuery,
     searchFilters.filters,
   )
