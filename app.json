@@ -15,19 +15,24 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
-      "bundleIdentifier": "com.turistycle.app"
+      "bundleIdentifier": "com.turistycle.app",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.675432498642-91i5clnk0ibn5fmkckb7q2qiuafdh89t"
+        }
+      }
     },
     "android": {
+      "package": "com.turistycle.app",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.turistycle.app"
+      }
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
