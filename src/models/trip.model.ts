@@ -21,7 +21,7 @@ export class Trip {
 
   @Expose()
   @Type(() => Marker)
-  markers: string[] | Marker[]
+  markers: Marker[]
 
   @Expose()
   geoJson: GeoJSON
