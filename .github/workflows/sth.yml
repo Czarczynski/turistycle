@@ -1,0 +1,11 @@
+name: Test
+
+on: push
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test command
+        run: |
+          cat "export const PREFIX_URI = '${{ secrets.PREFIX_URI }}' \n export const GOOGLE_API_KEY = '${{ secrets.GOOGLE_API_KEY }}'"
