@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
   star: {
     flexDirection: 'row',
-    width: 30,
+    width: 20,
     margin: 5,
   },
   starHalf: {

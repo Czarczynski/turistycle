@@ -13,7 +13,7 @@ import { useStores } from '~hooks/use-store'
 
 import styles from './header-search.styles'
 
-export const HeaderSearch: VFC<StackHeaderProps> = observer(({ scene, navigation }) => {
+export const HeaderSearch: VFC<StackHeaderProps> = observer(({ scene }) => {
   const {
     searchFilters: { setIsFilterModalVisible, searchQuery, setSearchQuery },
   } = useStores()

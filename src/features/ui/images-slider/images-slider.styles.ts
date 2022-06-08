@@ -10,7 +10,5 @@ export default StyleSheet.create({
   slidesContainer: {
     flexGrow: 1,
   },
-  image: {
-    aspectRatio: 16 / 9,
-  },
+  image: { borderRadius: 5, aspectRatio: 16 / 9 },
 })

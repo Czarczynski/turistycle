@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native'
 
+import layout from '~styles/layout'
+
 export default StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  map: {
-    width: '100%',
-    height: '100%',
+  sliderWrapper: {
+    marginBottom: 16,
+    width: layout.window.width - 45,
   },
 })

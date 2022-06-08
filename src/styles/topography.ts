@@ -10,6 +10,24 @@ const fontFamilies = {
 
 export const TOPOGRAPHY = StyleSheet.create({
   /** headers */
+  headerXXL: {
+    fontFamily: fontFamilies.montserratBold,
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: theme.text,
+  },
+  headerXL: {
+    fontFamily: fontFamilies.montserratBold,
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: theme.text,
+  },
+  headerL: {
+    fontFamily: fontFamilies.montserratBold,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: theme.text,
+  },
   header: {
     fontFamily: fontFamilies.montserratBold,
     fontSize: 16,
