@@ -40,9 +40,6 @@ export const MapScreen: VFC<MapScreenProps> = observer(() => {
         {/*  strokeColor={'#4cceee'}*/}
         {/*  apikey={GOOGLE_API_KEY}*/}
         {/*/>*/}
-        {/*{markers!.map((marker) => (*/}
-        {/*  <Marker key={marker._id.$oid} marker={marker} />*/}
-        {/*))}*/}
         {!isLoading && <MarkerList markers={markers!} />}
         <MapLegend />
       </MapView>
