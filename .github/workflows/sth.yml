@@ -8,4 +8,7 @@ jobs:
     steps:
       - name: test command
         run: |
-          echo "export const PREFIX_URI = '${{ secrets.PREFIX_URI }}' \n export const GOOGLE_API_KEY = '${{ secrets.GOOGLE_API_KEY }}'"
+          echo """
+          export const PREFIX_URI = '${{ secrets.PREFIX_URI }}'
+          export const GOOGLE_API_KEY = '${{ secrets.GOOGLE_API_KEY }}'
+          """
