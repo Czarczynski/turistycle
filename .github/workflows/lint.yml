@@ -19,8 +19,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: echo "export const PREFIX_URI = '${{secrets.PREFIX_URI}}'
-        export const GOOGLE_API_KEY = '${{secrets.GOOGLE_API_KEY}}'" > src/configs/env.ts
+      - run: |
+          echo "export const PREFIX_URI = '${{secrets.PREFIX_URI}}'
+          export const GOOGLE_API_KEY = '${{secrets.GOOGLE_API_KEY}}'" > src/configs/env.ts
       - run: npm install
       - run: npm run lint
       - run: npm run prettier
