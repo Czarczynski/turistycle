@@ -5,22 +5,28 @@ import { Callout } from 'react-native-maps'
 
 import { ImagesSlider } from '~features/ui/images-slider'
 
+import useNavigation from '~hooks/useNavigation'
+
+import { Marker } from '~models/marker.model'
+
 import styles from './marker-callout.styles'
 
 interface MarkerCalloutProps {
-  name: string
-  photos: string[]
+  marker: Marker
 }
 
-export const MarkerCallout: VFC<MarkerCalloutProps> = ({ name, photos }) => {
+export const MarkerCallout: VFC<MarkerCalloutProps> = ({ marker }) => {
   const { t } = useTranslation('marker-callout')
-
+  const navigation = useNavigation()
   return (
-    <Callout style={styles.container} onPress={() => console.log('works')}>
+    <Callout
+      style={styles.container}
+      onPress={() => navigation.navigate('MarkerDetails', { marker })}
+    >
       <View style={styles.sliderWrapper}>
-        {photos.length > 0 && <ImagesSlider images={photos} rating={2} />}
+        {marker.photos.length > 0 && <ImagesSlider images={marker.photos} rating={2} />}
       </View>
-      <Text>{name}</Text>
+      <Text>{marker.name}</Text>
     </Callout>
   )
 }

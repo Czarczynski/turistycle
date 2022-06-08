@@ -14,6 +14,7 @@ import RootNavigator, { RootTabParamList } from '~navigation/root.navigator'
 
 import { MapRideScreen } from '~screens/map-ride'
 import { MapSubmitScreen } from '~screens/map-submit'
+import { MarkerDetailsScreen } from '~screens/marker-details'
 import { ProfileScreen } from '~screens/profile'
 import { TraceScreen } from '~screens/trace'
 import { WebViewScreen } from '~screens/web-view'
@@ -23,6 +24,8 @@ import { HeaderCard, HeaderDefault } from '~features/ui/navigation-header'
 import { useStores } from '~hooks/use-store'
 import linking from '~utils/linking'
 import { DarkTheme } from '~utils/navigation-theme'
+
+import { Marker } from '~models/marker.model'
 
 import { Storybook } from '../../storybook-dev'
 
@@ -36,6 +39,7 @@ export type RootStackParamList = {
   Trace: { tripId: string }
   WebView: undefined
   Storybook: undefined
+  MarkerDetails: { marker: Marker }
 }
 
 export type RootStackNavigationProps = StackNavigationProp<RootStackParamList>
@@ -48,6 +52,7 @@ export default observer(() => {
     <NavigationContainer linking={linking} theme={DarkTheme}>
       <StatusBar style={'dark'} />
       <Stack.Navigator
+        detachInactiveScreens={false}
         initialRouteName={global.user ? 'Root' : 'AuthNavigator'}
         headerMode={'float'}
         screenOptions={{
@@ -79,6 +84,16 @@ export default observer(() => {
           name="WebView"
           component={WebViewScreen}
           options={{ headerShown: false, ...TransitionPresets.ModalTransition }}
+        />
+        <Stack.Screen
+          name="MarkerDetails"
+          component={MarkerDetailsScreen}
+          options={{
+            headerShown: false,
+            // headerTransparent: false,
+            cardStyle: { backgroundColor: 'rgba(0,0,0,0)', opacity: 1 },
+            ...TransitionPresets.ModalTransition,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
