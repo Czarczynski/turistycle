@@ -16,14 +16,14 @@ export const RatingStars: VFC<RatingStarsProps> = ({ rating }) => {
         <View key={i} style={styles.star}>
           <Icon
             name={'half-star-left'}
-            size={15}
+            size={10}
             strokeWidth={50}
             color={rating >= i + 0.5 ? styles.starHalf.color : undefined}
           />
           <View style={styles.starHalfWrapper}>
             <Icon
               name={'half-star-right'}
-              size={15}
+              size={10}
               strokeWidth={50}
               color={rating >= i + 1 ? styles.starHalf.color : undefined}
             />

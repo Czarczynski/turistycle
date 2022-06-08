@@ -13,6 +13,7 @@ function loadStories() {
   require('../src/features/ui/filters/filters.stories')
   require('../src/features/ui/icon/icon.stories')
   require('../src/features/ui/images-slider/images-slider.stories')
+  require('../src/features/ui/map-legend/map-legend.stories')
   require('../src/features/ui/message-list/message-list.stories')
   require('../src/features/ui/message/message.stories')
   require('../src/features/ui/modal/modal.stories')
@@ -46,6 +47,7 @@ const stories = [
   '../src/features/ui/filters/filters.stories',
   '../src/features/ui/icon/icon.stories',
   '../src/features/ui/images-slider/images-slider.stories',
+  '../src/features/ui/map-legend/map-legend.stories',
   '../src/features/ui/message-list/message-list.stories',
   '../src/features/ui/message/message.stories',
   '../src/features/ui/modal/modal.stories',

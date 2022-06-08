@@ -20,5 +20,12 @@
   },
   "search-input": {
     "placeholder": "Search"
+  },
+  "map-legend": {
+    "legend": "Legend",
+    "pins": "Pins",
+    "pin-online": "Public - Available for everyone",
+    "pin-local": "Local - Just created by you",
+    "pin-edge": "Edge  - start and finish points"
   }
 }

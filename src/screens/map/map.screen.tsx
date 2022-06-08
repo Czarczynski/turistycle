@@ -1,35 +1,25 @@
-import { useNavigation } from '@react-navigation/native'
-import GeoJSON from 'geojson'
 import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Button, Image, Text, TouchableHighlight, View } from 'react-native'
-import MapView, { Callout, Geojson, Marker, UrlTile } from 'react-native-maps'
+import { View } from 'react-native'
+import MapView from 'react-native-maps'
 
-import { useTrip } from '~features/trips/hooks/use-trip'
-import { ImagesSlider } from '~features/ui/images-slider'
-
-import { useStores } from '~hooks/use-store'
-
-import { User } from '~models/user.model'
+import { useMarkers } from '~features/markers/hooks/use-markers'
+import { MapLegend } from '~features/ui/map-legend'
+import { MarkerList } from '~features/ui/marker-list'
 
 import styles from './map.styles'
 
-interface MapScreenProps {
-  title?: string
-}
-
-export const MapScreen: VFC<MapScreenProps> = observer(({ title = 'MapScreen' }) => {
-  const { t } = useTranslation('map')
-  const navigation = useNavigation()
-  const { global } = useStores()
-  const { isLoading, data } = useTrip(global.user as User, '614f52807a756f54083067ae')
-  if (isLoading) {
-    return null
-  }
+interface MapScreenProps {}
+export const MapScreen: VFC<MapScreenProps> = observer(() => {
+  const { isLoading, data: markers } = useMarkers()
   return (
     <View style={styles.container}>
       <MapView
+        showsCompass={true}
+        compassOffset={{
+          x: 0,
+          y: 50,
+        }}
         style={styles.map}
         showsUserLocation={true}
         showsMyLocationButton={true}
@@ -37,28 +27,24 @@ export const MapScreen: VFC<MapScreenProps> = observer(({ title = 'MapScreen' })
         userLocationPriority={'high'}
         focusable={true}
       >
-        <Geojson
-          geojson={data!.geoJson as GeoJSON.GeoJSON}
-          strokeColor="red"
-          fillColor="green"
-          strokeWidth={5}
-          lineCap={'round'}
-        />
-        {data!.markers.map((marker) => (
-          <Marker
-            key={marker._id.$oid}
-            coordinate={{ longitude: marker.longitude, latitude: marker.latitude }}
-            title={marker.name}
-            pinColor={'yellow'}
-          >
-            <Callout tooltip style={styles.customView}>
-              <View style={styles.customSlider}>
-                {marker.photos.length > 0 && <ImagesSlider  images={marker.photos} rating={2}/>}
-              </View>
-              <Text>{marker.name}</Text>
-            </Callout>
-          </Marker>
-        ))}
+        {/*<MapViewDirections*/}
+        {/*  onReady={(e)=>console.log({...e})}*/}
+        {/*  mode={'BICYCLING'}*/}
+        {/*  origin={{ longitude: markers![8].longitude, latitude: markers![8].latitude }}*/}
+        {/*  waypoints={[{ longitude: markers![5].longitude, latitude: markers![5].latitude }]}*/}
+        {/*  destination={{*/}
+        {/*    longitude: markers![2].longitude,*/}
+        {/*    latitude: markers![2].latitude,*/}
+        {/*  }}*/}
+        {/*  strokeWidth={3}*/}
+        {/*  strokeColor={'#4cceee'}*/}
+        {/*  apikey={GOOGLE_API_KEY}*/}
+        {/*/>*/}
+        {/*{markers!.map((marker) => (*/}
+        {/*  <Marker key={marker._id.$oid} marker={marker} />*/}
+        {/*))}*/}
+        {!isLoading && <MarkerList markers={markers!} />}
+        <MapLegend />
       </MapView>
     </View>
   )

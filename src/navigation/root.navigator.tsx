@@ -106,7 +106,7 @@ const Search = () => (
   </SearchStack.Navigator>
 )
 const Map = () => (
-  <MapStack.Navigator screenOptions={{ headerShown:false }}>
+  <MapStack.Navigator screenOptions={{ headerShown: false }}>
     <MapStack.Screen name={'Map'} component={MapScreen} />
   </MapStack.Navigator>
 )
