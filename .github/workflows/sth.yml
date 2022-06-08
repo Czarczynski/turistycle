@@ -6,9 +6,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: test 1
-        run: |
-          echo """export const PREFIX_URI = '${{ secrets.PREFIX_URI }}'
-          export const GOOGLE_API_KEY = '${{ secrets.GOOGLE_API_KEY }}'""" > ../../src/configs/env.ts
-      - name: test 2
-        run: cat ../../src/configs/env.ts
+      - name: test
+        run: cat src/config/env.ts
+
