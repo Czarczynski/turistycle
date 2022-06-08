@@ -14,8 +14,6 @@ interface ConversationListProps {
 }
 
 export const ConversationList: VFC<ConversationListProps> = ({ data, userUid }) => {
-  const { t } = useTranslation('conversation-list')
-
   return (
     <FlatList
       ItemSeparatorComponent={Separator}
