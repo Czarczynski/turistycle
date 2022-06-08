@@ -1,9 +1,10 @@
+import { useFocusEffect } from '@react-navigation/native'
 import { StackHeaderProps } from '@react-navigation/stack'
 import * as Haptics from 'expo-haptics'
 import { ImpactFeedbackStyle } from 'expo-haptics'
 import { observer } from 'mobx-react-lite'
-import React, { VFC } from 'react'
-import { Pressable } from 'react-native'
+import React, { VFC, useRef } from 'react'
+import { Pressable, TextInput } from 'react-native'
 
 import { Icon } from '~features/ui/icon'
 import { NavigationHeader } from '~features/ui/navigation-header/navigation-header.component'
@@ -17,12 +18,18 @@ export const HeaderSearch: VFC<StackHeaderProps> = observer(({ scene }) => {
   const {
     searchFilters: { setIsFilterModalVisible, searchQuery, setSearchQuery },
   } = useStores()
+  const inputRef = useRef<TextInput>(null)
   const { progress } = scene
+
+  useFocusEffect(() => {
+    inputRef.current?.focus()
+  })
 
   return (
     <NavigationHeader progress={progress}>
       <>
         <SearchInput
+          ref={inputRef}
           onChangeText={setSearchQuery}
           onSubmitEditing={setSearchQuery}
           value={searchQuery}

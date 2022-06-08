@@ -41,8 +41,8 @@ export const MapScreen: VFC<MapScreenProps> = observer(() => {
         {/*  apikey={GOOGLE_API_KEY}*/}
         {/*/>*/}
         {!isLoading && <MarkerList markers={markers!} />}
-        <MapLegend />
       </MapView>
+      <MapLegend />
     </View>
   )
 })

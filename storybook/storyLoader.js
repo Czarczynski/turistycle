@@ -21,6 +21,8 @@ function loadStories() {
   require('../src/features/ui/search-input/search-input.stories')
   require('../src/features/ui/slider/slider.stories')
   require('../src/features/ui/toggle/toggle.stories')
+  require('../src/features/ui/trip-list/trip-list.stories')
+  require('../src/features/ui/trip-preview/trip-preview.stories')
   require('../src/screens/chat/chat.stories')
   require('../src/screens/conversation/conversation.stories')
   require('../src/screens/home/home.stories')
@@ -55,6 +57,8 @@ const stories = [
   '../src/features/ui/search-input/search-input.stories',
   '../src/features/ui/slider/slider.stories',
   '../src/features/ui/toggle/toggle.stories',
+  '../src/features/ui/trip-list/trip-list.stories',
+  '../src/features/ui/trip-preview/trip-preview.stories',
   '../src/screens/chat/chat.stories',
   '../src/screens/conversation/conversation.stories',
   '../src/screens/home/home.stories',
