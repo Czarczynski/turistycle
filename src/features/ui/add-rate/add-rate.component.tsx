@@ -52,6 +52,7 @@ export const AddRate: VFC<AddRateProps> = ({ markerId, onAfterAddRate }) => {
   const sendRate = async () => {
     await mutateAsync()
     onAfterAddRate()
+    changeAnimate()
   }
 
   return (

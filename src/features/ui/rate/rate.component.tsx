@@ -1,5 +1,4 @@
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Text, View } from 'react-native'
 
 import { RatingStars } from '~features/ui/rating-stars'
@@ -13,8 +12,6 @@ interface RateProps {
 }
 
 export const Rate: VFC<RateProps> = ({ rate }) => {
-  const { t } = useTranslation('rate')
-
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>

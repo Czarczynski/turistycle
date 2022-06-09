@@ -1,6 +1,5 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
 import { View } from 'react-native'
 
 import { RatingStars } from '~features/ui/rating-stars'
@@ -13,10 +12,8 @@ interface RatingSliderProps {
 }
 
 export const RatingSlider: VFC<RatingSliderProps> = ({ onChange, value }) => {
-  const { t } = useTranslation('rating-slider')
-
   return (
-    <View style={styles.container}>
+    <View>
       <RatingStars rating={value} background={false} />
       <View style={styles.sliderWrapper}>
         <MultiSlider

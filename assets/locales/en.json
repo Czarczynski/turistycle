@@ -32,5 +32,9 @@
     "add-rate-button": "Add rate",
     "add-rate-title": "Add some rate!",
     "opinion": "Write your opinion (optional)"
+  },
+  "marker-details": {
+    "address": "Address",
+    "rates": "Rates"
   }
 }

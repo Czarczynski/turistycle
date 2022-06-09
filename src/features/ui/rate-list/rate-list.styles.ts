@@ -4,7 +4,7 @@ import { theme } from '~styles/theme'
 
 export default StyleSheet.create({
   container: {
-    width: '70%',
+    width: '100%',
   },
   title: {
     fontSize: 20,

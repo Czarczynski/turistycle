@@ -9,12 +9,15 @@ export default StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: theme.background,
-    alignItems: 'center',
     shadowOffset: { width: 0, height: -1 },
     shadowOpacity: 1,
     shadowColor: COLORS.black,
     shadowRadius: 10,
     borderRadius: 15,
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
   },
   title: {
     ...TOPOGRAPHY.headerXL,

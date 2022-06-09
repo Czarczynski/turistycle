@@ -1,9 +1,6 @@
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
 import { Callout } from 'react-native-maps'
-
-import { ImagesSlider } from '~features/ui/images-slider'
 
 import useNavigation from '~hooks/useNavigation'
 
@@ -16,14 +13,13 @@ interface MarkerCalloutProps {
 }
 
 export const MarkerCallout: VFC<MarkerCalloutProps> = ({ marker }) => {
-  const { t } = useTranslation('marker-callout')
   const navigation = useNavigation()
   return (
     <Callout
       style={styles.container}
       onPress={() => navigation.navigate('MarkerDetails', { markerId: marker._id.$oid })}
     >
-      <Text>{marker.name}</Text>
+      <Text>{marker.name} ...</Text>
     </Callout>
   )
 }

@@ -1,7 +1,6 @@
 import * as Location from 'expo-location'
 import { LocationGeocodedLocation } from 'expo-location/src/Location.types'
 import React, { VFC, useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Text } from 'react-native'
 
 import styles from './address.styles'
@@ -11,7 +10,6 @@ interface AddressProps {
 }
 
 export const Address: VFC<AddressProps> = ({ coordinate }) => {
-  const { t } = useTranslation('address')
   const [address, setAddress] = useState<Location.LocationGeocodedAddress | null>(null)
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises

@@ -18,9 +18,7 @@ export const RateList: VFC<RateListProps> = ({ rates }) => {
       data={rates}
       ItemSeparatorComponent={Separator}
       keyExtractor={(_, i) => `${i}`}
-      renderItem={({ item, index }) => (
-        <Rate key={index} rate={{ ...item, opinion: 'Great place! Worth to see' }} />
-      )}
+      renderItem={({ item, index }) => <Rate key={index} rate={item} />}
     />
   )
 }

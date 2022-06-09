@@ -98,7 +98,7 @@ export const SendMarkerRate = async (
   idMarker: string,
   rate: Rate,
 ): Promise<void> => {
-  await api.post(`/markers/${idMarker}`, rate, {
+  await api.post(`/markers/${idMarker}/rates/`, rate, {
     headers: {
       Authorization: `Bearer ${idToken.toString()}`,
     },
