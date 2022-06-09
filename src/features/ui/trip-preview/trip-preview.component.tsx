@@ -1,8 +1,8 @@
 import GeoJSON from 'geojson'
-import React, { VFC, useRef } from 'react'
+import React, { VFC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
-import MapView, { Geojson } from 'react-native-maps'
+import MapView, { Geojson, Marker } from 'react-native-maps'
 
 import useNavigation from '~hooks/useNavigation'
 import { COLORS } from '~styles/colors'
@@ -19,11 +19,15 @@ export const TripPreview: VFC<TripPreviewProps> = ({ trip }) => {
   const { t } = useTranslation('trip-preview')
   const navigation = useNavigation()
   const ref = useRef<MapView>(null)
+  const coordinates = useMemo(
+    () =>
+      trip.geoJson.features[0].geometry.coordinates.map((item) => ({
+        latitude: item[1],
+        longitude: item[0],
+      })),
+    [trip],
+  )
   const fitToCoords = () => {
-    const coordinates = trip.geoJson.features[0].geometry.coordinates.map((item) => ({
-      latitude: item[1],
-      longitude: item[0],
-    }))
     ref.current?.fitToCoordinates(coordinates, {
       edgePadding: { top: 16, bottom: 16, left: 16, right: 16 },
     })
@@ -45,6 +49,8 @@ export const TripPreview: VFC<TripPreviewProps> = ({ trip }) => {
           strokeColor={COLORS.greenLight}
           strokeWidth={3}
         />
+        <Marker coordinate={coordinates[0]} />
+        <Marker coordinate={coordinates[coordinates.length - 1]} />
       </MapView>
       <View style={styles.innerContainer}>
         <Text style={styles.title}>{trip.name}</Text>

@@ -15,6 +15,7 @@ export const useSearch = (
 
   useEffect(() => {
     cancelTokenSource.cancel()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     cancelTokenSource = cancelToken.source()
     const delayDebounceFn = setTimeout(() => {
       if (input.length >= 3) {

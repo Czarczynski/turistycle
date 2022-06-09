@@ -61,6 +61,7 @@ export default function useCachedResources(): CachedResourcesType {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       SplashScreen?.hideAsync()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resourcesCached, hasFirebaseUser])
 
   return [isLoading, rootStore]

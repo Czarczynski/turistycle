@@ -17,7 +17,7 @@ export const Marker: VFC<MarkerProps> = ({ marker, color }) => {
       title={marker.name}
       pinColor={color ?? 'yellow'}
     >
-      <MarkerCallout name={marker.name} photos={marker.photos} />
+      <MarkerCallout marker={marker} />
     </RNMarker>
   )
 }

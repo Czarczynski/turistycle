@@ -16,19 +16,25 @@ interface ImagesSliderProps {
 }
 
 export const ImagesSlider: VFC<ImagesSliderProps> = ({ images, style, rating }) => {
-  const snapToInterval = layout.window.width - 44
+  const [padding, setPadding] = React.useState<number>(0)
+  const snapToInterval = layout.window.width - padding * 2
   const flatListRef = React.useRef<FlatList>(null)
   const onFlatListRef = React.useRef(
     async (viewableItems: { viewableItems: Array<ViewToken>; changed: Array<ViewToken> }) => {
-      if (viewableItems.changed[0]) {
+      if (viewableItems.changed[0].item) {
         await Haptics.impactAsync(ImpactFeedbackStyle.Light)
       }
     },
   )
   const flatListConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
 
+  const findPadding = (ref: View | null) => {
+    ref?.measure((x, y, w, h, pageX) => {
+      setPadding(pageX === 0 ? 22.5 : pageX)
+    })
+  }
   return (
-    <View style={[styles.container, style]}>
+    <View ref={findPadding} style={[styles.container, style]}>
       <FlatList
         ref={flatListRef}
         onViewableItemsChanged={onFlatListRef.current}
@@ -43,7 +49,7 @@ export const ImagesSlider: VFC<ImagesSliderProps> = ({ images, style, rating }) 
         keyExtractor={(_, index) => `${index}`}
         data={images}
         renderItem={({ item, index }: { item: string; index: number }) => (
-          <ImageElement key={index} imageUri={item} />
+          <ImageElement key={index} imageUri={item} shrink={padding * 2} />
         )}
       />
       <RatingStars rating={rating} />
@@ -53,10 +59,14 @@ export const ImagesSlider: VFC<ImagesSliderProps> = ({ images, style, rating }) 
 
 interface ImageElementProps {
   imageUri: string
+  shrink: number
 }
 
-const ImageElement: VFC<ImageElementProps> = ({ imageUri }) => {
+const ImageElement: VFC<ImageElementProps> = ({ imageUri, shrink }) => {
   return (
-    <Image source={{ uri: imageUri }} style={[styles.image, { width: layout.window.width - 45 }]} />
+    <Image
+      source={{ uri: imageUri }}
+      style={[styles.image, { width: layout.window.width - shrink }]}
+    />
   )
 }

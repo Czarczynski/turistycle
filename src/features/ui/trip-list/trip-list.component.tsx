@@ -1,5 +1,4 @@
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
 import { ActivityIndicator, FlatList, View } from 'react-native'
 
 import { TripPreview } from '~features/ui/trip-preview'
@@ -14,8 +13,6 @@ interface TripListProps {
 }
 
 export const TripList: VFC<TripListProps> = ({ trips, refreshing }) => {
-  const { t } = useTranslation('trip-list')
-
   return (
     <FlatList
       ListHeaderComponent={refreshing ? <ActivityIndicator /> : <View />}

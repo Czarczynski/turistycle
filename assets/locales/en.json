@@ -27,5 +27,14 @@
     "pin-online": "Public - available for everyone",
     "pin-local": "Local - just created by you",
     "pin-edge": "Edge  - start and finish points"
+  },
+  "add-rate": {
+    "add-rate-button": "Add rate",
+    "add-rate-title": "Add some rate!",
+    "opinion": "Write your opinion (optional)"
+  },
+  "marker-details": {
+    "address": "Address",
+    "rates": "Rates"
   }
 }

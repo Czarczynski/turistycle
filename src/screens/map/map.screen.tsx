@@ -22,10 +22,10 @@ export const MapScreen: VFC<MapScreenProps> = observer(() => {
         }}
         style={styles.map}
         showsUserLocation={true}
+        userInterfaceStyle={'light'}
+        followsUserLocation={false}
         showsMyLocationButton={true}
-        followsUserLocation={true}
-        userLocationPriority={'high'}
-        focusable={true}
+        // focusable={true}
       >
         {/*<MapViewDirections*/}
         {/*  onReady={(e)=>console.log({...e})}*/}

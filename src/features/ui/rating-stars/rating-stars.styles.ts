@@ -5,8 +5,10 @@ import { COLORS } from '~styles/colors'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: rgba(COLORS.black, 0.5),
     flexDirection: 'row',
+  },
+  containerBackground: {
+    backgroundColor: rgba(COLORS.black, 0.5),
     position: 'absolute',
     bottom: 10,
     right: 10,
@@ -17,7 +19,7 @@ export default StyleSheet.create({
     margin: 5,
   },
   starHalf: {
-    color: 'gold',
+    color: '#d0a535',
   },
   starHalfWrapper: {
     position: 'absolute',

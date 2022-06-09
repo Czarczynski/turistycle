@@ -4,6 +4,8 @@
 // https://github.com/elderfo/react-native-storybook-loader.git
 
 function loadStories() {
+  require('../src/features/ui/add-rate/add-rate.stories')
+  require('../src/features/ui/address/address.stories')
   require('../src/features/ui/badge/badge.stories')
   require('../src/features/ui/button/button.stories')
   require('../src/features/ui/card-list/card-list.stories')
@@ -17,6 +19,9 @@ function loadStories() {
   require('../src/features/ui/message-list/message-list.stories')
   require('../src/features/ui/message/message.stories')
   require('../src/features/ui/modal/modal.stories')
+  require('../src/features/ui/rate-list/rate-list.stories')
+  require('../src/features/ui/rate/rate.stories')
+  require('../src/features/ui/rating-slider/rating-slider.stories')
   require('../src/features/ui/rating-stars/rating-stars.stories')
   require('../src/features/ui/search-input/search-input.stories')
   require('../src/features/ui/slider/slider.stories')
@@ -30,6 +35,7 @@ function loadStories() {
   require('../src/screens/map-ride/map-ride.stories')
   require('../src/screens/map-submit/map-submit.stories')
   require('../src/screens/map/map.stories')
+  require('../src/screens/marker-details/marker-details.stories')
   require('../src/screens/more/more.stories')
   require('../src/screens/profile/profile.stories')
   require('../src/screens/register/register.stories')
@@ -40,6 +46,8 @@ function loadStories() {
 }
 
 const stories = [
+  '../src/features/ui/add-rate/add-rate.stories',
+  '../src/features/ui/address/address.stories',
   '../src/features/ui/badge/badge.stories',
   '../src/features/ui/button/button.stories',
   '../src/features/ui/card-list/card-list.stories',
@@ -53,6 +61,9 @@ const stories = [
   '../src/features/ui/message-list/message-list.stories',
   '../src/features/ui/message/message.stories',
   '../src/features/ui/modal/modal.stories',
+  '../src/features/ui/rate-list/rate-list.stories',
+  '../src/features/ui/rate/rate.stories',
+  '../src/features/ui/rating-slider/rating-slider.stories',
   '../src/features/ui/rating-stars/rating-stars.stories',
   '../src/features/ui/search-input/search-input.stories',
   '../src/features/ui/slider/slider.stories',
@@ -66,6 +77,7 @@ const stories = [
   '../src/screens/map-ride/map-ride.stories',
   '../src/screens/map-submit/map-submit.stories',
   '../src/screens/map/map.stories',
+  '../src/screens/marker-details/marker-details.stories',
   '../src/screens/more/more.stories',
   '../src/screens/profile/profile.stories',
   '../src/screens/register/register.stories',
