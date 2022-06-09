@@ -1,5 +1,4 @@
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
 import { FlatList, View } from 'react-native'
 
 import { ConversationPreview } from '~features/ui/conversation-preview'

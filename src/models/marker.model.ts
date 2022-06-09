@@ -15,14 +15,14 @@ export class Marker {
   latitude: number
 
   @Expose()
-  photos: string[]
+  photos?: string[]
 
   @Expose()
   @Type(() => Rate)
-  rates: Rate[]
+  rates?: Rate[]
 
   @Expose()
-  authorUid: string
+  authorUid?: string
 }
 
 export class ID {
@@ -32,4 +32,5 @@ export class ID {
 export class Rate {
   user: string
   rate: number
+  opinion?: string
 }

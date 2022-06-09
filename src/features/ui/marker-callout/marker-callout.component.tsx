@@ -21,11 +21,8 @@ export const MarkerCallout: VFC<MarkerCalloutProps> = ({ marker }) => {
   return (
     <Callout
       style={styles.container}
-      onPress={() => navigation.navigate('MarkerDetails', { marker })}
+      onPress={() => navigation.navigate('MarkerDetails', { markerId: marker._id.$oid })}
     >
-      <View style={styles.sliderWrapper}>
-        {marker.photos.length > 0 && <ImagesSlider images={marker.photos} rating={2} />}
-      </View>
       <Text>{marker.name}</Text>
     </Callout>
   )

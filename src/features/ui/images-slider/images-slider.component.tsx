@@ -63,7 +63,6 @@ interface ImageElementProps {
 }
 
 const ImageElement: VFC<ImageElementProps> = ({ imageUri, shrink }) => {
-  console.log(imageUri)
   return (
     <Image
       source={{ uri: imageUri }}

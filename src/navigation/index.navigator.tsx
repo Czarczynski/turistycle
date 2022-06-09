@@ -25,8 +25,6 @@ import { useStores } from '~hooks/use-store'
 import linking from '~utils/linking'
 import { DarkTheme } from '~utils/navigation-theme'
 
-import { Marker } from '~models/marker.model'
-
 import { Storybook } from '../../storybook-dev'
 
 export type RootStackParamList = {
@@ -39,7 +37,7 @@ export type RootStackParamList = {
   Trace: { tripId: string }
   WebView: undefined
   Storybook: undefined
-  MarkerDetails: { marker: Marker }
+  MarkerDetails: { markerId: string }
 }
 
 export type RootStackNavigationProps = StackNavigationProp<RootStackParamList>

@@ -38,6 +38,7 @@ export const useGoogleLogIn = (global: Global): useAuthType => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       provideCredentials(accessToken, idToken).then()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response])
 
   return [() => promptAsync({ useProxy })]

@@ -29,6 +29,7 @@ export const LoginScreen: VFC<LoginScreenProps> = observer(({ title = 'LoginScre
     }
 
     navigation.replace('Root', { screen: 'HomeTab', params: { Home: undefined } })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [global.user])
   return (
     <View style={styles.container}>

@@ -3,7 +3,7 @@ import { CancelToken } from 'axios'
 
 import { CurrentFiltersType } from '~features/filters/types/current-filters.type'
 
-import { Marker } from '~models/marker.model'
+import { Marker, Rate } from '~models/marker.model'
 import { Trip } from '~models/trip.model'
 import { User } from '~models/user.model'
 
@@ -46,10 +46,6 @@ export const FetchUsers = async (idToken: string): Promise<User[]> => {
   ).data as User[]
 }
 
-export const FetchMarkers = async (): Promise<Marker[]> => {
-  return (await api.get('/markers')).data as Marker[]
-}
-
 export const FetchTrips = async (
   idToken: string,
   query: string,
@@ -87,4 +83,24 @@ export const FetchSingleTrip = async (idToken: string, idTrip: string): Promise<
       },
     )
   ).data as Trip
+}
+
+export const FetchMarkers = async (): Promise<Marker[]> => {
+  return (await api.get('/markers')).data as Marker[]
+}
+
+export const FetchSingleMarker = async (idMarker: string): Promise<Marker> => {
+  return (await api.get(`/markers/${idMarker}`)).data as Marker
+}
+
+export const SendMarkerRate = async (
+  idToken: string,
+  idMarker: string,
+  rate: Rate,
+): Promise<void> => {
+  await api.post(`/markers/${idMarker}`, rate, {
+    headers: {
+      Authorization: `Bearer ${idToken.toString()}`,
+    },
+  })
 }

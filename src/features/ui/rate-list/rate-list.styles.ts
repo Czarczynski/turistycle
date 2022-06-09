@@ -1,12 +1,15 @@
 import { StyleSheet } from 'react-native'
 
+import { theme } from '~styles/theme'
+
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    width: '70%',
   },
-  contentContainer: {
-    padding: 16,
-    maxWidth: '100%',
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: theme.text,
   },
   separator: { height: 16 },
 })

@@ -20,4 +20,19 @@ export default StyleSheet.create({
     ...TOPOGRAPHY.headerXL,
     paddingBottom: 16,
   },
+  section: {
+    paddingTop: 16,
+    width: '100%',
+    alignItems: 'flex-start',
+  },
+  sectionPlus: {
+    paddingTop: 16,
+    width: '100%',
+    alignItems: 'flex-start',
+    flex: 1,
+  },
+  subtitle: {
+    ...TOPOGRAPHY.header,
+    paddingBottom: 16,
+  },
 })
