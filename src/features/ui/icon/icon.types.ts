@@ -14,6 +14,8 @@ export const icons = {
   users: 'users',
   bell: 'bell',
   'chevron-down': 'chevron-down',
+  'chevron-left': 'chevron-left',
+  'chevron-right': 'chevron-right',
   find: 'find',
   settings: 'settings',
   sliders: 'sliders',

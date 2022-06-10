@@ -1,8 +1,5 @@
-import * as Haptics from 'expo-haptics'
-import React, { VFC, useEffect } from 'react'
+import React, { VFC } from 'react'
 import { Switch, View } from 'react-native'
-
-import useIsMount from '~hooks/use-is-mount'
 
 import styles from './toggle.styles'
 
@@ -13,16 +10,6 @@ interface ToggleProps {
 }
 
 export const Toggle: VFC<ToggleProps> = ({ disabled = false, value, onValueChange }) => {
-  const isMount = useIsMount()
-  useEffect(() => {
-    if (!isMount) {
-      return
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    Haptics.selectionAsync()
-  }, [value, isMount])
-
   return (
     <View style={styles.container}>
       <Switch

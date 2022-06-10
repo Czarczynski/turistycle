@@ -15,5 +15,4 @@ export const THEMES = {
     shadowColor: rgba(COLORS.black, 0.2),
   },
 }
-
 export const theme = { ...THEMES.light }
