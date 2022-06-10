@@ -5,12 +5,21 @@ import { theme } from '~styles/theme'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    shadowOffset: { width: 0, height: -1 },
+    shadowOpacity: 1,
+    shadowColor: theme.borderDark,
+    shadowRadius: 10,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: theme.text,
+  dragger: {
+    margin: 16,
+    alignSelf: 'center',
+    height: 5,
+    borderRadius: 15,
+    backgroundColor: theme.text,
+    width: '30%',
+  },
+  webContainer: {
+    backgroundColor: theme.background,
+    borderRadius: 15,
   },
 })

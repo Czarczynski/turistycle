@@ -35,7 +35,7 @@ export type RootStackParamList = {
   MapSubmit: undefined
   MapRide: undefined
   Trace: { tripId: string }
-  WebView: undefined
+  WebView: { uri: string }
   Storybook: undefined
   MarkerDetails: { markerId: string }
 }
@@ -81,14 +81,17 @@ export default observer(() => {
         <Stack.Screen
           name="WebView"
           component={WebViewScreen}
-          options={{ headerShown: false, ...TransitionPresets.ModalTransition }}
+          options={{
+            headerShown: false,
+            cardStyle: { backgroundColor: 'rgba(0,0,0,0)', opacity: 1 },
+            ...TransitionPresets.ModalTransition,
+          }}
         />
         <Stack.Screen
           name="MarkerDetails"
           component={MarkerDetailsScreen}
           options={{
             headerShown: false,
-            // headerTransparent: false,
             cardStyle: { backgroundColor: 'rgba(0,0,0,0)', opacity: 1 },
             ...TransitionPresets.ModalTransition,
           }}

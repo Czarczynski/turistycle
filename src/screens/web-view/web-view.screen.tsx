@@ -1,19 +1,23 @@
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import WebView from 'react-native-webview'
 
 import styles from './web-view.styles'
 
 interface WebViewScreenProps {
-  title?: string
+  uri: string
 }
 
-export const WebViewScreen: VFC<WebViewScreenProps> = ({ title = 'WebViewScreen' }) => {
+export const WebViewScreen: VFC<WebViewScreenProps> = ({ uri }) => {
   const { t } = useTranslation('web-view')
+  const { top } = useSafeAreaInsets()
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+    <View style={[styles.container, { marginTop: top }]}>
+      <View style={styles.dragger} />
+      <WebView style={styles.webContainer} source={{ uri: t(uri) }} />
     </View>
   )
 }
