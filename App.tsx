@@ -1,6 +1,5 @@
 import AppLoading from 'expo-app-loading'
 import 'expo-dev-client'
-import { initializeApp } from 'firebase/app'
 import React from 'react'
 import { LogBox, Platform, UIManager } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -35,5 +34,7 @@ export default function App() {
     )
   }
 }
+
+
 
 LogBox.ignoreLogs(['Non-serializable values were found in the navigation state'])

@@ -14,7 +14,7 @@ export const SavedScreen: VFC<SavedScreenProps> = observer(({ title = 'SavedScre
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t(title)}</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
   )
 })

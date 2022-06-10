@@ -1,10 +1,29 @@
 {
+  "header": {
+    "Home": "Home",
+    "Saved": "Saved",
+    "More": "More"
+  },
   "conversation-preview": {
     "you": "You: "
   },
   "filters": {
+    "filter": "Filter",
+    "clear": "Clear",
     "trip-distance": "Trip distance",
     "applied-filters": "Applied filters"
+  },
+  "card": {
+    "offRoad": "Off road",
+    "nature": "Nature",
+    "forest": "Forest",
+    "city": "City",
+    "river": "River",
+    "chill": "Chill",
+    "rest": "Rest",
+    "poznan": "Poznan",
+    "gdansk": "Gdansk",
+    "warsaw": "Warsaw"
   },
   "card-list": {
     "categories": "Categories",
@@ -36,5 +55,11 @@
   "marker-details": {
     "address": "Address",
     "rates": "Rates"
+  },
+  "more": {
+    "change-language": {
+      "title": "Change language",
+      "to-value": "pl"
+    }
   }
 }

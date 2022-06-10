@@ -10,7 +10,7 @@ import { useStores } from '~hooks/use-store'
 
 import { User } from '~models/user.model'
 
-import styles from './add-rate.styles'
+import useStyles from './add-rate.styles'
 
 interface AddRateProps {
   markerId: string
@@ -19,7 +19,7 @@ interface AddRateProps {
 
 export const AddRate: VFC<AddRateProps> = ({ markerId, onAfterAddRate }) => {
   const { t } = useTranslation('add-rate')
-
+  const styles = useStyles(t`add-rate-button`)
   const { global } = useStores()
 
   const inputRef = useRef<TextInput>(null)

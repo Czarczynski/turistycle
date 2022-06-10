@@ -33,7 +33,7 @@ export const CardList: VFC<CardListProps> = ({ label, data, onItemCheck, checked
             key={item.id}
             onPress={() => onItemCheck?.(_.xor(checkedList, [item.value]))}
             checked={checkedList.includes(item.value)}
-            title={item.title}
+            title={item.value}
             backgroundColor={item.backgroundColor}
             icon={item.icon}
           />
