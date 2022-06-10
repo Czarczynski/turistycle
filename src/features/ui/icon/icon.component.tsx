@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { VFC } from 'react'
-import { StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import Iconmoon from 'react-native-icomoon'
 
 import icons from '~assets/icons'
@@ -18,10 +18,40 @@ interface IconProps {
 }
 
 export const Icon: VFC<IconProps> = ({ size, color, strokeWidth, name }) => {
-  return Object.keys(icons).includes(name) ? (
+  if (Object.keys(icons).includes(name)) {
     // @ts-ignore
-    icons[name](size, strokeWidth, color)
-  ) : (
+    return icons[name](size, strokeWidth, color)
+  }
+
+  if (name === 'chevron-left') {
+    return (
+      <View style={styles.chevronLeft}>
+        <Iconmoon
+          iconSet={json}
+          name={'chevron-down'}
+          size={size}
+          strokeWidth={strokeWidth}
+          color={color || 'black'}
+        />
+      </View>
+    )
+  }
+
+  if (name === 'chevron-right') {
+    return (
+      <View style={styles.chevronRight}>
+        <Iconmoon
+          iconSet={json}
+          name={'chevron-down'}
+          size={size}
+          strokeWidth={strokeWidth}
+          color={color || 'black'}
+        />
+      </View>
+    )
+  }
+
+  return (
     <Iconmoon
       iconSet={json}
       name={name}
@@ -31,3 +61,11 @@ export const Icon: VFC<IconProps> = ({ size, color, strokeWidth, name }) => {
     />
   )
 }
+const styles = StyleSheet.create({
+  chevronLeft: {
+    transform: [{ rotate: '90deg' }],
+  },
+  chevronRight: {
+    transform: [{ rotate: '-90deg' }],
+  },
+})

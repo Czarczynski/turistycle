@@ -19,6 +19,7 @@ function loadStories() {
   require('../src/features/ui/message-list/message-list.stories')
   require('../src/features/ui/message/message.stories')
   require('../src/features/ui/modal/modal.stories')
+  require('../src/features/ui/more-row/more-row.stories')
   require('../src/features/ui/rate-list/rate-list.stories')
   require('../src/features/ui/rate/rate.stories')
   require('../src/features/ui/rating-slider/rating-slider.stories')
@@ -61,6 +62,7 @@ const stories = [
   '../src/features/ui/message-list/message-list.stories',
   '../src/features/ui/message/message.stories',
   '../src/features/ui/modal/modal.stories',
+  '../src/features/ui/more-row/more-row.stories',
   '../src/features/ui/rate-list/rate-list.stories',
   '../src/features/ui/rate/rate.stories',
   '../src/features/ui/rating-slider/rating-slider.stories',
