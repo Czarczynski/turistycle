@@ -69,5 +69,8 @@
       "title": "Change language",
       "to-value": "pl"
     }
+  },
+  "web-view": {
+    "info": "https://google.com"
   }
 }

@@ -32,8 +32,8 @@ export const MoreScreen: VFC<MoreScreenProps> = observer(({ title = 'MoreScreen'
           title={t`messages`}
           onPress={() => navigation.navigate('ChatNavigator', { screen: 'Chat' })}
         />
-        <MoreRow title={t`info`} onPress={() => navigation.navigate('WebView')} />
-        <MoreRow title={t`troubleshooting`} onPress={() => navigation.navigate('WebView')} />
+        <MoreRow title={t`info`} onPress={() => navigation.navigate('WebView', { uri: 'info' })} />
+        <MoreRow title={t`troubleshooting`} onPress={() => navigation.navigate('Profile')} />
         <MoreRow title={t`change-language.title`} flag onPress={changeLang} />
       </ScrollView>
       <ButtonSecondaryReversed onPress={logOut}>{t`log-out`}</ButtonSecondaryReversed>

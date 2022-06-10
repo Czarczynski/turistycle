@@ -32,26 +32,29 @@ export const MarkerDetailsScreen: VFC<MarkerDetailsScreenProps> = ({ markerId })
 
   return (
     <View style={[styles.container, { marginTop: top }]}>
-      {isLoading || !marker ? (
-        <ActivityIndicator />
-      ) : (
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>{marker.name}</Text>
-          {marker.photos!.length > 0 && (
-            <ImagesSlider images={marker.photos!} rating={_.meanBy(marker.rates, 'rate')} />
-          )}
-          <View style={styles.section}>
-            <Text style={styles.subtitle}>{t`address`}</Text>
-            <Address coordinate={{ longitude: marker.longitude, latitude: marker.latitude }} />
-          </View>
-          {marker.rates!.length > 0 && (
-            <View style={[styles.sectionPlus]}>
-              <Text style={styles.subtitle}>{t`rates`}</Text>
-              <RateList rates={marker.rates!} />
+      <View style={styles.dragger} />
+      <View style={styles.contentContainer}>
+        {isLoading || !marker ? (
+          <ActivityIndicator />
+        ) : (
+          <>
+            <Text style={styles.title}>{marker.name}</Text>
+            {marker.photos!.length > 0 && (
+              <ImagesSlider images={marker.photos!} rating={_.meanBy(marker.rates, 'rate')} />
+            )}
+            <View style={styles.section}>
+              <Text style={styles.subtitle}>{t`address`}</Text>
+              <Address coordinate={{ longitude: marker.longitude, latitude: marker.latitude }} />
             </View>
-          )}
-        </View>
-      )}
+            {marker.rates!.length > 0 && (
+              <View style={[styles.sectionPlus]}>
+                <Text style={styles.subtitle}>{t`rates`}</Text>
+                <RateList rates={marker.rates!} />
+              </View>
+            )}
+          </>
+        )}
+      </View>
       {!_.some(marker?.rates, { user: (global.user as User).displayName }) && (
         <AddRate markerId={markerId} onAfterAddRate={mutate} />
       )}
