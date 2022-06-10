@@ -1,0 +1,65 @@
+{
+  "header": {
+    "Home": "Dom",
+    "Saved": "Zapisane",
+    "More": "Więcej"
+  },
+  "conversation-preview": {
+    "you": "Ty: "
+  },
+  "filters": {
+    "clear": "Wyczyść",
+    "filter": "Filtry",
+    "trip-distance": "Długość trasy",
+    "applied-filters": "Zastosowane filtry"
+  },
+  "card": {
+    "offRoad": "Off road",
+    "nature": "Natura",
+    "forest": "Las",
+    "city": "Miasto",
+    "river": "Rzeka",
+    "chill": "Chill",
+    "rest": "Wypoczynek",
+    "poznan": "Poznań",
+    "gdansk": "Gdańsk",
+    "warsaw": "Warszawa"
+  },
+  "card-list": {
+    "categories": "Categorie",
+    "tags": "Tagi",
+    "citiesAround": "W okolicy"
+  },
+  "tab-bar-icon": {
+    "HomeTab": "Dom",
+    "SearchTab": "Szukaj",
+    "MapTab": "Mapa",
+    "SavedTab": "Zapisane",
+    "MoreTab": "Więcej"
+  },
+  "search-input": {
+    "placeholder": "Szukaj"
+  },
+  "map-legend": {
+    "legend": "Legenda",
+    "pins": "Pineski",
+    "pin-online": "Publiczne - dostępne dla wszystnich",
+    "pin-local": "Lokalne - właśnie stworzone przez ciebie",
+    "pin-edge": "Krańcowe  - punkt startowy i końcowy"
+  },
+  "add-rate": {
+    "add-rate-button": "Dodaj opinię",
+    "add-rate-title": "Dodaj swoją opinię!",
+    "opinion": "Napisz komentarz (opcjonalne)"
+  },
+  "marker-details": {
+    "address": "Adres",
+    "rates": "Oceny"
+  },
+  "more": {
+    "change-language": {
+      "title": "Zmień język",
+      "to-value": "en"
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import * as Haptics from 'expo-haptics'
 import { ImpactFeedbackStyle } from 'expo-haptics'
 import React, { VFC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
 
 import icons from '~assets/icons'
@@ -32,7 +33,7 @@ export const Card: VFC<CardProps> = ({
 }) => {
   const hasIcon = Boolean(icon)
   const textColor = color ? color : backgroundColor !== COLORS.white ? theme.background : theme.text
-
+  const { t } = useTranslation('card')
   const onHapticPress = async () => {
     if (onPress !== undefined) {
       await Haptics.impactAsync(ImpactFeedbackStyle.Light)
@@ -55,7 +56,7 @@ export const Card: VFC<CardProps> = ({
           <Icon name={icon!} size={16} color={textColor} />
         </View>
       )}
-      <Text style={{ color: textColor }}>{title}</Text>
+      <Text style={{ color: textColor }}>{t(title)}</Text>
     </Pressable>
   )
 }

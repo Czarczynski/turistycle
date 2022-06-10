@@ -24,7 +24,7 @@ export const Filters: VFC<FiltersProps> = ({ onClose, filters, visible }) => {
   )
   return (
     <Modal
-      title={'Filter'}
+      title={t`filter`}
       visible={visible}
       onClose={() => onClose(_filters)}
       renderRight={<RenderRight onChange={_setFilters} />}
@@ -57,9 +57,10 @@ export const Filters: VFC<FiltersProps> = ({ onClose, filters, visible }) => {
 }
 
 const RenderRight = ({ onChange }: { onChange: (filters: CurrentFiltersType) => void }) => {
+  const { t } = useTranslation('filters')
   return (
     <Pressable onPress={() => onChange(initialFiltersState)}>
-      <Text>Clear</Text>
+      <Text>{t`clear`}</Text>
     </Pressable>
   )
 }
