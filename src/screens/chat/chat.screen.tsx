@@ -4,6 +4,10 @@ import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'
 
+import { ConversationList } from '~features/ui/conversation-list'
+
+import { useChat } from '~utils/chat-provider'
+
 import styles from './chat.styles'
 
 interface ChatScreenProps {
@@ -17,6 +21,7 @@ export const ChatScreen: VFC<ChatScreenProps> = observer(({ title = 'ChatScreen'
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
+      <ConversationList />
       <Button
         title={'Navigate Conversation'}
         onPress={() => navigation.navigate('ChatNavigator', { screen: 'Conversation' })}

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { observer } from 'mobx-react-lite'
-import React, { VFC } from 'react'
+import React, { VFC, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'
 
@@ -17,14 +17,6 @@ export const HomeScreen: VFC<HomeScreenProps> = observer(({ title = 'HomeScreen'
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Button
-        title={'Navigate Chat'}
-        onPress={() => navigation.navigate('ChatNavigator', { screen: 'Chat' })}
-      />
-      <Button
-        title={'Navigate Auth'}
-        onPress={() => navigation.navigate('AuthNavigator', { screen: 'Login' })}
-      />
       <Button title={'Go Storybook'} onPress={() => navigation.navigate('Storybook')} />
     </View>
   )

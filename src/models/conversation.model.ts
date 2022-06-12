@@ -13,8 +13,8 @@ export class Conversation {
 
   @Expose()
   @Type(() => Message)
-  messages: Message[]
+  messages?: Message[]
 
   @Expose()
-  users: [User, User]
+  users: [string, string]
 }

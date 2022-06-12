@@ -1,17 +1,24 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { createStackNavigator } from '@react-navigation/stack'
-import React from 'react'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 
-import { HomeScreen } from '~screens/home'
-import { MapScreen } from '~screens/map'
-import { MoreScreen } from '~screens/more'
-import { SavedScreen } from '~screens/saved'
-import { SearchScreen } from '~screens/search'
 
-import { HeaderSearch, HeaderTab } from '~features/ui/navigation-header'
-import { TabBarIcon } from '~features/ui/tab-bar-icon'
 
-import { theme } from '~styles/theme'
+import { HomeScreen } from '~screens/home';
+import { MapScreen } from '~screens/map';
+import { MoreScreen } from '~screens/more';
+import { SavedScreen } from '~screens/saved';
+import { SearchScreen } from '~screens/search';
+
+
+
+import { HeaderSearch, HeaderTab } from '~features/ui/navigation-header';
+import { TabBarIcon } from '~features/ui/tab-bar-icon';
+
+
+
+import { theme } from '~styles/theme';
+
 
 export type RootTabParamList = {
   HomeTab: HomeTabParamList
@@ -96,7 +103,7 @@ const SavedStack = createStackNavigator<SavedTabParamList>()
 const MoreStack = createStackNavigator<MoreTabParamList>()
 
 const Home = () => (
-  <HomeStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} /> }}>
+  <HomeStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} isHome /> }}>
     <HomeStack.Screen name={'Home'} component={HomeScreen} />
   </HomeStack.Navigator>
 )
