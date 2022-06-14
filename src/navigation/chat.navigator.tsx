@@ -6,9 +6,11 @@ import { ConversationScreen } from '~screens/conversation'
 
 import { HeaderDefault } from '~features/ui/navigation-header'
 
+import { User } from '~models/user.model'
+
 export type ChatStackParamList = {
   Chat: undefined
-  Conversation: { corresponderUid: string }
+  Conversation: { corresponder: User; id: string }
 }
 
 const Stack = createStackNavigator<ChatStackParamList>()

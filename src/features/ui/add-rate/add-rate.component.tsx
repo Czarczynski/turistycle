@@ -1,4 +1,5 @@
-import React, { VFC, useRef, useState } from 'react'
+import { BlurView } from 'expo-blur'
+import React, { VFC, useCallback, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Animated, LayoutAnimation, Pressable, Text, TextInput, View } from 'react-native'
 
@@ -55,9 +56,17 @@ export const AddRate: VFC<AddRateProps> = ({ markerId, onAfterAddRate }) => {
     changeAnimate()
   }
 
+  const Overlay = useCallback(() => {
+    return (
+      <BlurView intensity={20} style={styles.overlay}>
+        <Pressable style={styles.overlay} onPress={changeAnimate} />
+      </BlurView>
+    )
+  }, [expanded])
+
   return (
     <Animated.View style={[styles.container, !expanded && styles.containerNotExpanded]}>
-      <Pressable onPress={changeAnimate} style={styles.overlay} />
+      <Overlay />
       {!expanded && <ButtonSecondary onPress={changeAnimate}>{t`add-rate-button`}</ButtonSecondary>}
       {expanded && (
         <View style={styles.innerContainer}>
@@ -78,7 +87,7 @@ export const AddRate: VFC<AddRateProps> = ({ markerId, onAfterAddRate }) => {
           </ButtonPrimary>
         </View>
       )}
-      <Pressable onPress={changeAnimate} style={styles.overlay} />
+      <Overlay />
     </Animated.View>
   )
 }

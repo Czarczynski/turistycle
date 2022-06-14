@@ -72,5 +72,8 @@
   },
   "web-view": {
     "info": "https://google.com"
+  },
+  "message-input": {
+    "placeholder": "Wiadomość"
   }
 }

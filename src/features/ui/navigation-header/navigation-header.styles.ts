@@ -1,10 +1,11 @@
+import { rgba } from 'polished'
 import { StyleSheet } from 'react-native'
 
 import { theme } from '~styles/theme'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: theme.background,
+    backgroundColor: rgba(theme.background, 0.2),
   },
   containerTransparent: {
     backgroundColor: 'transparent',

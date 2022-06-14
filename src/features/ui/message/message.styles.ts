@@ -14,7 +14,6 @@ export default StyleSheet.create({
   message: {
     maxWidth: '70%',
     borderRadius: 20,
-    marginTop: 10,
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
@@ -27,7 +26,7 @@ export default StyleSheet.create({
     backgroundColor: rgba(theme.tint, 0.2),
   },
   timeContainer: {
-    marginTop: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

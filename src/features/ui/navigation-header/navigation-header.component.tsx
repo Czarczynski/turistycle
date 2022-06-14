@@ -1,6 +1,7 @@
+import { BlurView } from 'expo-blur'
 import React, { FC } from 'react'
 import { Animated, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import styles from './navigation-header.styles'
 
@@ -18,7 +19,7 @@ export const NavigationHeader: FC<NavigationHeaderProps> = ({
   progress,
 }) => {
   const animated = progress ? Animated.add(progress.current, progress.next || 0) : null
-
+  const insets = useSafeAreaInsets()
   const opacity =
     animated?.interpolate({
       inputRange: [0, 1, 2],
@@ -33,9 +34,12 @@ export const NavigationHeader: FC<NavigationHeaderProps> = ({
 
   return (
     <Animated.View style={{ opacity, transform: [{ translateY }] }}>
-      <SafeAreaView
-        edges={['top']}
-        style={[styles.container, transparent && styles.containerTransparent]}
+      <BlurView
+        style={[
+          styles.container,
+          { paddingTop: insets.top },
+          transparent && styles.containerTransparent,
+        ]}
       >
         {!floating && (
           <View style={[styles.innerContainer, floating && styles.innerContainerFloating]}>
@@ -47,7 +51,7 @@ export const NavigationHeader: FC<NavigationHeaderProps> = ({
             <View style={styles.innerContainer}>{children}</View>
           </View>
         )}
-      </SafeAreaView>
+      </BlurView>
     </Animated.View>
   )
 }

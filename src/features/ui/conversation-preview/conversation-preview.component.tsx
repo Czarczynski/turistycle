@@ -1,12 +1,13 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Image, Pressable, Text, View } from 'react-native'
 
+import useNavigation from '~hooks/useNavigation'
+
 import { Conversation as ConversationModel } from '~models/conversation.model'
+import { User } from '~models/user.model'
 
 import styles from './conversation-preview.styles'
-import {User} from "~models/user.model";
 
 interface ConversationPreviewProps {
   userUid: string
@@ -31,11 +32,11 @@ export const ConversationPreview: VFC<ConversationPreviewProps> = ({
       onPress={() =>
         navigation.navigate('ChatNavigator', {
           screen: 'Conversation',
-          params: { corresponderUid: corresponder },
+          params: { corresponder: corresponder!, id: conversation.id },
         })
       }
     >
-      <Image source={{ uri: corresponder?.photoURL! }} style={styles.photo} />
+      {corresponder?.photoURL && <Image source={{ uri: corresponder.photoURL }} style={styles.photo} />}
       <View style={styles.innerContainer}>
         <Text style={styles.name}>{corresponder?.displayName}</Text>
         <Text style={styles.text}>

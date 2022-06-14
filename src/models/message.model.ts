@@ -10,6 +10,6 @@ export class Message {
   text: string
 
   @Expose()
-  @Transform(({ obj }) => DateTime.fromISO(obj.time))
+  @Transform(({ obj }) => DateTime.fromSeconds(obj.time.seconds))
   time: DateTime
 }

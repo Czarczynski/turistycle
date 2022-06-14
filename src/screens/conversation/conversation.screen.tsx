@@ -1,24 +1,51 @@
 import { observer } from 'mobx-react-lite'
-import React, { VFC } from 'react'
+import React, { VFC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Text, View } from 'react-native'
+import { KeyboardAvoidingView, Platform, View } from 'react-native'
 
-import { ConversationList } from '~features/ui/conversation-list'
+import { MessageInput } from '~features/ui/message-input'
+import { MessageList } from '~features/ui/message-list'
+
+import { useChat } from '~utils/chat-provider'
+
+import { User } from '~models/user.model'
 
 import styles from './conversation.styles'
 
 interface ConversationScreenProps {
-  title?: string
+  corresponder: User
+  conversationId: string
 }
 
 export const ConversationScreen: VFC<ConversationScreenProps> = observer(
-  ({ title = 'ConversationScreen' }) => {
+  ({ corresponder, conversationId }) => {
     const { t } = useTranslation('conversation')
+    const { currentConversation, subscribeConversation, nextMessagePage } = useChat()
+    const [isFocused, setIsFocused] = useState(false)
+    useEffect(() => {
+      const unsubscribe = subscribeConversation(conversationId)
+      return () => unsubscribe()
+    }, [])
 
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <View style={styles.innerContainer}>
+          <MessageList
+            isInputFocused={isFocused}
+            data={currentConversation.messages}
+            nextPage={async () => await nextMessagePage(conversationId)}
+          />
+          <MessageInput
+            onFocusable={setIsFocused}
+            isFocused={isFocused}
+            onChangeText={() => null}
+            onSubmitEditing={() => null}
+          />
+        </View>
+      </KeyboardAvoidingView>
     )
   },
 )

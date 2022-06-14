@@ -7,19 +7,22 @@ import { TOPOGRAPHY } from '~styles/topography'
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: rgba(COLORS.black, 0.3),
+    backgroundColor: rgba(COLORS.black, 0.5),
     margin: 5,
-    padding: 16,
     borderRadius: 30,
+    overflow: 'hidden',
     position: 'absolute',
     right: 0,
     top: 50,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowColor: 'black',
-    shadowRadius: 0,
   },
   containerCollapsed: {
+    aspectRatio: 1,
+    height: 43,
+  },
+  blurContainer: {
+    padding: 16,
+  },
+  blurContainerCollapsed: {
     aspectRatio: 1,
     height: 43,
     padding: 0,
