@@ -10,7 +10,6 @@ import { useStores } from '~hooks/use-store'
 
 import { Conversation } from '~models/conversation.model'
 
-
 type ChatContextType = {
   chatList: Conversation[]
   subscribeConversation: () => Unsubscribe
@@ -31,11 +30,7 @@ interface ChatProviderProps {
 export const useChat = () => useContext(ChatContext)
 
 export const ChatProvider: FC<ChatProviderProps> = observer(({ children }) => {
-  const {
-    subscribeConversation,
-    nextPage: nextMessagePage,
-    sendMessage,
-  } = useCurrentConversation()
+  const { subscribeConversation, nextPage: nextMessagePage, sendMessage } = useCurrentConversation()
   const { chatList, subscribeChat } = useConversationList()
   const { global } = useStores()
 
@@ -51,9 +46,7 @@ export const ChatProvider: FC<ChatProviderProps> = observer(({ children }) => {
   }, [global.user])
 
   return (
-    <ChatContextProvider
-      value={{ chatList, subscribeConversation, nextMessagePage, sendMessage }}
-    >
+    <ChatContextProvider value={{ chatList, subscribeConversation, nextMessagePage, sendMessage }}>
       {children}
     </ChatContextProvider>
   )
