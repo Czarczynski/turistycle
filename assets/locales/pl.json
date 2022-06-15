@@ -5,7 +5,9 @@
   "header": {
     "Home": "Dom",
     "Saved": "Zapisane",
-    "More": "Więcej"
+    "More": "Więcej",
+    "Chat": "Czat",
+    "Conversation": "Konwersacja"
   },
   "conversation-preview": {
     "you": "Ty: "

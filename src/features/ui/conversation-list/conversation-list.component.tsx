@@ -24,6 +24,7 @@ export const ConversationList: VFC<ConversationListProps> = ({ data }) => {
     <FlatList
       ItemSeparatorComponent={Separator}
       style={styles.container}
+      extraData={data.length}
       data={data.sort((a, b) => b.lastMessage.time.toSeconds() - a.lastMessage.time.toSeconds())}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
