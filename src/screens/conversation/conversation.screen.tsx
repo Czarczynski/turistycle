@@ -17,41 +17,49 @@ interface ConversationScreenProps {
   conversationId: string
 }
 
-export const ConversationScreen: VFC<ConversationScreenProps> = observer(({ conversationId }) => {
-  const { global } = useStores()
-  const { subscribeConversation, sendMessage } = useChat()
-  const [isFocused, setIsFocused] = useState(false)
-  const [messageText, setMessageText] = useState('')
-  useEffect(() => {
-    global.setCurrentConversationId(conversationId)
-    const unsubscribe = subscribeConversation()
+export const ConversationScreen: VFC<ConversationScreenProps> = observer(
+  ({ conversationId, corresponder }) => {
+    const { global } = useStores()
+    const { subscribeConversation, sendMessage } = useChat()
+    const [isFocused, setIsFocused] = useState(false)
+    const [messageText, setMessageText] = useState('')
+    useEffect(() => {
+      if (conversationId === null && global.currentConversationId === null) {
+        return
+      } else {
+        if (global.currentConversationId === null) {
+          global.setCurrentConversationId(conversationId)
+        }
+        const unsubscribe = subscribeConversation()
 
-    return () => {
-      unsubscribe()
-      global.setCurrentConversationId(null)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+        return () => {
+          unsubscribe()
+          global.setCurrentConversationId(null)
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [global.currentConversationId])
 
-  return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
-      <View style={styles.innerContainer}>
-        <MessageList
-          isInputFocused={isFocused}
-          data={[...global.currentConversationMessages]}
-          // nextPage={async () => await nextMessagePage()}
-        />
-        <MessageInput
-          onFocusable={setIsFocused}
-          isFocused={isFocused}
-          value={messageText}
-          onChangeText={setMessageText}
-          onPress={sendMessage}
-        />
-      </View>
-    </KeyboardAvoidingView>
-  )
-})
+    return (
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <View style={styles.innerContainer}>
+          <MessageList
+            isInputFocused={isFocused}
+            data={[...global.currentConversationMessages]}
+            // nextPage={async () => await nextMessagePage()}
+          />
+          <MessageInput
+            onFocusable={setIsFocused}
+            isFocused={isFocused}
+            value={messageText}
+            onChangeText={setMessageText}
+            onPress={(input) => sendMessage(input, corresponder.uid)}
+          />
+        </View>
+      </KeyboardAvoidingView>
+    )
+  },
+)

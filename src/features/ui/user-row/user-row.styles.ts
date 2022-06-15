@@ -5,39 +5,29 @@ import { TOPOGRAPHY } from '~styles/topography'
 
 export default StyleSheet.create({
   container: {
-    width: '100%',
-    padding: 5,
-    flexDirection: 'row',
+    flex: 1,
     alignItems: 'center',
+    flexDirection: 'row',
   },
-  photo: {
-    width: 60,
-    aspectRatio: 1,
-    borderRadius: 50,
-    resizeMode: 'cover',
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    marginRight: 16,
   },
   imagePlaceholder: {
     backgroundColor: theme.tint,
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 30,
+    marginRight: 16,
   },
+  text: {},
   letter: {
     ...TOPOGRAPHY.labelXXL,
     color: theme.background,
-  },
-  innerContainer: {
-    paddingLeft: 10,
-    flex: 1,
-  },
-  name: {
-    paddingBottom: 5,
-    ...TOPOGRAPHY.paragraphL,
-  },
-  text: {
-    ...TOPOGRAPHY.paragraph,
   },
 })

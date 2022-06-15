@@ -12,7 +12,7 @@ export const GlobalStore = types
   .model('global', {
     user: types.maybeNull(types.frozen<User>()),
     currentConversationId: types.maybeNull(types.string),
-    currentConversationMessages: types.array(types.frozen<Message>()),
+    currentConversationMessages: types.optional(types.array(types.frozen<Message>()), []),
   })
   .props({})
   .views(() => ({}))
@@ -22,8 +22,10 @@ export const GlobalStore = types
     },
     setCurrentConversationId: (currentConversationId: string | null) => {
       self.currentConversationId = currentConversationId
-      // @ts-ignore
-      self.currentConversationMessages = []
+      if (currentConversationId === null) {
+        // @ts-ignore
+        self.currentConversationMessages = []
+      }
     },
     updateConversationMessages: (message: Message | Message[]) => {
       const messages = flatten([message])

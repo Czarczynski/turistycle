@@ -23,7 +23,7 @@ import { User } from '~models/user.model'
 type UseCurrentConversationType = {
   nextPage: () => Promise<void>
   subscribeConversation: () => Unsubscribe
-  sendMessage: (message: string) => Promise<void>
+  sendMessage: (message: string, corresponderUid?: string) => Promise<void>
 }
 
 export const useCurrentConversation = (): UseCurrentConversationType => {
@@ -48,7 +48,23 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
     setNextQuery(next)
   }
 
-  const sendMessage = async (message: string) => {
+  const sendMessage = async (message: string, corresponderUid?: string) => {
+    if (!global.currentConversationId) {
+      const collectionRef = collection(firestore, 'chat')
+      const doc = await addDoc(collectionRef, {
+        users: [global.user!.uid, corresponderUid],
+        lastMessage: {
+          from: {
+            uid: global.user!.uid,
+            photoURL: global.user!.photoURL,
+            displayName: global.user!.displayName,
+          },
+          text: message,
+          time: Timestamp.fromDate(new Date()),
+        },
+      })
+      global.setCurrentConversationId(doc.id)
+    }
     const collectionRef = collection(firestore, 'chat', global.currentConversationId!, 'messages')
     await addDoc(collectionRef, {
       senderUid: (global.user as User).uid,
@@ -67,6 +83,7 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
     return onSnapshot(
       queryRef,
       (snapshot) => {
+        console.log('got snapshot!')
         if (isFirstCall) {
           isFirstCall = false
           global.updateConversationMessages(

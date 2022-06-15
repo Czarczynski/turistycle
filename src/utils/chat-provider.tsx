@@ -14,7 +14,7 @@ type ChatContextType = {
   chatList: Conversation[]
   subscribeConversation: () => Unsubscribe
   nextMessagePage: () => Promise<void>
-  sendMessage: (message: string) => Promise<void>
+  sendMessage: (message: string, corresponderUid?: string) => Promise<void>
 }
 
 const initialState = {} as ChatContextType
