@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 110,
-    paddingBottom:20
+    paddingBottom: 20,
   },
   separator: { height: 16 },
 })

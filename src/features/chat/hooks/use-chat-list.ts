@@ -31,7 +31,7 @@ export const useConversationList = (): UseConversationList => {
           } else if (change.type === 'modified') {
             listToUpdate.map((item) => {
               if (item.id === change.doc.id) {
-                item.lastMessage = change.doc.data().lastMessage
+                item.lastMessage = (change.doc.data() as Conversation).lastMessage
               }
               return item
             })
