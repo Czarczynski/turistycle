@@ -4,14 +4,20 @@ import { theme } from '~styles/theme'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 110,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: theme.text,
+  },
+  inputWrapper: {
+    height: 50,
+    width: '100%',
+  },
+  innerContainer: {
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    flex: 1,
   },
 })

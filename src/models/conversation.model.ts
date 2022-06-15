@@ -1,7 +1,6 @@
 import { Expose, Type } from 'class-transformer'
 
 import { Message } from '~models/message.model'
-import { User } from '~models/user.model'
 
 export class Conversation {
   @Expose()
@@ -13,8 +12,8 @@ export class Conversation {
 
   @Expose()
   @Type(() => Message)
-  messages: Message[]
+  messages?: Message[]
 
   @Expose()
-  users: [User, User]
+  users: [string, string]
 }

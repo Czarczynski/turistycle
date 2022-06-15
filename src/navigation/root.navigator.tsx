@@ -96,7 +96,7 @@ const SavedStack = createStackNavigator<SavedTabParamList>()
 const MoreStack = createStackNavigator<MoreTabParamList>()
 
 const Home = () => (
-  <HomeStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} /> }}>
+  <HomeStack.Navigator screenOptions={{ header: (props) => <HeaderTab {...props} isHome /> }}>
     <HomeStack.Screen name={'Home'} component={HomeScreen} />
   </HomeStack.Navigator>
 )

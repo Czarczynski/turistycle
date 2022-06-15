@@ -5,7 +5,9 @@
   "header": {
     "Home": "Home",
     "Saved": "Saved",
-    "More": "More"
+    "More": "More",
+    "Chat": "CHat",
+    "Conversation": "Coenvesration"
   },
   "conversation-preview": {
     "you": "You: "
@@ -72,5 +74,8 @@
   },
   "web-view": {
     "info": "https://google.com"
+  },
+  "message-input": {
+    "placeholder": "Message"
   }
 }

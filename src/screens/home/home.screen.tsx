@@ -17,14 +17,6 @@ export const HomeScreen: VFC<HomeScreenProps> = observer(({ title = 'HomeScreen'
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Button
-        title={'Navigate Chat'}
-        onPress={() => navigation.navigate('ChatNavigator', { screen: 'Chat' })}
-      />
-      <Button
-        title={'Navigate Auth'}
-        onPress={() => navigation.navigate('AuthNavigator', { screen: 'Login' })}
-      />
       <Button title={'Go Storybook'} onPress={() => navigation.navigate('Storybook')} />
     </View>
   )

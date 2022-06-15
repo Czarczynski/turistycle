@@ -22,7 +22,7 @@ export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
       <>
         {canGoBack && (
           <Pressable onPress={() => navigation.goBack()}>
-            <Icon name={'chevron-down'} color={styles.icon.color} />
+            <Icon name={'chevron-left'} color={styles.icon.color} />
           </Pressable>
         )}
         {!canGoBack && <View style={styles.placeholder} />}

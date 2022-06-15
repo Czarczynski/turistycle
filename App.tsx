@@ -9,6 +9,7 @@ import 'reflect-metadata'
 import Navigation from '~navigation/index.navigator'
 import { RootStoreProvider } from '~store/root-context.store'
 
+import { ChatProvider } from '~utils/chat-provider'
 import '~utils/i18n'
 import { queryClient } from '~utils/react-query'
 
@@ -26,15 +27,15 @@ export default function App() {
     return (
       <QueryClientProvider client={queryClient}>
         <RootStoreProvider value={rootStore}>
-          <SafeAreaProvider>
-            <Navigation />
-          </SafeAreaProvider>
+          <ChatProvider>
+            <SafeAreaProvider>
+              <Navigation />
+            </SafeAreaProvider>
+          </ChatProvider>
         </RootStoreProvider>
       </QueryClientProvider>
     )
   }
 }
-
-
 
 LogBox.ignoreLogs(['Non-serializable values were found in the navigation state'])

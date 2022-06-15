@@ -2,7 +2,10 @@ import { DateTime } from 'luxon'
 import React, { VFC } from 'react'
 import { Text, View } from 'react-native'
 
+import { useStores } from '~hooks/use-store'
+
 import { Message as MessageModel } from '~models/message.model'
+import { User } from '~models/user.model'
 
 import styles from './message.styles'
 
@@ -10,8 +13,25 @@ interface MessageProps {
   message: MessageModel
   showDate?: boolean
 }
+interface CoreMessageProps {
+  item: MessageModel
+  next?: MessageModel
+}
+export const Message: VFC<CoreMessageProps> = ({ item, next }) => {
+  const { global } = useStores()
+  let showDate = false
+  if (next) {
+    const { time: previousTime } = next
+    showDate = item.time.diff(previousTime, ['minutes']).toObject().minutes! > 120
+  }
+  return item.senderUid !== (global.user as User).uid ? (
+    <MessageLeft message={item} showDate={showDate} />
+  ) : (
+    <MessageRight message={item} showDate={showDate} />
+  )
+}
 
-export const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
+const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
   const { time, text } = message
 
   return (
@@ -24,7 +44,7 @@ export const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
   )
 }
 
-export const MessageRight: VFC<MessageProps> = ({ message, showDate }) => {
+const MessageRight: VFC<MessageProps> = ({ message, showDate }) => {
   const { time, text } = message
 
   return (
