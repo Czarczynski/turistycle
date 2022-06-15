@@ -1,7 +1,6 @@
 import { Expose, Type } from 'class-transformer'
 
 import { Message } from '~models/message.model'
-import { User } from '~models/user.model'
 
 export class Conversation {
   @Expose()

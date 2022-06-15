@@ -30,10 +30,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginVertical: 5,
     paddingLeft: 10,
-    paddingBottom: 10,
-    transform: [{ rotate: '45deg' }],
+    width: 52,
   },
   icon: {
     color: theme.text,
+    fontSize: 50,
+    lineHeight: 50,
   },
 })

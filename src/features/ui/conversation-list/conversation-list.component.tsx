@@ -8,6 +8,7 @@ import { useUsers } from '~features/users/hooks/use-users'
 import { useStores } from '~hooks/use-store'
 
 import { Conversation as ConversationModel } from '~models/conversation.model'
+import { User } from '~models/user.model'
 
 import styles from './conversation-list.styles'
 
@@ -28,7 +29,7 @@ export const ConversationList: VFC<ConversationListProps> = ({ data }) => {
       renderItem={({ item }) => (
         <ConversationPreview
           key={item.id}
-          userUid={global.user.uid as string}
+          userUid={(global.user as User).uid}
           conversation={item}
           allUsers={users}
         />

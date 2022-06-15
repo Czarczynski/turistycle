@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useStores } from '~hooks/use-store'
 
 import { Conversation } from '~models/conversation.model'
-import {User} from "~models/user.model";
+import { User } from '~models/user.model'
 
 type UseConversationList = {
   subscribeChat: () => Unsubscribe

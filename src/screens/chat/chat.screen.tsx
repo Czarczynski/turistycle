@@ -10,7 +10,7 @@ import styles from './chat.styles'
 
 interface ChatScreenProps {}
 
-export const ChatScreen: VFC<ChatScreenProps> = observer(({}) => {
+export const ChatScreen: VFC<ChatScreenProps> = observer(() => {
   const { chatList } = useChat()
   return (
     <View style={styles.container}>

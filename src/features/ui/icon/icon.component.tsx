@@ -51,6 +51,20 @@ export const Icon: VFC<IconProps> = ({ size, color, strokeWidth, name }) => {
     )
   }
 
+  if (name === 'send') {
+    return (
+      <View style={styles.send}>
+        <Iconmoon
+          iconSet={json}
+          name={'send'}
+          size={size}
+          strokeWidth={strokeWidth}
+          color={color || 'black'}
+        />
+      </View>
+    )
+  }
+
   return (
     <Iconmoon
       iconSet={json}
@@ -67,5 +81,8 @@ const styles = StyleSheet.create({
   },
   chevronRight: {
     transform: [{ rotate: '-90deg' }],
+  },
+  send: {
+    transform: [{ rotate: '45deg' }],
   },
 })

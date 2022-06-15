@@ -62,6 +62,7 @@ export const AddRate: VFC<AddRateProps> = ({ markerId, onAfterAddRate }) => {
         <Pressable style={styles.overlay} onPress={changeAnimate} />
       </BlurView>
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [expanded])
 
   return (

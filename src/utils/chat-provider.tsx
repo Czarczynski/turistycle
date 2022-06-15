@@ -9,18 +9,13 @@ import { useCurrentConversation } from '~features/chat/hooks/use-current-convers
 import { useStores } from '~hooks/use-store'
 
 import { Conversation } from '~models/conversation.model'
-import { Message } from '~models/message.model'
 
-type CurrentConversationType = {
-  conversationId: string
-  messages: Message[]
-}
 
 type ChatContextType = {
   chatList: Conversation[]
-  subscribeConversation: (conversationId: string) => Unsubscribe
-  currentConversation: CurrentConversationType
-  nextMessagePage: (conversationId: string) => Promise<void>
+  subscribeConversation: () => Unsubscribe
+  nextMessagePage: () => Promise<void>
+  sendMessage: (message: string) => Promise<void>
 }
 
 const initialState = {} as ChatContextType
@@ -37,9 +32,9 @@ export const useChat = () => useContext(ChatContext)
 
 export const ChatProvider: FC<ChatProviderProps> = observer(({ children }) => {
   const {
-    currentConversation,
     subscribeConversation,
     nextPage: nextMessagePage,
+    sendMessage,
   } = useCurrentConversation()
   const { chatList, subscribeChat } = useConversationList()
   const { global } = useStores()
@@ -52,11 +47,12 @@ export const ChatProvider: FC<ChatProviderProps> = observer(({ children }) => {
     return () => {
       unsubscribe?.()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [global.user])
 
   return (
     <ChatContextProvider
-      value={{ chatList, currentConversation, subscribeConversation, nextMessagePage }}
+      value={{ chatList, subscribeConversation, nextMessagePage, sendMessage }}
     >
       {children}
     </ChatContextProvider>

@@ -12,11 +12,9 @@ import { changeLaguage } from '~utils/i18n'
 
 import styles from './more.styles'
 
-interface MoreScreenProps {
-  title?: string
-}
+interface MoreScreenProps {}
 
-export const MoreScreen: VFC<MoreScreenProps> = observer(({ title = 'MoreScreen' }) => {
+export const MoreScreen: VFC<MoreScreenProps> = observer(() => {
   const { t } = useTranslation('more')
   const navigation = useNavigation()
   const logOut = async () => {

@@ -5,6 +5,7 @@ import { Text, View } from 'react-native'
 import { useStores } from '~hooks/use-store'
 
 import { Message as MessageModel } from '~models/message.model'
+import { User } from '~models/user.model'
 
 import styles from './message.styles'
 
@@ -23,7 +24,7 @@ export const Message: VFC<CoreMessageProps> = ({ item, next }) => {
     const { time: previousTime } = next
     showDate = item.time.diff(previousTime, ['minutes']).toObject().minutes! > 120
   }
-  return item.senderUid !== global.user.uid ? (
+  return item.senderUid !== (global.user as User).uid ? (
     <MessageLeft message={item} showDate={showDate} />
   ) : (
     <MessageRight message={item} showDate={showDate} />

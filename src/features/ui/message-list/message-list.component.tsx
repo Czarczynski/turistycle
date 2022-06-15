@@ -9,7 +9,7 @@ import styles from './message-list.styles'
 
 interface MessageListProps {
   data: MessageModel[]
-  nextPage: () => Promise<void>
+  nextPage?: () => Promise<void>
   isInputFocused?: boolean
 }
 
@@ -21,7 +21,7 @@ export const MessageList: VFC<MessageListProps> = ({ data, nextPage, isInputFocu
     if (!allMessagesLoaded) {
       try {
         setIsLoading(true)
-        await nextPage()
+        await nextPage?.()
       } catch {
         setAllMessagesLoaded(true)
       } finally {
