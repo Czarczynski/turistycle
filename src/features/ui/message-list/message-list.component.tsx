@@ -29,7 +29,7 @@ export const MessageList: VFC<MessageListProps> = ({ data, nextPage, isInputFocu
       }
     }
   }
-  return (
+  return data.length === 0 ? null : (
     <FlatList
       onEndReached={onRefresh}
       onEndReachedThreshold={0}
@@ -43,7 +43,9 @@ export const MessageList: VFC<MessageListProps> = ({ data, nextPage, isInputFocu
       ItemSeparatorComponent={Separator}
       extraData={data.length}
       showsVerticalScrollIndicator={false}
-      data={data.sort((a, b) => b.time.toSeconds() - a.time.toSeconds())}
+      data={data.sort((a, b) => {
+        return b.time.toSeconds() - a.time.toSeconds()
+      })}
       keyExtractor={(_, index) => `${index}`}
       renderItem={({ item, index }) => <Message key={index} item={item} next={data[index + 1]} />}
       inverted={true}

@@ -1,4 +1,3 @@
-import { plainToInstance } from 'class-transformer'
 import {
   Query,
   Timestamp,
@@ -17,7 +16,6 @@ import { useState } from 'react'
 
 import { useStores } from '~hooks/use-store'
 
-import { Message } from '~models/message.model'
 import { User } from '~models/user.model'
 
 type UseCurrentConversationType = {
@@ -60,7 +58,7 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
             displayName: global.user!.displayName,
           },
           text: message,
-          time: Timestamp.fromDate(new Date()),
+          time: Timestamp.now(),
         },
       })
       global.setCurrentConversationId(doc.id)
@@ -69,7 +67,7 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
     await addDoc(collectionRef, {
       senderUid: (global.user as User).uid,
       text: message,
-      time: Timestamp.fromDate(new Date()),
+      time: Timestamp.now(),
     })
   }
 
@@ -83,17 +81,14 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
     return onSnapshot(
       queryRef,
       (snapshot) => {
-        console.log('got snapshot!')
         if (isFirstCall) {
           isFirstCall = false
-          global.updateConversationMessages(
-            snapshot.docs.map((mess) => plainToInstance(Message, mess.data())),
-          )
+          global.updateConversationMessages(snapshot.docs.map((mess) => mess.data()))
           return
         }
         snapshot.docChanges().forEach((change) => {
           if (change.type === 'added') {
-            global.updateConversationMessages(plainToInstance(Message, change.doc.data()))
+            global.updateConversationMessages(change.doc.data())
           }
         })
       },

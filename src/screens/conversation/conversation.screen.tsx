@@ -39,7 +39,6 @@ export const ConversationScreen: VFC<ConversationScreenProps> = observer(
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [global.currentConversationId])
-
     return (
       <KeyboardAvoidingView
         style={styles.container}

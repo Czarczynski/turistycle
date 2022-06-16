@@ -21,8 +21,7 @@ export const AuthorizeWithBackend = async (user: User, idToken: string) => {
   await api.post(
     '/auth',
     {
-      photoURL: user.displayName,
-      displayName: user.displayName,
+      email: user.email,
     },
     {
       headers: {
