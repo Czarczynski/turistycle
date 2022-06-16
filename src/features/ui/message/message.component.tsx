@@ -32,13 +32,13 @@ export const Message: VFC<CoreMessageProps> = ({ item, next }) => {
 }
 
 const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
-  const { time, text } = message
-
+  const { time } = message
+  const isEmoji = new RegExp(/^\p{Emoji}+$/u).test(message.text)
   return (
     <View style={styles.containerLeft}>
       {showDate && <MessageTime time={time} />}
-      <View style={[styles.message, styles.messageLeft]}>
-        <Text>{text}</Text>
+      <View style={[styles.message, styles.messageLeft, isEmoji && styles.messageEmoji]}>
+        <Text style={[isEmoji && styles.textEmoji]}>{message.text}</Text>
       </View>
     </View>
   )
@@ -46,12 +46,13 @@ const MessageLeft: VFC<MessageProps> = ({ message, showDate }) => {
 
 const MessageRight: VFC<MessageProps> = ({ message, showDate }) => {
   const { time, text } = message
+  const isEmoji = new RegExp(/^\p{Emoji}+$/u).test(message.text)
 
   return (
     <View style={styles.containerRight}>
       {showDate && <MessageTime time={time} />}
-      <View style={[styles.message, styles.messageRight]}>
-        <Text style={styles.text}>{text}</Text>
+      <View style={[styles.message, styles.messageRight, isEmoji && styles.messageEmoji]}>
+        <Text style={[isEmoji && styles.textEmoji]}>{text}</Text>
       </View>
     </View>
   )

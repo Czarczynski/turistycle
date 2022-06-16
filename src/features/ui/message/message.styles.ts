@@ -25,6 +25,11 @@ export default StyleSheet.create({
     borderTopRightRadius: 0,
     backgroundColor: rgba(theme.tint, 0.2),
   },
+  messageEmoji: {
+    backgroundColor: 'transparent',
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+  },
   timeContainer: {
     marginBottom: 10,
     flexDirection: 'row',
@@ -41,5 +46,8 @@ export default StyleSheet.create({
     ...TOPOGRAPHY.paragraphXXS,
     color: theme.borderDark,
   },
-  text: {},
+  textEmoji: {
+    fontSize: 50,
+    lineHeight: 60,
+  },
 })

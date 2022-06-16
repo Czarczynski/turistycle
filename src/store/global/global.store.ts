@@ -1,3 +1,5 @@
+import { plainToInstance } from 'class-transformer'
+import { DocumentData } from 'firebase/firestore'
 import { flatten } from 'lodash'
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
 
@@ -27,8 +29,8 @@ export const GlobalStore = types
         self.currentConversationMessages = []
       }
     },
-    updateConversationMessages: (message: Message | Message[]) => {
-      const messages = flatten([message])
+    updateConversationMessages: (message: DocumentData | DocumentData[]) => {
+      const messages = plainToInstance(Message, flatten([message]))
       // @ts-ignore
       self.currentConversationMessages = [...self.currentConversationMessages, ...messages]
     },

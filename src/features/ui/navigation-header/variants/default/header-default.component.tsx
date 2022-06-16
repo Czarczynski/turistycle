@@ -19,7 +19,6 @@ export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
     progress,
     descriptor: { options },
   } = scene
-  console.log({ ...route.params })
   const corresponder = (route.params as ParamsType)?.corresponder?.displayName
   return (
     <NavigationHeader progress={progress}>
