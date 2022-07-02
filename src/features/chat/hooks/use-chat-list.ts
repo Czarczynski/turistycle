@@ -30,6 +30,13 @@ export const useConversationList = (): UseConversationList => {
             listToUpdate.push(
               plainToInstance(Conversation, { ...change.doc.data(), id: change.doc.id }),
             )
+          } else if (change.type === 'modified') {
+            listToUpdate.forEach((conv) => {
+              if (conv.id !== change.doc.id) {
+                return conv
+              }
+              return plainToInstance(Conversation, { ...change.doc.data(), id: change.doc.id })
+            })
           }
         })
         setChatList(listToUpdate)
