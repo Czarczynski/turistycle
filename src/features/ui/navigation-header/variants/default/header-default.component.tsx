@@ -6,8 +6,11 @@ import { Pressable, Text, View } from 'react-native'
 import { Icon } from '~features/ui/icon'
 import { NavigationHeader } from '~features/ui/navigation-header/navigation-header.component'
 
+import { User } from '~models/user.model'
+
 import styles from './header-default.styles'
 
+type ParamsType = { corresponder?: User } | undefined
 export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
   const { t } = useTranslation('header')
   const canGoBack = Boolean(navigation.canGoBack())
@@ -16,7 +19,7 @@ export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
     progress,
     descriptor: { options },
   } = scene
-
+  const corresponder = (route.params as ParamsType)?.corresponder?.displayName
   return (
     <NavigationHeader progress={progress}>
       <>
@@ -26,7 +29,7 @@ export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
           </Pressable>
         )}
         {!canGoBack && <View style={styles.placeholder} />}
-        <Text style={styles.title}>{t(options.title ?? route.name)}</Text>
+        <Text style={styles.title}>{corresponder ?? t(options.title ?? route.name)}</Text>
         <View style={styles.placeholder} />
       </>
     </NavigationHeader>

@@ -1,3 +1,5 @@
+import { plainToInstance } from 'class-transformer'
+import { DocumentData } from 'firebase/firestore'
 import { flatten } from 'lodash'
 import { Instance, SnapshotOut, types } from 'mobx-state-tree'
 
@@ -12,7 +14,7 @@ export const GlobalStore = types
   .model('global', {
     user: types.maybeNull(types.frozen<User>()),
     currentConversationId: types.maybeNull(types.string),
-    currentConversationMessages: types.array(types.frozen<Message>()),
+    currentConversationMessages: types.optional(types.array(types.frozen<Message>()), []),
   })
   .props({})
   .views(() => ({}))
@@ -22,11 +24,13 @@ export const GlobalStore = types
     },
     setCurrentConversationId: (currentConversationId: string | null) => {
       self.currentConversationId = currentConversationId
-      // @ts-ignore
-      self.currentConversationMessages = []
+      if (currentConversationId === null) {
+        // @ts-ignore
+        self.currentConversationMessages = []
+      }
     },
-    updateConversationMessages: (message: Message | Message[]) => {
-      const messages = flatten([message])
+    updateConversationMessages: (message: DocumentData | DocumentData[]) => {
+      const messages = plainToInstance(Message, flatten([message]))
       // @ts-ignore
       self.currentConversationMessages = [...self.currentConversationMessages, ...messages]
     },

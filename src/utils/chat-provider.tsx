@@ -14,7 +14,7 @@ type ChatContextType = {
   chatList: Conversation[]
   subscribeConversation: () => Unsubscribe
   nextMessagePage: () => Promise<void>
-  sendMessage: (message: string) => Promise<void>
+  sendMessage: (message: string, corresponderUid?: string) => Promise<void>
 }
 
 const initialState = {} as ChatContextType
@@ -37,6 +37,7 @@ export const ChatProvider: FC<ChatProviderProps> = observer(({ children }) => {
   useEffect(() => {
     let unsubscribe: Unsubscribe | undefined
     if (global.user) {
+      global.setCurrentConversationId(null)
       unsubscribe = subscribeChat()
     }
     return () => {

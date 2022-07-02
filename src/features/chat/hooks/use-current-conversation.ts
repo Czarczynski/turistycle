@@ -1,4 +1,3 @@
-import { plainToInstance } from 'class-transformer'
 import {
   Query,
   Timestamp,
@@ -17,13 +16,12 @@ import { useState } from 'react'
 
 import { useStores } from '~hooks/use-store'
 
-import { Message } from '~models/message.model'
 import { User } from '~models/user.model'
 
 type UseCurrentConversationType = {
   nextPage: () => Promise<void>
   subscribeConversation: () => Unsubscribe
-  sendMessage: (message: string) => Promise<void>
+  sendMessage: (message: string, corresponderUid?: string) => Promise<void>
 }
 
 export const useCurrentConversation = (): UseCurrentConversationType => {
@@ -48,12 +46,28 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
     setNextQuery(next)
   }
 
-  const sendMessage = async (message: string) => {
+  const sendMessage = async (message: string, corresponderUid?: string) => {
+    if (!global.currentConversationId) {
+      const collectionRef = collection(firestore, 'chat')
+      const doc = await addDoc(collectionRef, {
+        users: [global.user!.uid, corresponderUid],
+        lastMessage: {
+          from: {
+            uid: global.user!.uid,
+            photoURL: global.user!.photoURL,
+            displayName: global.user!.displayName,
+          },
+          text: message,
+          time: Timestamp.now(),
+        },
+      })
+      global.setCurrentConversationId(doc.id)
+    }
     const collectionRef = collection(firestore, 'chat', global.currentConversationId!, 'messages')
     await addDoc(collectionRef, {
       senderUid: (global.user as User).uid,
       text: message,
-      time: Timestamp.fromDate(new Date()),
+      time: Timestamp.now(),
     })
   }
 
@@ -69,14 +83,12 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
       (snapshot) => {
         if (isFirstCall) {
           isFirstCall = false
-          global.updateConversationMessages(
-            snapshot.docs.map((mess) => plainToInstance(Message, mess.data())),
-          )
+          global.updateConversationMessages(snapshot.docs.map((mess) => mess.data()))
           return
         }
         snapshot.docChanges().forEach((change) => {
           if (change.type === 'added') {
-            global.updateConversationMessages(plainToInstance(Message, change.doc.data()))
+            global.updateConversationMessages(change.doc.data())
           }
         })
       },

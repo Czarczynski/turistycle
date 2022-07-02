@@ -39,7 +39,7 @@ export const useConversationList = (): UseConversationList => {
             })
           }
         })
-        setChatList(listToUpdate)
+        setChatList(plainToInstance(Conversation, listToUpdate))
       },
       (error) => {
         console.log({ error })
