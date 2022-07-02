@@ -1,6 +1,5 @@
 import GeoJSON from 'geojson'
 import React, { VFC, useMemo, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
 import MapView, { Geojson, Marker } from 'react-native-maps'
 
@@ -18,7 +17,6 @@ interface TripPreviewProps {
 }
 
 export const TripPreview: VFC<TripPreviewProps> = ({ trip }) => {
-  const { t } = useTranslation('trip-preview')
   const navigation = useNavigation()
   const ref = useRef<MapView>(null)
   const coordinates = useMemo(

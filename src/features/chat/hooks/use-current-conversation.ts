@@ -65,7 +65,7 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
       })
       global.setCurrentConversationId(doc.id)
     } else {
-      const docRef = doc(firestore, 'chat', global.currentConversationId!)
+      const docRef = doc(firestore, 'chat', global.currentConversationId)
       await setDoc(
         docRef,
         {

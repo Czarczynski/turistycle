@@ -1,4 +1,3 @@
-import { color } from '@storybook/addon-knobs'
 import { StyleSheet } from 'react-native'
 
 import { theme } from '~styles/theme'
@@ -23,7 +22,7 @@ export default StyleSheet.create({
     top: -16,
     borderRadius: 10,
     padding: 16,
-    paddingBottom:0,
+    paddingBottom: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: theme.background,

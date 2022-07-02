@@ -1,5 +1,4 @@
 import React, { VFC } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Image, Pressable, Text, View } from 'react-native'
 
 import { User } from '~models/user.model'
@@ -12,8 +11,6 @@ interface UserRowProps {
 }
 
 export const UserRow: VFC<UserRowProps> = ({ user, onPress }) => {
-  const { t } = useTranslation('user-row')
-
   return (
     <Pressable style={styles.container} onPress={onPress}>
       {Boolean(user.photoURL) && <Image style={styles.image} source={{ uri: user.photoURL! }} />}

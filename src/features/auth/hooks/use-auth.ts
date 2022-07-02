@@ -1,4 +1,4 @@
-import { ResponseType, makeRedirectUri, useAutoDiscovery } from 'expo-auth-session'
+import { ResponseType, makeRedirectUri } from 'expo-auth-session'
 import { useAuthRequest } from 'expo-auth-session/providers/google'
 import * as WebBrowser from 'expo-web-browser'
 import { GoogleAuthProvider, getAuth, signInWithCredential } from 'firebase/auth'
@@ -13,7 +13,7 @@ type useAuthType = [() => void]
 
 export const useGoogleLogIn = (global: Global): useAuthType => {
   const useProxy = Platform.select({ web: false, default: true })
-  const discovery = useAutoDiscovery('https://accounts.google.com')
+  // const discovery = useAutoDiscovery('https://accounts.google.com')
   const [, response, promptAsync] = useAuthRequest({
     expoClientId: '675432498642-vee5n2nr4tl3buf7p1fak758uhbdan1u.apps.googleusercontent.com',
     clientId: '675432498642-vee5n2nr4tl3buf7p1fak758uhbdan1u.apps.googleusercontent.com',

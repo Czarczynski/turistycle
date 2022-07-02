@@ -3,8 +3,8 @@ import { FlatList, View } from 'react-native'
 
 import { UserRow } from '~features/ui/user-row'
 
-import { useStores } from '~hooks/use-store'
 import useNavigation from '~hooks/use-navigation'
+import { useStores } from '~hooks/use-store'
 import { useChat } from '~utils/chat-provider'
 
 import { User } from '~models/user.model'

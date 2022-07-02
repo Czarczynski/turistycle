@@ -1,2 +1,2 @@
-export const compareObjects = (first: Object, second: Object): boolean =>
+export const compareObjects = (first: unknown, second: unknown): boolean =>
   JSON.stringify(first) === JSON.stringify(second)
