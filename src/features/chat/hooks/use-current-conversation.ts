@@ -4,12 +4,14 @@ import {
   Unsubscribe,
   addDoc,
   collection,
+  doc,
   getDocs,
   getFirestore,
   limit,
   onSnapshot,
   orderBy,
   query,
+  setDoc,
   startAfter,
 } from 'firebase/firestore'
 import { useState } from 'react'
@@ -62,6 +64,23 @@ export const useCurrentConversation = (): UseCurrentConversationType => {
         },
       })
       global.setCurrentConversationId(doc.id)
+    } else {
+      const docRef = doc(firestore, 'chat', global.currentConversationId)
+      await setDoc(
+        docRef,
+        {
+          lastMessage: {
+            from: {
+              uid: global.user!.uid,
+              photoURL: global.user!.photoURL,
+              displayName: global.user!.displayName,
+            },
+            text: message,
+            time: Timestamp.now(),
+          },
+        },
+        { merge: true },
+      )
     }
     const collectionRef = collection(firestore, 'chat', global.currentConversationId!, 'messages')
     await addDoc(collectionRef, {

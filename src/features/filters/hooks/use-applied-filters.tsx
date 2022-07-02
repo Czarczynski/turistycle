@@ -3,14 +3,15 @@ import { useEffect, useState } from 'react'
 import { initialFiltersState } from '~features/filters/states/filters.state'
 import { CurrentFiltersType } from '~features/filters/types/current-filters.type'
 
+import { compareObjects } from '~utils/helpers'
+
 export const useAppliedFilters = (filters: CurrentFiltersType): [boolean, string[]] => {
   const [changedFilters, setChangedFilters] = useState<string[]>([])
   const hasCategoriesFilter = Boolean(filters.categories.length)
   const hasCitiesAroundFilter = Boolean(filters.citiesAround.length)
   const hasTagsFilter = Boolean(filters.tags.length)
-  const hasDistanceFilter = Boolean(
-    JSON.stringify(filters.distance) !== JSON.stringify(initialFiltersState.distance),
-  )
+  const hasDistanceFilter = !compareObjects(filters.distance, initialFiltersState.distance)
+
   const hasAnyFilters = Boolean(
     hasCategoriesFilter || hasCitiesAroundFilter || hasTagsFilter || hasDistanceFilter,
   )

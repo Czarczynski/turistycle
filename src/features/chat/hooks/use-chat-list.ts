@@ -17,7 +17,7 @@ export const useConversationList = (): UseConversationList => {
   const [chatList, setChatList] = useState<Conversation[]>([])
   const firestore = getFirestore()
   const subscribeChat = () => {
-    const listToUpdate: Conversation[] = []
+    let listToUpdate: Conversation[] = []
     const collectionRef = collection(firestore, 'chat')
     const whereRef = where('users', 'array-contains', (global.user as User).uid)
     const queryRef = query(collectionRef, whereRef)
@@ -31,7 +31,7 @@ export const useConversationList = (): UseConversationList => {
               plainToInstance(Conversation, { ...change.doc.data(), id: change.doc.id }),
             )
           } else if (change.type === 'modified') {
-            listToUpdate.forEach((conv) => {
+            listToUpdate = listToUpdate.map((conv) => {
               if (conv.id !== change.doc.id) {
                 return conv
               }
@@ -39,7 +39,7 @@ export const useConversationList = (): UseConversationList => {
             })
           }
         })
-        setChatList(plainToInstance(Conversation, listToUpdate))
+        setChatList(listToUpdate)
       },
       (error) => {
         console.log({ error })

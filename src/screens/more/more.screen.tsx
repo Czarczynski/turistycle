@@ -7,7 +7,7 @@ import { ScrollView, View } from 'react-native'
 import { ButtonSecondaryReversed } from '~features/ui/button'
 import { MoreRow } from '~features/ui/more-row'
 
-import useNavigation from '~hooks/useNavigation'
+import useNavigation from '~hooks/use-navigation'
 import { changeLaguage } from '~utils/i18n'
 
 import styles from './more.styles'

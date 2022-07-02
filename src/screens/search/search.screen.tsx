@@ -9,6 +9,7 @@ import { Filters } from '~features/ui/filters'
 import { TripList } from '~features/ui/trip-list'
 
 import { useStores } from '~hooks/use-store'
+import { compareObjects } from '~utils/helpers'
 
 import { User } from '~models/user.model'
 
@@ -27,9 +28,11 @@ export const SearchScreen: VFC<SearchScreenProps> = observer(() => {
 
   const onApplyFilters = (_filters: CurrentFiltersType) => {
     {
-      searchFilters.setFilters(_filters)
-      mutate(undefined)
       searchFilters.setIsFilterModalVisible(false)
+      if (!compareObjects(_filters, searchFilters.filters)) {
+        searchFilters.setFilters(_filters)
+        mutate(undefined)
+      }
     }
   }
   return (

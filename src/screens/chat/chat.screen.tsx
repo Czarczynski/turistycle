@@ -6,7 +6,7 @@ import { ButtonFloating } from '~features/ui/button'
 import { ConversationList } from '~features/ui/conversation-list'
 import { Icon } from '~features/ui/icon'
 
-import useNavigation from '~hooks/useNavigation'
+import useNavigation from '~hooks/use-navigation'
 import { useChat } from '~utils/chat-provider'
 
 import styles from './chat.styles'

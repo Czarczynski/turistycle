@@ -1,10 +1,11 @@
 import GeoJSON from 'geojson'
 import React, { VFC, useMemo, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
 import MapView, { Geojson, Marker } from 'react-native-maps'
 
-import useNavigation from '~hooks/useNavigation'
+import { Icon } from '~features/ui/icon'
+
+import useNavigation from '~hooks/use-navigation'
 import { COLORS } from '~styles/colors'
 
 import { Trip } from '~models/trip.model'
@@ -16,7 +17,6 @@ interface TripPreviewProps {
 }
 
 export const TripPreview: VFC<TripPreviewProps> = ({ trip }) => {
-  const { t } = useTranslation('trip-preview')
   const navigation = useNavigation()
   const ref = useRef<MapView>(null)
   const coordinates = useMemo(
@@ -29,7 +29,8 @@ export const TripPreview: VFC<TripPreviewProps> = ({ trip }) => {
   )
   const fitToCoords = () => {
     ref.current?.fitToCoordinates(coordinates, {
-      edgePadding: { top: 16, bottom: 16, left: 16, right: 16 },
+      edgePadding: { top: 16, bottom: 32, left: 16, right: 16 },
+      animated: false,
     })
   }
   return (
@@ -53,7 +54,13 @@ export const TripPreview: VFC<TripPreviewProps> = ({ trip }) => {
         <Marker coordinate={coordinates[coordinates.length - 1]} />
       </MapView>
       <View style={styles.innerContainer}>
-        <Text style={styles.title}>{trip.name}</Text>
+        <View style={styles.left}>
+          <Text style={styles.title}>{trip.name}</Text>
+          <Text style={styles.distance}>{trip.length / 1000}km</Text>
+        </View>
+        <View style={styles.right}>
+          <Icon name={'chevron-right'} color={styles.icon.color} size={styles.icon.width} />
+        </View>
       </View>
     </Pressable>
   )
