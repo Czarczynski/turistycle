@@ -27,13 +27,15 @@ export const useConversationList = (): UseConversationList => {
       (snapshot) => {
         snapshot.docChanges().forEach((change) => {
           if (change.type === 'added') {
-            listToUpdate.push({ ...(change.doc.data() as Conversation), id: change.doc.id })
+            listToUpdate.push(
+              plainToInstance(Conversation, { ...change.doc.data(), id: change.doc.id }),
+            )
           } else if (change.type === 'modified') {
-            listToUpdate.map((item) => {
-              if (item.id === change.doc.id) {
-                item.lastMessage = (change.doc.data() as Conversation).lastMessage
+            listToUpdate.forEach((conv) => {
+              if (conv.id !== change.doc.id) {
+                return conv
               }
-              return item
+              return plainToInstance(Conversation, { ...change.doc.data(), id: change.doc.id })
             })
           }
         })
