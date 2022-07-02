@@ -2,7 +2,7 @@ import React, { VFC } from 'react'
 import { Text } from 'react-native'
 import { Callout } from 'react-native-maps'
 
-import useNavigation from '~hooks/useNavigation'
+import useNavigation from '~hooks/use-navigation'
 
 import { Marker } from '~models/marker.model'
 

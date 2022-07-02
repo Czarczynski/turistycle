@@ -8,7 +8,7 @@ import { ButtonSocialIcon } from '~features/ui/button'
 
 import useIsMount from '~hooks/use-is-mount'
 import { useStores } from '~hooks/use-store'
-import useNavigation from '~hooks/useNavigation'
+import useNavigation from '~hooks/use-navigation'
 
 import styles from './login.styles'
 

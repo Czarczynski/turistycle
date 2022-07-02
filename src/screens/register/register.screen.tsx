@@ -3,7 +3,7 @@ import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button, Text, View } from 'react-native'
 
-import useNavigation from '~hooks/useNavigation'
+import useNavigation from '~hooks/use-navigation'
 
 import styles from './register.styles'
 

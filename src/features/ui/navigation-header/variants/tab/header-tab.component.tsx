@@ -6,7 +6,7 @@ import { Pressable, Text, View } from 'react-native'
 import { Icon } from '~features/ui/icon'
 import { NavigationHeader } from '~features/ui/navigation-header/navigation-header.component'
 
-import useNavigation from '~hooks/useNavigation'
+import useNavigation from '~hooks/use-navigation'
 
 import styles from './header-tab.styles'
 

@@ -2,7 +2,7 @@ import React, { VFC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Image, Pressable, Text, View } from 'react-native'
 
-import useNavigation from '~hooks/useNavigation'
+import useNavigation from '~hooks/use-navigation'
 
 import { Conversation as ConversationModel } from '~models/conversation.model'
 import { User } from '~models/user.model'
