@@ -19,6 +19,8 @@ export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
     progress,
     descriptor: { options },
   } = scene
+
+  const isTroubleshootingScreen = Boolean((options.title ?? route.name) === 'Troubleshooting')
   const corresponder = (route.params as ParamsType)?.corresponder?.displayName
   return (
     <NavigationHeader progress={progress}>
@@ -30,7 +32,12 @@ export const HeaderDefault: VFC<StackHeaderProps> = ({ navigation, scene }) => {
         )}
         {!canGoBack && <View style={styles.placeholder} />}
         <Text style={styles.title}>{corresponder ?? t(options.title ?? route.name)}</Text>
-        <View style={styles.placeholder} />
+        {isTroubleshootingScreen && (
+          <Pressable onPress={() => navigation.navigate('NewTroubleshooting')}>
+            <Icon name={'plus'} color={styles.icon.color} />
+          </Pressable>
+        )}
+        {!isTroubleshootingScreen && <View style={styles.placeholder} />}
       </>
     </NavigationHeader>
   )

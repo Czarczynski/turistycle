@@ -7,7 +7,9 @@
     "Saved": "Zapisane",
     "More": "Więcej",
     "Chat": "Czat",
-    "Conversation": "Konwersacja"
+    "Conversation": "Konwersacja",
+    "Troubleshooting": "Problemy",
+    "NewTroubleshooting": "Nowy problem"
   },
   "conversation-preview": {
     "you": "Ty: "
@@ -77,5 +79,16 @@
   },
   "message-input": {
     "placeholder": "Wiadomość"
+  },
+  "new-troubleshooting": {
+    "send": "Wyślij ",
+    "title": "Tytuł",
+    "description": "Opis"
+  },
+  "my-toast": {
+    "success": "Udało się!",
+    "thank-you": "Dziękujemy!",
+    "issue-created": "Sprawa została poprawnie dodana",
+    "error": "Wystąpił błąd"
   }
 }

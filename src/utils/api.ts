@@ -1,8 +1,10 @@
 import { create } from 'apisauce'
 import { CancelToken } from 'axios'
+import { plainToInstance } from 'class-transformer'
 
 import { CurrentFiltersType } from '~features/filters/types/current-filters.type'
 
+import { GithubIssue } from '~models/github-issue.model'
 import { Marker, Rate } from '~models/marker.model'
 import { Trip } from '~models/trip.model'
 import { User } from '~models/user.model'
@@ -43,6 +45,35 @@ export const FetchUsers = async (idToken: string): Promise<User[]> => {
       },
     )
   ).data as User[]
+}
+
+export const FetchGithubIssues = async (idToken: string): Promise<GithubIssue[]> => {
+  const issues = (
+    await api.get(
+      '/github',
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${idToken.toString()}`,
+        },
+      },
+    )
+  ).data as GithubIssue[]
+  return plainToInstance(GithubIssue, issues)
+}
+
+export const PostGithubIssue = async (
+  idToken: string,
+  body: { title: string; body: string },
+): Promise<GithubIssue[]> => {
+  const issues = (
+    await api.post('/github', body, {
+      headers: {
+        Authorization: `Bearer ${idToken.toString()}`,
+      },
+    })
+  ).data as GithubIssue[]
+  return plainToInstance(GithubIssue, issues)
 }
 
 export const FetchTrips = async (

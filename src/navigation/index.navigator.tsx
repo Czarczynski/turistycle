@@ -15,8 +15,10 @@ import RootNavigator, { RootTabParamList } from '~navigation/root.navigator'
 import { MapRideScreen } from '~screens/map-ride'
 import { MapSubmitScreen } from '~screens/map-submit'
 import { MarkerDetailsScreen } from '~screens/marker-details'
+import { NewTroubleshootingScreen } from '~screens/new-troubleshooting'
 import { ProfileScreen } from '~screens/profile'
 import { TraceScreen } from '~screens/trace'
+import { TroubleshootingScreen } from '~screens/troubleshooting'
 import { WebViewScreen } from '~screens/web-view'
 
 import { HeaderCard, HeaderDefault } from '~features/ui/navigation-header'
@@ -38,6 +40,8 @@ export type RootStackParamList = {
   WebView: { uri: string }
   Storybook: undefined
   MarkerDetails: { markerId: string }
+  Troubleshooting: undefined
+  NewTroubleshooting: undefined
 }
 
 export type RootStackNavigationProps = StackNavigationProp<RootStackParamList>
@@ -71,6 +75,8 @@ export default observer(() => {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Troubleshooting" component={TroubleshootingScreen} />
+        <Stack.Screen name="NewTroubleshooting" component={NewTroubleshootingScreen} />
         <Stack.Screen name="MapSubmit" component={MapSubmitScreen} />
         <Stack.Screen name="MapRide" component={MapRideScreen} />
         <Stack.Screen
