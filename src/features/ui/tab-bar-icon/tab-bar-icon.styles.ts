@@ -19,7 +19,7 @@ export default StyleSheet.create({
   },
   icon: { color: theme.text },
   title: {
-    ...TOPOGRAPHY.labelS,
+    ...TOPOGRAPHY.labelXXS,
     color: theme.text,
   },
 })
