@@ -18,9 +18,9 @@ interface TabBarIconProps {
 
 const mapIcons: { [title: string]: keyof typeof icomoons | keyof typeof icons } = {
   HomeTab: 'home',
-  SearchTab: 'find',
-  MapTab: 'map-pin',
-  SavedTab: 'bell',
+  SearchTab: 'loop',
+  MapTab: 'pin',
+  SavedTab: 'heart',
   MoreTab: 'hamburger',
 }
 
@@ -33,7 +33,7 @@ export const TabBarIcon: VFC<TabBarIconProps> = ({ title, focused }) => {
           name={mapIcons[title]}
           color={styles.icon.color}
           size={focused ? 30 : 22}
-          strokeWidth={3}
+          strokeWidth={5}
         />
       </Animated.View>
       {!focused && <Text style={styles.title}>{t(title)}</Text>}

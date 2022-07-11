@@ -20,9 +20,10 @@ export const ChatScreen: VFC<ChatScreenProps> = observer(() => {
     <View style={styles.container}>
       <ConversationList data={chatList} />
       <ButtonFloating
+        style={styles.button}
         onPress={() => navigation.navigate('ChatNavigator', { screen: 'NewConversation' })}
       >
-        {({ iconColor }) => <Icon name={'edit'} color={iconColor} />}
+        {({ iconColor }) => <Icon name={'edit'} color={iconColor} size={25} />}
       </ButtonFloating>
     </View>
   )
