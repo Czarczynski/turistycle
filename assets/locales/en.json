@@ -7,7 +7,9 @@
     "Saved": "Saved",
     "More": "More",
     "Chat": "Chat",
-    "Conversation": "Conversation"
+    "Conversation": "Conversation",
+    "Troubleshooting": "Troubleshooting",
+    "NewTroubleshooting": "New issue"
   },
   "conversation-preview": {
     "you": "You: "
@@ -77,5 +79,16 @@
   },
   "message-input": {
     "placeholder": "Message"
+  },
+  "new-troubleshooting": {
+    "send": "Send Issue",
+    "title": "Title",
+    "description": "Description"
+  },
+  "my-toast": {
+    "success": "Success!",
+    "thank-you": "Thank you!",
+    "issue-created": "Issue has been created succesfully",
+    "error": "Got some problem"
   }
 }

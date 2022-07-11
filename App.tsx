@@ -5,7 +5,7 @@ import { LogBox, Platform, UIManager } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryClientProvider } from 'react-query'
 import 'reflect-metadata'
-
+import Toast from 'react-native-toast-message'
 import Navigation from '~navigation/index.navigator'
 import { RootStoreProvider } from '~store/root-context.store'
 
@@ -14,6 +14,7 @@ import '~utils/i18n'
 import { queryClient } from '~utils/react-query'
 
 import useCachedResources from './src/hooks/use-cached-resources'
+import {toastConfig} from "~utils/toast";
 
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true)
@@ -29,7 +30,8 @@ export default function App() {
         <RootStoreProvider value={rootStore}>
           <ChatProvider>
             <SafeAreaProvider>
-              <Navigation />
+                <Navigation />
+              <Toast config={toastConfig}/>
             </SafeAreaProvider>
           </ChatProvider>
         </RootStoreProvider>
