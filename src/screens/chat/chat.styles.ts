@@ -13,10 +13,10 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: theme.text,
-  }, button: {
-    aspectRatio:1,
-    paddingRight:18,
-    paddingBottom:18,
-  }
-
+  },
+  button: {
+    aspectRatio: 1,
+    paddingRight: 18,
+    paddingBottom: 18,
+  },
 })
