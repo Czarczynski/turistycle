@@ -42,7 +42,7 @@ export const MessageInput = React.forwardRef<TextInput, MessageInputProps>(
       } else {
         onPress(value.trim())
       }
-      onChangeText('')
+      _onChangeText('')
     }
 
     return (

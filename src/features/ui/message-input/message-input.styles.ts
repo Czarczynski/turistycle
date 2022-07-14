@@ -33,7 +33,7 @@ export default StyleSheet.create({
     width: 52,
   },
   icon: {
-    color: theme.text,
+    color: theme.tint,
     fontSize: 50,
     lineHeight: 50,
   },
