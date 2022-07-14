@@ -28,7 +28,7 @@ export const IssueList: VFC<IssueListProps> = ({ data, isLoading }) => {
 }
 const Header = () => (
   <View style={styles.header}>
-    <Icon name={'repeat'} color={styles.headerIcon.color} />
+    <Icon name={'warning'} color={styles.headerIcon.color} size={35} />
     <Text style={styles.headerText}>
       Take a look on exising issues.{'\n'}Maybe you will find something simillar
     </Text>

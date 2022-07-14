@@ -7,6 +7,8 @@ import { IconHeart } from '~assets/icons/heart.icon'
 import { IconHome } from '~assets/icons/home.icon'
 import { IconLoop } from '~assets/icons/loop.icon'
 import { IconPin } from '~assets/icons/pin.icon'
+import { IconSend } from '~assets/icons/send.icon'
+import { IconWarning } from '~assets/icons/warning.icon'
 
 export default {
   facebook: (size?: number) => IconFacebook({ size }),
@@ -19,6 +21,8 @@ export default {
   heart: (size?: number, stroke?: number, color?: string) => IconHeart({ size, stroke, color }),
   loop: (size?: number, stroke?: number, color?: string) => IconLoop({ size, stroke, color }),
   pin: (size?: number, stroke?: number, color?: string) => IconPin({ size, stroke, color }),
+  warning: (size?: number, stroke?: number, color?: string) => IconWarning({ size, stroke, color }),
+  send: (size?: number, stroke?: number, color?: string) => IconSend({ size, stroke, color }),
   hamburger: (size?: number, stroke?: number, color?: string) =>
     IconHamburger({ size, stroke, color }),
 }
