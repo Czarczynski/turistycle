@@ -1,8 +1,10 @@
 import _ from 'lodash'
 import React, { VFC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ActivityIndicator, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+
+import { SkeletonMarkerDetails } from '~screens/marker-details/marker-details.skeleton'
 
 import { useMarker } from '~features/markers/hooks/use-marker'
 import { AddRate } from '~features/ui/add-rate'
@@ -35,7 +37,7 @@ export const MarkerDetailsScreen: VFC<MarkerDetailsScreenProps> = ({ markerId })
       <View style={styles.dragger} />
       <View style={styles.contentContainer}>
         {isLoading || !marker ? (
-          <ActivityIndicator />
+          <SkeletonMarkerDetails />
         ) : (
           <>
             <Text style={styles.title}>{marker.name}</Text>
