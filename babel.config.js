@@ -3,6 +3,7 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      'inline-dotenv',
       [
         '@babel/plugin-proposal-decorators',
         {
@@ -27,7 +28,7 @@ module.exports = function (api) {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
       ],
-      ["@babel/plugin-proposal-optional-catch-binding"],
+      ['@babel/plugin-proposal-optional-catch-binding'],
     ],
   }
 }
