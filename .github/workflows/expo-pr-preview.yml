@@ -8,11 +8,17 @@ jobs:
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v2
+      - name: Set env
+        run: |
+          echo "
+          export const PREFIX_URI = '${{ secrets.PREFIX_URI }}'
+          export const GOOGLE_API_KEY = '${{ secrets.GOOGLE_API_KEY }}'
+          " > src/configs/env.ts
 
       - name: Add env
         run: |
-          echo "export const PREFIX_URI = '${{secrets.PREFIX_URI}}'
-          export const GOOGLE_API_KEY = '${{secrets.GOOGLE_API_KEY}}'" > src/configs/env.ts
+          echo "PREFIX_URI=${{secrets.PREFIX_URI}}
+          GOOGLE_API_KEY=${{secrets.GOOGLE_API_KEY}}" > .env
 
       - name: 🏗 Setup Node
         uses: actions/setup-node@v2

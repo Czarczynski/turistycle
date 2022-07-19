@@ -69,7 +69,7 @@
     "expo-status-bar": "~1.2.0",
     "expo-updates": "~0.11.7",
     "expo-web-browser": "~10.1.0",
-    "firebase": "^9.6.11",
+    "firebase": "^9.2.0",
     "i18next": "^21.6.16",
     "immer": "^9.0.14",
     "intl": "^1.2.5",

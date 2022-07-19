@@ -1,38 +1,33 @@
-import { useNavigation } from '@react-navigation/native'
 import { observer } from 'mobx-react-lite'
 import React, { VFC } from 'react'
-import { Button, Text, View } from 'react-native'
+import { FlatList, ImageBackground, ScrollView, View } from 'react-native'
 
-import { Icon } from '~features/ui/icon'
+import ImageBg from '~assets/images/bg.png'
+
+import { CardHome } from '~features/ui/card-home'
+import { CardLong } from '~features/ui/card-long'
 
 import styles from './home.styles'
 
-interface HomeScreenProps {
-  title?: string
-}
+interface HomeScreenProps {}
 
-export const HomeScreen: VFC<HomeScreenProps> = observer(({ title = 'HomeScreen' }) => {
-  const navigation = useNavigation()
-
+export const HomeScreen: VFC<HomeScreenProps> = observer(() => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <Button title={'Go Storybook'} onPress={() => navigation.navigate('Storybook')} />
-      <View style={{ backgroundColor: 'yellow' }}>
-        <Icon name={'home'} size={50} />
-      </View>
-      <View style={{ backgroundColor: 'yellow' }}>
-        <Icon name={'heart'} size={50} />
-      </View>
-      <View style={{ backgroundColor: 'yellow' }}>
-        <Icon name={'loop'} size={50} />
-      </View>
-      <View style={{ backgroundColor: 'yellow' }}>
-        <Icon name={'pin'} size={50} />
-      </View>
-      <View style={{ backgroundColor: 'yellow' }}>
-        <Icon name={'hamburger'} size={30} />
-      </View>
-    </View>
+    <ImageBackground style={styles.container} source={ImageBg}>
+      <ScrollView contentContainerStyle={styles.innerContainer}>
+        <CardLong />
+        <FlatList
+          keyExtractor={(item) => `${item}`}
+          data={[0, 1]}
+          style={styles.list}
+          contentContainerStyle={styles.listContainer}
+          horizontal
+          renderItem={({ item }) => <CardHome key={item} />}
+          ItemSeparatorComponent={Separator}
+          showsHorizontalScrollIndicator={false}
+        />
+      </ScrollView>
+    </ImageBackground>
   )
 })
+const Separator = () => <View style={styles.separator} />

@@ -12,7 +12,7 @@ import styles from './new-troubleshooting.styles'
 interface NewTroubleshootingScreenProps {}
 
 export const NewTroubleshootingScreen: VFC<NewTroubleshootingScreenProps> = () => {
-  const { mutateAsync } = useSendNewTroubleshooting(getAuth().currentUser!)
+  const { mutateAsync, isLoading } = useSendNewTroubleshooting(getAuth().currentUser!)
   const [form, setForm] = useState({
     title: '',
     body: '',
@@ -20,7 +20,7 @@ export const NewTroubleshootingScreen: VFC<NewTroubleshootingScreenProps> = () =
   const { t } = useTranslation('new-troubleshooting')
   const validator = (text: string) => Boolean(text && text.trim())
 
-  const isButtonDisabled = !validator(form.title) || !validator(form.body)
+  const isButtonDisabled = !validator(form.title) || !validator(form.body) || isLoading
 
   const sendIssue = async () => {
     await mutateAsync(form)

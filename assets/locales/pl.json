@@ -75,7 +75,7 @@
     }
   },
   "web-view": {
-    "info": "https://google.com"
+    "info": "https://api-turistycle.herokuapp.com/api/about?lang=pl"
   },
   "message-input": {
     "placeholder": "Wiadomość"

@@ -1,5 +1,4 @@
-import { PREFIX_URI } from '~configs/env'
-
+const PREFIX_URI = process.env.PREFIX_URI!
 export interface ApiConfig {
   baseURL: string
   timeout: number
