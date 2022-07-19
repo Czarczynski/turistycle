@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
+        run: |
+          echo "export const PREFIX_URI = '${{ secrets.PREFIX_URI }}' \n export const GOOGLE_API_KEY = '${{ secrets.GOOGLE_API_KEY }}'" > ../../src/configs/env.ts
+          
+          
 
       - name: 🏗 Setup Expo
         uses: expo/expo-github-action@v7

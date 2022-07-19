@@ -75,7 +75,7 @@
     }
   },
   "web-view": {
-    "info": "https://google.com"
+    "info": "https://api-turistycle.herokuapp.com/api/about"
   },
   "message-input": {
     "placeholder": "Message"
@@ -90,5 +90,10 @@
     "thank-you": "Thank you!",
     "issue-created": "Issue has been created succesfully",
     "error": "Got some problem"
+  },
+  "card-long": {
+    "welcome": "Welcome back!",
+    "ready-for-cycling": "Ready for cycling?",
+    "take-a-look": "Take a look at new traces"
   }
 }

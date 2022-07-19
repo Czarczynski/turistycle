@@ -6,6 +6,7 @@ import { IconHamburger } from '~assets/icons/hamburger.icon'
 import { IconHeart } from '~assets/icons/heart.icon'
 import { IconHome } from '~assets/icons/home.icon'
 import { IconLoop } from '~assets/icons/loop.icon'
+import { IconMan } from '~assets/icons/man.icon'
 import { IconPin } from '~assets/icons/pin.icon'
 import { IconSend } from '~assets/icons/send.icon'
 import { IconWarning } from '~assets/icons/warning.icon'
@@ -23,6 +24,7 @@ export default {
   pin: (size?: number, stroke?: number, color?: string) => IconPin({ size, stroke, color }),
   warning: (size?: number, stroke?: number, color?: string) => IconWarning({ size, stroke, color }),
   send: (size?: number, stroke?: number, color?: string) => IconSend({ size, stroke, color }),
+  man: (size?: number) => IconMan({ size }),
   hamburger: (size?: number, stroke?: number, color?: string) =>
     IconHamburger({ size, stroke, color }),
 }

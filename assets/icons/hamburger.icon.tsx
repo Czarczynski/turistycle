@@ -8,9 +8,9 @@ interface IconProps {
   color?: string
 }
 export const IconHamburger: VFC<IconProps> = ({ size = 15, color = 'black', stroke = 5 }) => (
-  <Svg width={(66/55) * size} height={size} fill="none" preserveAspectRatio="xMinYMin slice" viewBox="0 0 66 55">
+  <Svg width={size} height={size} fill="none" preserveAspectRatio="xMinYMin slice" viewBox="0 0 50 50">
     <Path
-      d="M3 7h59M3 26h59M3 44h59"
+      d="M7 12h35M7 24.838h35M7 37h35"
       stroke={color}
       strokeWidth={stroke}
       strokeLinecap="round"
