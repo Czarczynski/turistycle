@@ -11,6 +11,8 @@ export default StyleSheet.create({
   },
   containerInactive: {
     opacity: 0.4,
+
+    backgroundColor: undefined
   },
   iconWrapper: {
     marginTop: 8,
