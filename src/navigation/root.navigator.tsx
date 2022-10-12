@@ -46,8 +46,7 @@ export default function RootNavigator() {
       tabBarOptions={{
         activeTintColor: theme.primary,
         showLabel: false,
-
-        style: { paddingHorizontal: 8 },
+        style: { paddingHorizontal: 8, height: 65 },
       }}
     >
       <BottomTab.Screen
