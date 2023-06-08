@@ -10,6 +10,7 @@ import { IconMan } from '~assets/icons/man.icon'
 import { IconPin } from '~assets/icons/pin.icon'
 import { IconSend } from '~assets/icons/send.icon'
 import { IconWarning } from '~assets/icons/warning.icon'
+import { IconWoman } from '~assets/icons/woman.icon'
 
 export default {
   facebook: (size?: number) => IconFacebook({ size }),
@@ -25,6 +26,7 @@ export default {
   warning: (size?: number, stroke?: number, color?: string) => IconWarning({ size, stroke, color }),
   send: (size?: number, stroke?: number, color?: string) => IconSend({ size, stroke, color }),
   man: (size?: number) => IconMan({ size }),
+  woman: (size?: number) => IconWoman({ size }),
   hamburger: (size?: number, stroke?: number, color?: string) =>
     IconHamburger({ size, stroke, color }),
 }

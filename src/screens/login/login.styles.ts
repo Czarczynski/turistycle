@@ -1,16 +1,13 @@
 import { StyleSheet } from 'react-native'
 
+import layout from '~styles/layout'
 import { theme } from '~styles/theme'
+import { TOPOGRAPHY } from '~styles/topography'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: theme.text,
+    paddingTop: 120,
+    backgroundColor: theme.background,
   },
 })

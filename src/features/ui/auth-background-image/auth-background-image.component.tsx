@@ -1,19 +1,17 @@
 import React, { VFC } from 'react'
-import { View, Text } from 'react-native'
-import { useTranslation } from 'react-i18next'
+import { Image } from 'react-native'
+import { SharedElement } from 'react-navigation-shared-element'
+
+import Background from '~assets/images/background.png'
 
 import styles from './auth-background-image.styles'
 
-interface AuthBackgroundImageProps {
-  title?: string;
-}
+interface AuthBackgroundImageProps {}
 
-export const AuthBackgroundImage: VFC<AuthBackgroundImageProps> = ({ title = "AuthBackgroundImage" }) => {
-  const { t } = useTranslation('auth-background-image');
-
+export const AuthBackgroundImage: VFC<AuthBackgroundImageProps> = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-};
+    <SharedElement id={'auth.background'}>
+      <Image source={Background} style={styles.container} />
+    </SharedElement>
+  )
+}

@@ -18,5 +18,7 @@ module.exports = {
     '^[./]',
   ],
   importOrderSeparation: true,
+  jsxSingleQuote: true,
   importOrderSortSpecifiers: true,
+  tabWidth: 2
 }

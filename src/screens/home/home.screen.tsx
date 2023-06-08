@@ -30,4 +30,5 @@ export const HomeScreen: VFC<HomeScreenProps> = observer(() => {
     </ImageBackground>
   )
 })
+
 const Separator = () => <View style={styles.separator} />

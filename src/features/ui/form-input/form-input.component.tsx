@@ -1,25 +1,26 @@
 import React, { VFC, useState } from 'react'
-import { Text, TextInput } from 'react-native'
+import { Text, TextInput, TextInputProps } from 'react-native'
 
 import styles from './form-input.styles'
 
-interface FormInputProps {
-  onChangeText: (text: string) => void
-  multiline?: boolean
+interface FormInputProps extends TextInputProps {
   label: string
 }
 
-export const FormInput: VFC<FormInputProps> = ({ onChangeText, multiline, label }) => {
+export const FormInput: VFC<FormInputProps> = ({ label, ...props }) => {
   const [isFocused, setIsFocused] = useState(false)
   return (
     <>
       <Text style={[styles.label, isFocused && styles.inputActive]}>{label}</Text>
       <TextInput
-        multiline={multiline}
+        {...props}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        style={[styles.input, isFocused && styles.inputActive, multiline && styles.inputMultiline]}
-        onChangeText={onChangeText}
+        style={[
+          styles.input,
+          isFocused && styles.inputActive,
+          props.multiline && styles.inputMultiline,
+        ]}
       />
     </>
   )

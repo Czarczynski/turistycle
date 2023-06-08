@@ -7,6 +7,7 @@ import {
 import { StatusBar } from 'expo-status-bar'
 import { observer } from 'mobx-react-lite'
 import * as React from 'react'
+import { createSharedElementStackNavigator } from 'react-navigation-shared-element'
 
 import AuthNavigator, { AuthStackParamList } from '~navigation/auth.navigator'
 import ChatNavigator, { ChatStackParamList } from '~navigation/chat.navigator'
@@ -46,7 +47,7 @@ export type RootStackParamList = {
 
 export type RootStackNavigationProps = StackNavigationProp<RootStackParamList>
 
-const Stack = createStackNavigator<RootStackParamList>()
+const Stack = createSharedElementStackNavigator<RootStackParamList>()
 
 export default observer(() => {
   const { global } = useStores()
@@ -54,7 +55,9 @@ export default observer(() => {
     <NavigationContainer linking={linking} theme={DarkTheme}>
       <StatusBar style={'dark'} />
       <Stack.Navigator
-        detachInactiveScreens={false}
+
+        keyboardHandlingEnabled={true}
+        // detachInactiveScreens={false}
         initialRouteName={global.user ? 'Root' : 'AuthNavigator'}
         headerMode={'float'}
         screenOptions={{
@@ -72,7 +75,15 @@ export default observer(() => {
         <Stack.Screen
           name="AuthNavigator"
           component={AuthNavigator}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            headerBackTitleVisible: false,
+            cardStyleInterpolator: (props) => ({
+              cardStyle: {
+                opacity: props.current.progress,
+              },
+            }),
+          }}
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="Troubleshooting" component={TroubleshootingScreen} />

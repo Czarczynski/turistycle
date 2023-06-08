@@ -1,15 +1,11 @@
-import { StyleSheet } from "react-native";
-import {theme} from "~styles/theme";
+import { StyleSheet } from 'react-native'
+
+import layout from '~styles/layout'
+import { theme } from '~styles/theme'
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: theme.text,
+    width: layout.window.width,
+    height: layout.window.width * (490 / 938),
   },
 })
